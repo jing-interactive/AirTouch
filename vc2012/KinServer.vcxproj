@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{DAE77EF5-BA4B-480A-BE11-297DDDBF46ED}</ProjectGuid>
+    <RootNamespace>KinServer</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\include;"..\..\Cinder\include";"..\..\Cinder\boost";..\..\Cinder\blocks\Cinder-ImGui\lib\imgui;..\..\Cinder\blocks\Cinder-KCB2\src;$(KINECTSDK20_DIR)\inc;..\..\Cinder\blocks\OSC\src;..\..\Cinder\blocks\TUIO\include</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;NOMINMAX;_WIN32_WINNT=0x0502;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>"..\..\Cinder\include";..\include</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>cinder-$(PlatformToolset)_d.lib;%(AdditionalDependencies);$(KINECTSDK20_DIR)\lib\x86\kinect20.lib;</AdditionalDependencies>
+      <AdditionalLibraryDirectories>"..\..\Cinder\lib\msw\$(PlatformTarget)"</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+      <TargetMachine>MachineX86</TargetMachine>
+      <IgnoreSpecificDefaultLibraries>LIBCMT;LIBCPMT</IgnoreSpecificDefaultLibraries>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\include;"..\..\Cinder\include";"..\..\Cinder\boost";..\..\Cinder\blocks\Cinder-ImGui\lib\imgui;..\..\Cinder\blocks\Cinder-KCB2\src;$(KINECTSDK20_DIR)\inc;..\..\Cinder\blocks\OSC\src;..\..\Cinder\blocks\TUIO\include</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;NOMINMAX;_WIN32_WINNT=0x0502;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>"..\..\Cinder\include";..\include</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>cinder-$(PlatformToolset)_d.lib;%(AdditionalDependencies);$(KINECTSDK20_DIR)\lib\x86\kinect20.lib;</AdditionalDependencies>
+      <AdditionalLibraryDirectories>"..\..\Cinder\lib\msw\$(PlatformTarget)"</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <GenerateMapFile>true</GenerateMapFile>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding />
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resources.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\Resources.h" />
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB2\src\AutoLock.h" />
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB2\src\KCBSensor.h" />
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB2\src\KCBv2Lib.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB2\src\KinectList.h" />
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB2\src\stdafx.h" />
+    <ClInclude Include="..\..\Cinder\blocks\OSC\src\OscArg.h" />
+    <ClInclude Include="..\..\Cinder\blocks\OSC\src\OscBundle.h" />
+    <ClInclude Include="..\..\Cinder\blocks\OSC\src\OscListener.h" />
+    <ClInclude Include="..\..\Cinder\blocks\OSC\src\OscMessage.h" />
+    <ClInclude Include="..\..\Cinder\blocks\OSC\src\OscSender.h" />
+    <ClInclude Include="..\..\Cinder\blocks\OSC\src\ip\IpEndpointName.h" />
+    <ClInclude Include="..\..\Cinder\blocks\OSC\src\ip\NetworkingUtils.h" />
+    <ClInclude Include="..\..\Cinder\blocks\OSC\src\ip\PacketListener.h" />
+    <ClInclude Include="..\..\Cinder\blocks\OSC\src\ip\TimerListener.h" />
+    <ClInclude Include="..\..\Cinder\blocks\OSC\src\ip\UdpSocket.h" />
+    <ClInclude Include="..\..\Cinder\blocks\OSC\src\osc\MessageMappingOscPacketListener.h" />
+    <ClInclude Include="..\..\Cinder\blocks\OSC\src\osc\OscException.h" />
+    <ClInclude Include="..\..\Cinder\blocks\OSC\src\osc\OscHostEndianness.h" />
+    <ClInclude Include="..\..\Cinder\blocks\OSC\src\osc\OscOutboundPacketStream.h" />
+    <ClInclude Include="..\..\Cinder\blocks\OSC\src\osc\OscPacketListener.h" />
+    <ClInclude Include="..\..\Cinder\blocks\OSC\src\osc\OscPrintReceivedElements.h" />
+    <ClInclude Include="..\..\Cinder\blocks\OSC\src\osc\OscReceivedElements.h" />
+    <ClInclude Include="..\..\Cinder\blocks\OSC\src\osc\OscTypes.h" />
+    <ClInclude Include="..\..\Cinder\blocks\TUIO\include\TuioClient.h" />
+    <ClInclude Include="..\..\Cinder\blocks\TUIO\include\TuioCursor.h" />
+    <ClInclude Include="..\..\Cinder\blocks\TUIO\include\TuioObject.h" />
+    <ClInclude Include="..\..\Cinder\blocks\TUIO\include\TuioProfileBase.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\KinServerApp.cpp" />
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB2\src\KCBFrames.cpp" />
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB2\src\KCBSensor.cpp" />
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB2\src\KCBv2Lib.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB2\src\KinectList.cpp" />
+    <ClCompile Include="..\..\Cinder\blocks\OSC\src\OscBundle.cpp" />
+    <ClCompile Include="..\..\Cinder\blocks\OSC\src\OscListener.cpp" />
+    <ClCompile Include="..\..\Cinder\blocks\OSC\src\OscMessage.cpp" />
+    <ClCompile Include="..\..\Cinder\blocks\OSC\src\OscSender.cpp" />
+    <ClCompile Include="..\..\Cinder\blocks\OSC\src\ip\IpEndpointName.cpp" />
+    <ClCompile Include="..\..\Cinder\blocks\OSC\src\osc\OscOutboundPacketStream.cpp" />
+    <ClCompile Include="..\..\Cinder\blocks\OSC\src\osc\OscPrintReceivedElements.cpp" />
+    <ClCompile Include="..\..\Cinder\blocks\OSC\src\osc\OscReceivedElements.cpp" />
+    <ClCompile Include="..\..\Cinder\blocks\OSC\src\osc\OscTypes.cpp" />
+    <ClCompile Include="..\..\Cinder\blocks\OSC\src\ip\win32\NetworkingUtils.cpp" />
+    <ClCompile Include="..\..\Cinder\blocks\OSC\src\ip\win32\UdpSocket.cpp" />
+    <ClCompile Include="..\..\Cinder\blocks\TUIO\src\TuioClient.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets" />
+</Project>
