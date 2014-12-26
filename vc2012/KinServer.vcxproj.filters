@@ -37,15 +37,6 @@
     <Filter Include="Blocks\OSC\src\ip\win32">
       <UniqueIdentifier>{AB25A8F1-3C0C-449C-92A3-7E7BA33D0F7A}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Blocks\TUIO">
-      <UniqueIdentifier>{F211FB6B-2085-4E9E-B1CD-358B42211D40}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Blocks\TUIO\src">
-      <UniqueIdentifier>{E3446708-FDA5-4055-A061-AFD72DF3DDAD}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Blocks\TUIO\include">
-      <UniqueIdentifier>{6E505FF6-4D8E-4710-A2C9-DCC84B2A6040}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\KinServerApp.cpp">
@@ -171,24 +162,30 @@
     <ClCompile Include="..\..\Cinder\blocks\OSC\src\ip\win32\UdpSocket.cpp">
       <Filter>Blocks\OSC\src\ip\win32</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\TUIO\src\TuioClient.cpp">
-      <Filter>Blocks\TUIO\src</Filter>
+    <ClCompile Include="..\src\MiniConfig.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClInclude Include="..\..\Cinder\blocks\TUIO\include\TuioClient.h">
-      <Filter>Blocks\TUIO\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\TUIO\include\TuioCursor.h">
-      <Filter>Blocks\TUIO\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\TUIO\include\TuioObject.h">
-      <Filter>Blocks\TUIO\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\TUIO\include\TuioProfileBase.h">
-      <Filter>Blocks\TUIO\include</Filter>
-    </ClInclude>
+    <ClCompile Include="..\src\OpenCV\BlobTracker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\OpenCV\OpenCV.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Resources.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\MiniConfig.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OpenCV\Blob.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OpenCV\BlobTracker.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OpenCV\OpenCV.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -196,5 +193,10 @@
     <ResourceCompile Include="Resources.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\include\item.def">
+      <Filter>Header Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

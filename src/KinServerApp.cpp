@@ -133,11 +133,13 @@ public:
 
     void draw() override
     {
+		gl::clear();
+
         float width = getWindowWidth();
         float height = getWindowHeight();
         float halfW = width / 2;
         float halfH = height / 2;
-        float spc = width * 0.05;
+        float spc = width * 0.01;
         gl::draw(mDevice->depthTexture, mDevice->depthTexture->getBounds(),
                  Rectf(spc, spc, halfW - spc, halfH - spc));
         gl::draw(mBackTexture, mBackTexture->getBounds(),

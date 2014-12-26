@@ -50,9 +50,9 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\include;"..\..\Cinder\include";"..\..\Cinder\boost";..\..\Cinder\blocks\Cinder-ImGui\lib\imgui;..\..\Cinder\blocks\Cinder-KCB2\src;$(KINECTSDK20_DIR)\inc;..\..\Cinder\blocks\OSC\src;..\..\Cinder\blocks\TUIO\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\opencv\build\include\;..\include;"..\..\Cinder\include";"..\..\Cinder\boost";..\..\Cinder\blocks\Cinder-ImGui\lib\imgui;..\..\Cinder\blocks\Cinder-KCB2\src;$(KINECTSDK20_DIR)\inc;..\..\Cinder\blocks\OSC\src;..\..\Cinder\blocks\TUIO\include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;NOMINMAX;_WIN32_WINNT=0x0502;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <MinimalRebuild>true</MinimalRebuild>
+      <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <PrecompiledHeader />
@@ -65,7 +65,7 @@
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>cinder-$(PlatformToolset)_d.lib;%(AdditionalDependencies);$(KINECTSDK20_DIR)\lib\x86\kinect20.lib;</AdditionalDependencies>
-      <AdditionalLibraryDirectories>"..\..\Cinder\lib\msw\$(PlatformTarget)"</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\opencv\build\$(PlatformTarget)\vc12\lib;"..\..\Cinder\lib\msw\$(PlatformTarget)"</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
@@ -80,7 +80,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>..\include;"..\..\Cinder\include";"..\..\Cinder\boost";..\..\Cinder\blocks\Cinder-ImGui\lib\imgui;..\..\Cinder\blocks\Cinder-KCB2\src;$(KINECTSDK20_DIR)\inc;..\..\Cinder\blocks\OSC\src;..\..\Cinder\blocks\TUIO\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\opencv\build\include\;..\include;"..\..\Cinder\include";"..\..\Cinder\boost";..\..\Cinder\blocks\Cinder-ImGui\lib\imgui;..\..\Cinder\blocks\Cinder-KCB2\src;$(KINECTSDK20_DIR)\inc;..\..\Cinder\blocks\OSC\src;..\..\Cinder\blocks\TUIO\include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;NOMINMAX;_WIN32_WINNT=0x0502;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <PrecompiledHeader />
@@ -96,7 +96,7 @@
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>cinder-$(PlatformToolset)_d.lib;%(AdditionalDependencies);$(KINECTSDK20_DIR)\lib\x86\kinect20.lib;</AdditionalDependencies>
-      <AdditionalLibraryDirectories>"..\..\Cinder\lib\msw\$(PlatformTarget)"</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\opencv\build\$(PlatformTarget)\vc12\lib;"..\..\Cinder\lib\msw\$(PlatformTarget)"</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <GenerateMapFile>true</GenerateMapFile>
       <SubSystem>Windows</SubSystem>
@@ -142,10 +142,10 @@
     <ClInclude Include="..\..\Cinder\blocks\OSC\src\osc\OscPrintReceivedElements.h" />
     <ClInclude Include="..\..\Cinder\blocks\OSC\src\osc\OscReceivedElements.h" />
     <ClInclude Include="..\..\Cinder\blocks\OSC\src\osc\OscTypes.h" />
-    <ClInclude Include="..\..\Cinder\blocks\TUIO\include\TuioClient.h" />
-    <ClInclude Include="..\..\Cinder\blocks\TUIO\include\TuioCursor.h" />
-    <ClInclude Include="..\..\Cinder\blocks\TUIO\include\TuioObject.h" />
-    <ClInclude Include="..\..\Cinder\blocks\TUIO\include\TuioProfileBase.h" />
+    <ClInclude Include="..\src\MiniConfig.h" />
+    <ClInclude Include="..\src\OpenCV\Blob.h" />
+    <ClInclude Include="..\src\OpenCV\BlobTracker.h" />
+    <ClInclude Include="..\src\OpenCV\OpenCV.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\KinServerApp.cpp" />
@@ -167,7 +167,12 @@
     <ClCompile Include="..\..\Cinder\blocks\OSC\src\osc\OscTypes.cpp" />
     <ClCompile Include="..\..\Cinder\blocks\OSC\src\ip\win32\NetworkingUtils.cpp" />
     <ClCompile Include="..\..\Cinder\blocks\OSC\src\ip\win32\UdpSocket.cpp" />
-    <ClCompile Include="..\..\Cinder\blocks\TUIO\src\TuioClient.cpp" />
+    <ClCompile Include="..\src\MiniConfig.cpp" />
+    <ClCompile Include="..\src\OpenCV\BlobTracker.cpp" />
+    <ClCompile Include="..\src\OpenCV\OpenCV.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\include\item.def" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />
