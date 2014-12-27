@@ -32,16 +32,15 @@ bool cmp_blob_area(const vBlob& a, const vBlob& b)
 void vFindBlobs(Mat& img, vector<vBlob>& blobs, int minArea, int maxArea, bool convexHullMode, bool (*sort_func)(const vBlob& a, const vBlob& b))
 {
     blobs.clear();
-    vector<Vec4i> hierarchy;
-    vector<vector<Point>> contours0;
+    static vector<Vec4i> hierarchy;
+    static vector<vector<Point>> contours0;
+	static vector<Point> approx;
 
     findContours(img, contours0, hierarchy, RETR_EXTERNAL/*RETR_TREE*/, CHAIN_APPROX_SIMPLE);
 
-    for (size_t k = 0; k < contours0.size(); k++)
+	for (const auto& contour : contours0)
     {
-        vector<Point> approx;
         bool isHole = false;
-        const vector<Point>& contour = contours0[k];
 
         double area = fabs(contourArea(contour));
         if (area >= minArea && area <= maxArea)
@@ -292,7 +291,7 @@ void vBlobTracker::trackBlobs( const vector<vBlob>& newBlobs )
         }
 
         BFMatcher matcher(NORM_L2);
-        vector<DMatch> matches;
+        static vector<DMatch> matches;
         matcher.match(mb, ma, matches);
         const int n_matches = matches.size();
         for (int i=0;i<n_matches;i++)
