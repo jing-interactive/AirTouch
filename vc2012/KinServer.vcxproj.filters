@@ -19,148 +19,88 @@
     <Filter Include="Blocks\Cinder-KCB2">
       <UniqueIdentifier>{992F4729-86DE-4471-8C21-4334D0EAFE87}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Blocks\Cinder-KCB2\src">
-      <UniqueIdentifier>{61121773-C6C7-4C53-B18F-0E8C5DF274B1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Blocks\OSC">
       <UniqueIdentifier>{EA77E63B-E67C-4FB8-AE98-0E374EFFD3D7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Blocks\OSC\src">
-      <UniqueIdentifier>{652F1428-4873-4601-9585-10D682A0403F}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Blocks\OSC\src\ip">
+    <Filter Include="Blocks\OSC\ip">
       <UniqueIdentifier>{67DDA57C-E289-4954-A2ED-BA7D560B6E29}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Blocks\OSC\src\osc">
+    <Filter Include="Blocks\OSC\ip\win32">
+      <UniqueIdentifier>{AB25A8F1-3C0C-449C-92A3-7E7BA33D0F7A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blocks\OSC\osc">
       <UniqueIdentifier>{A396E2FA-0DBA-4103-A83F-4983CE403630}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Blocks\OSC\src\ip\win32">
-      <UniqueIdentifier>{AB25A8F1-3C0C-449C-92A3-7E7BA33D0F7A}</UniqueIdentifier>
+    <Filter Include="Blocks\Cinder-KCB">
+      <UniqueIdentifier>{4ee9009e-47be-4294-a72b-95a03e8d8c1d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\KinServerApp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClInclude Include="..\include\Resources.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClCompile Include="..\src\KinServerApp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB2\src\KCBFrames.cpp">
-      <Filter>Blocks\Cinder-KCB2\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB2\src\KCBSensor.cpp">
-      <Filter>Blocks\Cinder-KCB2\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB2\src\KCBv2Lib.cpp">
-      <Filter>Blocks\Cinder-KCB2\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB2\src\KinectList.cpp">
-      <Filter>Blocks\Cinder-KCB2\src</Filter>
-    </ClCompile>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB2\src\AutoLock.h">
-      <Filter>Blocks\Cinder-KCB2\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB2\src\KCBSensor.h">
-      <Filter>Blocks\Cinder-KCB2\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB2\src\KCBv2Lib.h">
-      <Filter>Blocks\Cinder-KCB2\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB2\src\KinectList.h">
-      <Filter>Blocks\Cinder-KCB2\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB2\src\stdafx.h">
-      <Filter>Blocks\Cinder-KCB2\src</Filter>
-    </ClInclude>
-    <ClCompile Include="..\..\Cinder\blocks\OSC\src\OscBundle.cpp">
-      <Filter>Blocks\OSC\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\OSC\src\OscListener.cpp">
-      <Filter>Blocks\OSC\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\OSC\src\OscMessage.cpp">
-      <Filter>Blocks\OSC\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\OSC\src\OscSender.cpp">
-      <Filter>Blocks\OSC\src</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Cinder\blocks\OSC\src\ip\IpEndpointName.cpp">
-      <Filter>Blocks\OSC\src\ip</Filter>
+      <Filter>Blocks\OSC\ip</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Cinder\blocks\OSC\src\osc\OscOutboundPacketStream.cpp">
-      <Filter>Blocks\OSC\src\osc</Filter>
+      <Filter>Blocks\OSC\osc</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Cinder\blocks\OSC\src\osc\OscPrintReceivedElements.cpp">
-      <Filter>Blocks\OSC\src\osc</Filter>
+      <Filter>Blocks\OSC\osc</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Cinder\blocks\OSC\src\osc\OscReceivedElements.cpp">
-      <Filter>Blocks\OSC\src\osc</Filter>
+      <Filter>Blocks\OSC\osc</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Cinder\blocks\OSC\src\osc\OscTypes.cpp">
-      <Filter>Blocks\OSC\src\osc</Filter>
+      <Filter>Blocks\OSC\osc</Filter>
     </ClCompile>
-    <ClInclude Include="..\..\Cinder\blocks\OSC\src\OscArg.h">
-      <Filter>Blocks\OSC\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\OSC\src\OscBundle.h">
-      <Filter>Blocks\OSC\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\OSC\src\OscListener.h">
-      <Filter>Blocks\OSC\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\OSC\src\OscMessage.h">
-      <Filter>Blocks\OSC\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\OSC\src\OscSender.h">
-      <Filter>Blocks\OSC\src</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Cinder\blocks\OSC\src\ip\IpEndpointName.h">
-      <Filter>Blocks\OSC\src\ip</Filter>
+      <Filter>Blocks\OSC\ip</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Cinder\blocks\OSC\src\ip\NetworkingUtils.h">
-      <Filter>Blocks\OSC\src\ip</Filter>
+      <Filter>Blocks\OSC\ip</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Cinder\blocks\OSC\src\ip\PacketListener.h">
-      <Filter>Blocks\OSC\src\ip</Filter>
+      <Filter>Blocks\OSC\ip</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Cinder\blocks\OSC\src\ip\TimerListener.h">
-      <Filter>Blocks\OSC\src\ip</Filter>
+      <Filter>Blocks\OSC\ip</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Cinder\blocks\OSC\src\ip\UdpSocket.h">
-      <Filter>Blocks\OSC\src\ip</Filter>
+      <Filter>Blocks\OSC\ip</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Cinder\blocks\OSC\src\osc\MessageMappingOscPacketListener.h">
-      <Filter>Blocks\OSC\src\osc</Filter>
+      <Filter>Blocks\OSC\osc</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Cinder\blocks\OSC\src\osc\OscException.h">
-      <Filter>Blocks\OSC\src\osc</Filter>
+      <Filter>Blocks\OSC\osc</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Cinder\blocks\OSC\src\osc\OscHostEndianness.h">
-      <Filter>Blocks\OSC\src\osc</Filter>
+      <Filter>Blocks\OSC\osc</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Cinder\blocks\OSC\src\osc\OscOutboundPacketStream.h">
-      <Filter>Blocks\OSC\src\osc</Filter>
+      <Filter>Blocks\OSC\osc</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Cinder\blocks\OSC\src\osc\OscPacketListener.h">
-      <Filter>Blocks\OSC\src\osc</Filter>
+      <Filter>Blocks\OSC\osc</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Cinder\blocks\OSC\src\osc\OscPrintReceivedElements.h">
-      <Filter>Blocks\OSC\src\osc</Filter>
+      <Filter>Blocks\OSC\osc</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Cinder\blocks\OSC\src\osc\OscReceivedElements.h">
-      <Filter>Blocks\OSC\src\osc</Filter>
+      <Filter>Blocks\OSC\osc</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Cinder\blocks\OSC\src\osc\OscTypes.h">
-      <Filter>Blocks\OSC\src\osc</Filter>
+      <Filter>Blocks\OSC\osc</Filter>
     </ClInclude>
     <ClCompile Include="..\..\Cinder\blocks\OSC\src\ip\win32\NetworkingUtils.cpp">
-      <Filter>Blocks\OSC\src\ip\win32</Filter>
+      <Filter>Blocks\OSC\ip\win32</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Cinder\blocks\OSC\src\ip\win32\UdpSocket.cpp">
-      <Filter>Blocks\OSC\src\ip\win32</Filter>
+      <Filter>Blocks\OSC\ip\win32</Filter>
     </ClCompile>
     <ClCompile Include="..\src\MiniConfig.cpp">
       <Filter>Source Files</Filter>
@@ -168,7 +108,70 @@
     <ClCompile Include="..\src\OpenCV\BlobTracker.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\OpenCV\OpenCV.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\OSC\src\OscBundle.cpp">
+      <Filter>Blocks\OSC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\OSC\src\OscListener.cpp">
+      <Filter>Blocks\OSC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\OSC\src\OscMessage.cpp">
+      <Filter>Blocks\OSC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\OSC\src\OscSender.cpp">
+      <Filter>Blocks\OSC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB2\src\KCBFrames.cpp">
+      <Filter>Blocks\Cinder-KCB2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB2\src\KCBSensor.cpp">
+      <Filter>Blocks\Cinder-KCB2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB2\src\KCBv2Lib.cpp">
+      <Filter>Blocks\Cinder-KCB2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB2\src\KinectList.cpp">
+      <Filter>Blocks\Cinder-KCB2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\CoordinateMapper.cpp">
+      <Filter>Blocks\Cinder-KCB</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\DataStream.cpp">
+      <Filter>Blocks\Cinder-KCB</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\DataStreamAudio.cpp">
+      <Filter>Blocks\Cinder-KCB</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\DataStreamColor.cpp">
+      <Filter>Blocks\Cinder-KCB</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\DataStreamDepth.cpp">
+      <Filter>Blocks\Cinder-KCB</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\DataStreamSkeleton.cpp">
+      <Filter>Blocks\Cinder-KCB</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\FaceTracker.cpp">
+      <Filter>Blocks\Cinder-KCB</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\KinectAudioStream.cpp">
+      <Filter>Blocks\Cinder-KCB</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\KinectCommonBridgeLib.cpp">
+      <Filter>Blocks\Cinder-KCB</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\KinectSensor.cpp">
+      <Filter>Blocks\Cinder-KCB</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\MediaBuffer.cpp">
+      <Filter>Blocks\Cinder-KCB</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\SensorManager.cpp">
+      <Filter>Blocks\Cinder-KCB</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\stdafx.cpp">
+      <Filter>Blocks\Cinder-KCB</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\KinectDevice.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -179,17 +182,98 @@
     <ClInclude Include="..\src\MiniConfig.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\OpenCV\Blob.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\OpenCV\BlobTracker.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\OpenCV\OpenCV.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Cinder\include\cinder\CinderOpenCV.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\OSC\src\OscArg.h">
+      <Filter>Blocks\OSC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\OSC\src\OscBundle.h">
+      <Filter>Blocks\OSC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\OSC\src\OscListener.h">
+      <Filter>Blocks\OSC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\OSC\src\OscMessage.h">
+      <Filter>Blocks\OSC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\OSC\src\OscSender.h">
+      <Filter>Blocks\OSC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB2\src\stdafx.h">
+      <Filter>Blocks\Cinder-KCB2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB2\src\KCBSensor.h">
+      <Filter>Blocks\Cinder-KCB2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB2\src\KCBv2Lib.h">
+      <Filter>Blocks\Cinder-KCB2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB2\src\KinectList.h">
+      <Filter>Blocks\Cinder-KCB2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB2\src\AutoLock.h">
+      <Filter>Blocks\Cinder-KCB2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\AutoLock.h">
+      <Filter>Blocks\Cinder-KCB</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\ComSmartPtr.h">
+      <Filter>Blocks\Cinder-KCB</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\CoordinateMapper.h">
+      <Filter>Blocks\Cinder-KCB</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\CriticalSection.h">
+      <Filter>Blocks\Cinder-KCB</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\DataStream.h">
+      <Filter>Blocks\Cinder-KCB</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\DataStreamAudio.h">
+      <Filter>Blocks\Cinder-KCB</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\DataStreamColor.h">
+      <Filter>Blocks\Cinder-KCB</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\DataStreamDepth.h">
+      <Filter>Blocks\Cinder-KCB</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\DataStreamSkeleton.h">
+      <Filter>Blocks\Cinder-KCB</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\FaceTracker.h">
+      <Filter>Blocks\Cinder-KCB</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\KinectAudioStream.h">
+      <Filter>Blocks\Cinder-KCB</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\KinectCommonBridgeLib.h">
+      <Filter>Blocks\Cinder-KCB</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\KinectSensor.h">
+      <Filter>Blocks\Cinder-KCB</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\MediaBuffer.h">
+      <Filter>Blocks\Cinder-KCB</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\SensorManager.h">
+      <Filter>Blocks\Cinder-KCB</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\stdafx.h">
+      <Filter>Blocks\Cinder-KCB</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\targetver.h">
+      <Filter>Blocks\Cinder-KCB</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\KinectDevice.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Resources.h">
+      <Filter>Resource Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -199,7 +283,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\include\item.def">
-      <Filter>Header Files</Filter>
+      <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
 </Project>

@@ -8,8 +8,8 @@
 #include "OscSender.h"
 #include "cinder/CinderOpenCV.h"
 #include "OpenCV/BlobTracker.h"
+#include "KinectDevice.h"
 
-#include "KCBv2Lib.h"
 #include "MiniConfig.h"
 
 using namespace ci;
@@ -28,97 +28,6 @@ void updateTexture(gl::TextureRef &tex, const T &src)
     }
 }
 
-namespace Kinect
-{
-typedef std::shared_ptr<struct Device> DeviceRef;
-
-struct Device
-{
-    static DeviceRef create()
-    {
-        return DeviceRef(new Device);
-    }
-
-    virtual ~Device()
-    {
-        if (depthFrame != nullptr)
-        {
-            KCBReleaseDepthFrame(&depthFrame);
-        }
-        if (sensor != KCB_INVALID_HANDLE)
-        {
-            KCBCloseSensor(&sensor);
-        }
-    }
-
-    int getWidth() const
-    {
-        return depthDesc.width;
-    }
-    int getHeight() const
-    {
-        return depthDesc.height;
-    }
-    // Cinder fields
-    Channel16u depthChannel;
-    gl::TextureRef depthTexture;
-
-    EventSignalWindow signalDepthDirty;
-
-protected:
-    Device()
-    {
-        depthFrame = nullptr;
-
-        HRESULT hr = S_OK;
-
-        sensor = KCBOpenDefaultSensor();
-        if (KCB_INVALID_HANDLE == sensor)
-        {
-            hr = E_UNEXPECTED;
-        }
-
-        // create re-usable buffer
-        if (SUCCEEDED(hr))
-        {
-            hr = KCBGetDepthFrameDescription(sensor, &depthDesc);
-            if (SUCCEEDED(hr))
-            {
-                hr = KCBCreateDepthFrame(depthDesc, &depthFrame);
-                depthChannel = Channel16u(depthDesc.width, depthDesc.height,
-                                          depthDesc.bytesPerPixel * depthDesc.width, 1, depthFrame->Buffer);
-                depthTexture = gl::Texture::create(depthChannel);
-            }
-        }
-
-        if (FAILED(hr))
-        {
-            CI_LOG_E("Failed to connect to Kinect");
-            App::get()->quit();
-        }
-
-        App::get()->getSignalUpdate().connect(std::bind(&Device::update, this));
-    }
-
-    void update()
-    {
-        if (KCBIsFrameReady(sensor, FrameSourceTypes_Depth))
-        {
-            if (SUCCEEDED(KCBGetDepthFrame(sensor, depthFrame)))
-            {
-                depthTexture->update(depthChannel);
-                signalDepthDirty();
-            }
-        }
-    }
-
-    // KCB fields
-    KCBDepthFrame *depthFrame;
-    KCBFrameDescription depthDesc;
-    int sensor;
-};
-}
-
 class KinServerApp : public AppBasic
 {
 public:
@@ -126,12 +35,12 @@ public:
     {
         log::manager()->enableFileLogging();
 
-        mDevice = Kinect::Device::create();
+        mDevice = Kinect::Device::createV2();
         mDevice->signalDepthDirty.connect(std::bind(&KinServerApp::updateDepthRelated, this));
 
         mRoi.set(0, 0, mDevice->getWidth(), mDevice->getHeight()); // TODO: save / load
-		mDiffMat = cv::Mat1b(mDevice->getHeight(), mDevice->getWidth());
-		mDiffChannel = Channel(mDevice->getWidth(), mDevice->getHeight(), mDiffMat.step, 1,
+        mDiffMat = cv::Mat1b(mDevice->getHeight(), mDevice->getWidth());
+        mDiffChannel = Channel(mDevice->getWidth(), mDevice->getHeight(), mDiffMat.step, 1,
                                mDiffMat.ptr());
 
         mParams = params::InterfaceGl::create("params", vec2(300, getConfigUIHeight() + 100));
@@ -144,11 +53,11 @@ public:
         getWindow()->setSize(1024, 768);
     }
 
-	void resize() override
-	{
-		float spc = getWindowWidth() * 0.01;
-		mParams->setPosition(ivec2(getWindowWidth() / 2 + spc, getWindowHeight() / 2 + spc));
-	}
+    void resize() override
+    {
+        float spc = getWindowWidth() * 0.01;
+        mParams->setPosition(ivec2(getWindowWidth() / 2 + spc, getWindowHeight() / 2 + spc));
+    }
 
     void draw() override
     {
@@ -159,8 +68,11 @@ public:
         float halfW = width / 2;
         float halfH = height / 2;
         float spc = width * 0.01;
-        gl::draw(mDevice->depthTexture, mDevice->depthTexture->getBounds(),
-                 Rectf(spc, spc, halfW - spc, halfH - spc));
+        if (mDepthTexture)
+        {
+            gl::draw(mDepthTexture, mDepthTexture->getBounds(),
+                     Rectf(spc, spc, halfW - spc, halfH - spc));
+        }
         if (mBackTexture)
         {
             gl::draw(mBackTexture, mBackTexture->getBounds(),
@@ -171,7 +83,7 @@ public:
             gl::draw(mDiffTexture, mDiffTexture->getBounds(),
                      Rectf(spc, halfH + spc, halfW - spc, height - spc));
         }
-		visualizeBlobs(mBlobTracker);
+        visualizeBlobs(mBlobTracker);
     }
 
     void keyUp(KeyEvent event) override
@@ -191,12 +103,14 @@ public:
 private:
     void updateDepthRelated()
     {
+    	updateTexture(mDepthTexture, mDevice->depthChannel);
+    	
         if (!mBackTexture)
         {
             updateBack();
         }
 
-        mDiffMat.setTo(CV_BLACK);
+        mDiffMat.setTo(cv::Scalar::all(0));
         //float x0 = corners[CORNER_DEPTH_LT].x - depthOrigin.x;
         //float x1 = corners[CORNER_DEPTH_RB].x - depthOrigin.x;
         //float y0 = corners[CORNER_DEPTH_LT].y - depthOrigin.y;
@@ -204,6 +118,7 @@ private:
 
         for (int y = mRoi.y1; y < mRoi.y2; y++)
         {
+            // TODO: cache row pointer
             for (int x = mRoi.x1; x < mRoi.x2; x++)
             {
                 uint16_t bg = *mBackChannel.getData(x, y);
@@ -218,7 +133,7 @@ private:
         if (SMOOTH > 0)
         {
             cv::Mat element = getStructuringElement(cv::MORPH_RECT, cv::Size(SMOOTH * 2 + 1, SMOOTH * 2 + 1), cv::Point(SMOOTH, SMOOTH));
-            morphologyEx(mDiffMat, mDiffMat, cv::MORPH_OPEN, element);
+            cv::morphologyEx(mDiffMat, mDiffMat, cv::MORPH_OPEN, element);
         }
 
         updateTexture(mDiffTexture, mDiffChannel);
@@ -228,21 +143,21 @@ private:
         sendTuioMessage(mOscSender, mBlobTracker);
     }
 
-    void visualizeBlobs(const vBlobTracker& blobTracker)
+    void visualizeBlobs(const vBlobTracker &blobTracker)
     {
-        for (const auto& blob : blobTracker.trackedBlobs)
-    	{
-			PolyLine2 line;
-			for (const auto& pt : blob.pts)
-			{
-				line.push_back(vec2(pt.x, pt.y));
-			}
-			line.setClosed();
-			gl::draw(line);
-    	}
+        for (const auto &blob : blobTracker.trackedBlobs)
+        {
+            PolyLine2 line;
+            for (const auto &pt : blob.pts)
+            {
+                line.push_back(vec2(pt.x, pt.y));
+            }
+            line.setClosed();
+            gl::draw(line);
+        }
     }
 
-    void sendTuioMessage(osc::Sender &sender, const vBlobTracker& blobTracker)
+    void sendTuioMessage(osc::Sender &sender, const vBlobTracker &blobTracker)
     {
         osc::Bundle bundle;
 
@@ -259,7 +174,7 @@ private:
             fseq.addIntArg(getElapsedFrames());
         }
 
-        for (const auto& blob : blobTracker.trackedBlobs)
+        for (const auto &blob : blobTracker.trackedBlobs)
         {
             //Point2f center(blob.center.x + depthOrigin.x, blob.center.y + depthOrigin.y);
             vec2 center(blob.center.x, blob.center.y);
@@ -291,14 +206,13 @@ private:
     {
         mBackChannel = mDevice->depthChannel.clone();
         updateTexture(mBackTexture, mBackChannel);
-
-        //depthChannel = Channel16u(depthDesc.width, depthDesc.height,
-        //  depthDesc.bytesPerPixel * depthDesc.width, 1, depthFrame->Buffer);
     }
 
     Kinect::DeviceRef mDevice;
     params::InterfaceGlRef mParams;
     osc::Sender mOscSender;
+
+    gl::TextureRef mDepthTexture;
 
     // vision
     Channel16u mBackChannel;
