@@ -118,10 +118,8 @@ void setupConfigUI(cinder::params::InterfaceGl* params)
 #define ITEM_DEF_MINMAX(type, var, default, Min, Max)               \
     do                                                              \
     {                                                               \
-        type step = (Max - Min) / (type)100;                         \
-        stringstream ss;                                            \
-        ss << "min=" << Min << " max=" << Max << " step=" << step;  \
-        params->addParam(#var, &var, ss.str());                     \
+        type step = (Max - Min) / (type)100;                        \
+        params->addParam(#var, &var).min(Min).max(Max).step(step);  \
     } while(0);
 #include "item.def"
 #undef ITEM_DEF_MINMAX

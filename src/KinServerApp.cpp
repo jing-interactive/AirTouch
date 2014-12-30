@@ -33,6 +33,7 @@ class KinServerApp : public AppBasic
 public:
     void setup() override
     {
+        readConfig();
         log::manager()->enableFileLogging();
 
         mDevice = Kinect::Device::createV2();
@@ -45,45 +46,53 @@ public:
 
         mParams = params::InterfaceGl::create("params", vec2(300, getConfigUIHeight() + 100));
         setupConfigUI(mParams.get());
+        std::vector<string> smoothNames = { "Off", "Light", "Middle", "High" };
+        ADD_ENUM_TO_INT(mParams, SMOOTH, smoothNames)
         getWindow()->connectPostDraw(&params::InterfaceGl::draw, mParams.get());
+
+        mFps = 0;
+        mParams->addParam("FPS", &mFps, true);
         mParams->addButton("Set Bg", std::bind(&KinServerApp::updateBack, this));
 
-        mOscSender.setup(ADDRESS, OSC_PORT);
+        mOscSender.setup(ADDRESS, TUIO_PORT);
 
         getWindow()->setSize(1024, 768);
     }
 
     void resize() override
     {
-        float spc = getWindowWidth() * 0.01;
-        mParams->setPosition(ivec2(getWindowWidth() / 2 + spc, getWindowHeight() / 2 + spc));
+        mLayout.width = getWindowWidth();
+        mLayout.height = getWindowHeight();
+        mLayout.halfW = mLayout.width / 2;
+        mLayout.halfH = mLayout.height / 2;
+        mLayout.spc = mLayout.width * 0.01;
+        for (int x = 0; x < 2; x++)
+        {
+            for (int y = 0; y < 2; y++)
+            {
+                mLayout.canvases[y * 2 + x] = Rectf(
+                                                  mLayout.spc + mLayout.halfW * x,
+                                                  mLayout.spc + mLayout.halfH * y,
+                                                  mLayout.halfW * (1 + x) - mLayout.spc,
+                                                  mLayout.halfH * (1 + y) - mLayout.spc
+                                              );
+            }
+        }
+
+        mParams->setPosition(mLayout.canvases[3].getUpperLeft());
     }
 
     void draw() override
     {
         gl::clear(ColorA::gray(0.5f));
 
-        float width = getWindowWidth();
-        float height = getWindowHeight();
-        float halfW = width / 2;
-        float halfH = height / 2;
-        float spc = width * 0.01;
         if (mDepthTexture)
         {
-            gl::draw(mDepthTexture, mDepthTexture->getBounds(),
-                     Rectf(spc, spc, halfW - spc, halfH - spc));
+            gl::draw(mDepthTexture, mDepthTexture->getBounds(), mLayout.canvases[0]);
+            gl::draw(mBackTexture, mBackTexture->getBounds(), mLayout.canvases[1]);
+            gl::draw(mDiffTexture, mDiffTexture->getBounds(), mLayout.canvases[2]);
+            visualizeBlobs(mBlobTracker);
         }
-        if (mBackTexture)
-        {
-            gl::draw(mBackTexture, mBackTexture->getBounds(),
-                     Rectf(halfW + spc, spc, width - spc, halfH - spc));
-        }
-        if (mDiffTexture)
-        {
-            gl::draw(mDiffTexture, mDiffTexture->getBounds(),
-                     Rectf(spc, halfH + spc, halfW - spc, height - spc));
-        }
-        visualizeBlobs(mBlobTracker);
     }
 
     void keyUp(KeyEvent event) override
@@ -98,13 +107,14 @@ public:
     // TODO: Async image processing
     void update() override
     {
+        mFps = getFrameRate();
     }
 
 private:
     void updateDepthRelated()
     {
-    	updateTexture(mDepthTexture, mDevice->depthChannel);
-    	
+        updateTexture(mDepthTexture, mDevice->depthChannel);
+
         if (!mBackTexture)
         {
             updateBack();
@@ -116,6 +126,11 @@ private:
         //float y0 = corners[CORNER_DEPTH_LT].y - depthOrigin.y;
         //float y1 = corners[CORNER_DEPTH_RB].y - depthOrigin.y;
 
+        int cx = CENTER_X * mBackChannel.getWidth();
+        int cy = CENTER_Y * mBackChannel.getHeight();
+        int radius = RADIUS * mBackChannel.getHeight();
+        int radius_sq = radius * radius;
+
         for (int y = mRoi.y1; y < mRoi.y2; y++)
         {
             // TODO: cache row pointer
@@ -123,9 +138,13 @@ private:
             {
                 uint16_t bg = *mBackChannel.getData(x, y);
                 uint16_t dep = *mDevice->depthChannel.getData(x, y);
-                if (dep > 0 && bg - dep > DISTANCE_NEAR && bg - dep < DISTANCE_FAR)
+                if (dep > 0 && bg - dep > MIN_THRESHOLD_MM && bg - dep < MAX_THRESHOLD_MM)
                 {
-                    mDiffMat(y, x) = 255;
+                    // TODO: optimize
+                    if (!MASK_ENABLED || (cx - x) * (cx - x) + (cy - y) * (cy - y) < radius_sq)
+                    {
+                        mDiffMat(y, x) = 255;
+                    }
                 }
             }
         }
@@ -145,16 +164,52 @@ private:
 
     void visualizeBlobs(const vBlobTracker &blobTracker)
     {
+        static uint8_t sPalette[][3] =
+        {
+            { 255, 0, 0 },
+            { 122, 0, 0 },
+            { 255, 255, 0 },
+            { 122, 122, 0 },
+            { 255, 0, 255 },
+            { 122, 0, 122 },
+            { 0, 0, 255 },
+            { 0, 0, 122 },
+            { 0, 255, 255 },
+            { 0, 122, 122 },
+        };
+        const size_t sPaletteCount = _countof(sPalette);
+
+        vec2 scale;
+        scale.x = (mLayout.halfW - mLayout.spc * 2) / mDepthTexture->getWidth();
+        scale.y = (mLayout.halfH - mLayout.spc * 2) / mDepthTexture->getHeight();
+        gl::pushModelMatrix();
+        gl::translate(mLayout.canvases[2].getUpperLeft());
+        gl::scale(scale);
+
+        if (MASK_ENABLED)
+        {
+            float cx = CENTER_X * mBackChannel.getWidth();
+            float cy = CENTER_Y * mBackChannel.getHeight();
+            float radius = RADIUS * mBackChannel.getHeight();
+            gl::drawStrokedCircle(vec2(cx, cy), radius);
+        }
+        char idName[10];
         for (const auto &blob : blobTracker.trackedBlobs)
         {
+            int idx = blob.id % sPaletteCount;
+            gl::color(Color8u(sPalette[idx][0], sPalette[idx][1], sPalette[idx][2]));
             PolyLine2 line;
             for (const auto &pt : blob.pts)
             {
                 line.push_back(vec2(pt.x, pt.y));
             }
             line.setClosed();
-            gl::draw(line);
+            gl::drawSolid(line);
+            sprintf(idName, "#%d", blob.id);
+            gl::drawStringCentered(idName, vec2(blob.center.x, blob.center.y));
         }
+        gl::color(Color::white());
+        gl::popModelMatrix();
     }
 
     void sendTuioMessage(osc::Sender &sender, const vBlobTracker &blobTracker)
@@ -207,6 +262,18 @@ private:
         mBackChannel = mDevice->depthChannel.clone();
         updateTexture(mBackTexture, mBackChannel);
     }
+
+    float mFps;
+    struct Layout
+    {
+        float width;
+        float height;
+        float halfW;
+        float halfH;
+        float spc;
+
+        Rectf canvases[4];
+    } mLayout;
 
     Kinect::DeviceRef mDevice;
     params::InterfaceGlRef mParams;

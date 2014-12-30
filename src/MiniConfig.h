@@ -39,8 +39,8 @@ class InterfaceGl;
 } }
 
 #define ADD_ENUM_TO_INT(param, intValue, enumNames)     \
-    param.removeParam(#intValue);                       \
-    param.addParam(#intValue, enumNames, &intValue);
+    param->removeParam(#intValue);                       \
+    param->addParam(#intValue, enumNames, &intValue);
 
 void setupConfigUI(cinder::params::InterfaceGl* params);
 int getConfigUIHeight();
