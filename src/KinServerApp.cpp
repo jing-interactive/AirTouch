@@ -39,7 +39,7 @@ public:
         mDevice = Kinect::Device::createV2();
         mDevice->signalDepthDirty.connect(std::bind(&KinServerApp::updateDepthRelated, this));
 
-        mRoi.set(0, 0, mDevice->getWidth(), mDevice->getHeight()); // TODO: save / load
+        mRoi.set(0, 0, mDevice->getWidth(), mDevice->getHeight());
         mDiffMat = cv::Mat1b(mDevice->getHeight(), mDevice->getWidth());
         mDiffChannel = Channel(mDevice->getWidth(), mDevice->getHeight(), mDiffMat.step, 1,
                                mDiffMat.ptr());
@@ -107,7 +107,20 @@ public:
     // TODO: Async image processing
     void update() override
     {
-        mFps = getFrameRate();
+		if (ROI_ENABLED)
+		{
+			mRoi.set(
+				ROI_X1 * mBackChannel.getWidth(),
+				ROI_Y1 * mBackChannel.getHeight(),
+				ROI_X2 * mBackChannel.getWidth(),
+				ROI_Y2 * mBackChannel.getHeight()
+				);
+		}
+		else
+		{
+			mRoi.set(0, 0, mBackChannel.getWidth(), mBackChannel.getHeight());
+		}
+		mFps = getFrameRate();
     }
 
 private:
@@ -193,6 +206,11 @@ private:
             float radius = RADIUS * mBackChannel.getHeight();
             gl::drawStrokedCircle(vec2(cx, cy), radius);
         }
+		if (ROI_ENABLED)
+		{
+			gl::drawStrokedRect(mRoi);
+		}
+
         char idName[10];
         for (const auto &blob : blobTracker.trackedBlobs)
         {
