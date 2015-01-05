@@ -42,13 +42,13 @@ public:
         mRoi.set(0, 0, mDevice->getWidth(), mDevice->getHeight());
         mDiffMat = cv::Mat1b(mDevice->getHeight(), mDevice->getWidth());
         mDiffChannel = Channel(mDevice->getWidth(), mDevice->getHeight(), mDiffMat.step, 1,
-                               mDiffMat.ptr());
+            mDiffMat.ptr());
 
         mParams = params::InterfaceGl::create("params", vec2(300, getConfigUIHeight() + 100));
         setupConfigUI(mParams.get());
         std::vector<string> smoothNames = { "Off", "Light", "Middle", "High" };
         ADD_ENUM_TO_INT(mParams, SMOOTH, smoothNames)
-        getWindow()->connectPostDraw(&params::InterfaceGl::draw, mParams.get());
+            getWindow()->connectPostDraw(&params::InterfaceGl::draw, mParams.get());
 
         mFps = 0;
         mParams->addParam("FPS", &mFps, true);
@@ -71,15 +71,15 @@ public:
             for (int y = 0; y < 2; y++)
             {
                 mLayout.canvases[y * 2 + x] = Rectf(
-                                                  mLayout.spc + mLayout.halfW * x,
-                                                  mLayout.spc + mLayout.halfH * y,
-                                                  mLayout.halfW * (1 + x) - mLayout.spc,
-                                                  mLayout.halfH * (1 + y) - mLayout.spc
-                                              );
+                    mLayout.spc + mLayout.halfW * x,
+                    mLayout.spc + mLayout.halfH * y,
+                    mLayout.halfW * (1 + x) - mLayout.spc,
+                    mLayout.halfH * (1 + y) - mLayout.spc
+                    );
             }
         }
 
-        mParams->setPosition(mLayout.canvases[3].getUpperLeft());
+        mParams->setPosition(mLayout.canvases[1].getUpperLeft());
     }
 
     void draw() override
@@ -89,7 +89,7 @@ public:
         if (mDepthTexture)
         {
             gl::draw(mDepthTexture, mDepthTexture->getBounds(), mLayout.canvases[0]);
-            gl::draw(mBackTexture, mBackTexture->getBounds(), mLayout.canvases[1]);
+            gl::draw(mBackTexture, mBackTexture->getBounds(), mLayout.canvases[3]);
             gl::draw(mDiffTexture, mDiffTexture->getBounds(), mLayout.canvases[2]);
             visualizeBlobs(mBlobTracker);
         }
@@ -107,20 +107,20 @@ public:
     // TODO: Async image processing
     void update() override
     {
-		if (ROI_ENABLED)
-		{
-			mRoi.set(
-				ROI_X1 * mBackChannel.getWidth(),
-				ROI_Y1 * mBackChannel.getHeight(),
-				ROI_X2 * mBackChannel.getWidth(),
-				ROI_Y2 * mBackChannel.getHeight()
-				);
-		}
-		else
-		{
-			mRoi.set(0, 0, mBackChannel.getWidth(), mBackChannel.getHeight());
-		}
-		mFps = getFrameRate();
+        if (ROI_ENABLED)
+        {
+            mRoi.set(
+                ROI_X1 * mBackChannel.getWidth(),
+                ROI_Y1 * mBackChannel.getHeight(),
+                ROI_X2 * mBackChannel.getWidth(),
+                ROI_Y2 * mBackChannel.getHeight()
+                );
+        }
+        else
+        {
+            mRoi.set(0, 0, mBackChannel.getWidth(), mBackChannel.getHeight());
+        }
+        mFps = getFrameRate();
     }
 
 private:
@@ -169,13 +169,17 @@ private:
         }
 
         updateTexture(mDiffTexture, mDiffChannel);
-        std::vector<vBlob> blobs;
-        vFindBlobs(mDiffMat, blobs, MIN_AREA);
+        std::vector<Blob> blobs;
+        BlobFinder::Option option;
+        option.minArea = MIN_AREA;
+        option.handOnlyMode = HAND_ONLY_MODE;
+        option.handDistance = HAND_DISTANCE;
+        BlobFinder::execute(mDiffMat, blobs, option);
         mBlobTracker.trackBlobs(blobs);
         sendTuioMessage(mOscSender, mBlobTracker);
     }
 
-    void visualizeBlobs(const vBlobTracker &blobTracker)
+    void visualizeBlobs(const BlobTracker &blobTracker)
     {
         static uint8_t sPalette[][3] =
         {
@@ -206,10 +210,10 @@ private:
             float radius = RADIUS * mBackChannel.getHeight();
             gl::drawStrokedCircle(vec2(cx, cy), radius);
         }
-		if (ROI_ENABLED)
-		{
-			gl::drawStrokedRect(mRoi);
-		}
+        if (ROI_ENABLED)
+        {
+            gl::drawStrokedRect(mRoi);
+        }
 
         char idName[10];
         for (const auto &blob : blobTracker.trackedBlobs)
@@ -230,7 +234,7 @@ private:
         gl::popModelMatrix();
     }
 
-    void sendTuioMessage(osc::Sender &sender, const vBlobTracker &blobTracker)
+    void sendTuioMessage(osc::Sender &sender, const BlobTracker &blobTracker)
     {
         osc::Bundle bundle;
 
@@ -258,7 +262,6 @@ private:
             set.setAddress("/tuio/2Dcur");
             set.addStringArg("set");
             set.addIntArg(blob.id);             // id
-            // TODO: use RectMapping
             set.addFloatArg((center.x - mRoi.x1) / mRoi.getWidth());
             set.addFloatArg((center.y - mRoi.y1) / mRoi.getHeight());
             set.addFloatArg(blob.velocity.x / mRoi.getWidth());
@@ -302,7 +305,7 @@ private:
     // vision
     Channel16u mBackChannel;
     gl::TextureRef mBackTexture;
-    vBlobTracker mBlobTracker;
+    BlobTracker mBlobTracker;
 
     Channel mDiffChannel;
     cv::Mat1b mDiffMat;

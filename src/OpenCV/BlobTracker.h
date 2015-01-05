@@ -1,5 +1,5 @@
 /*
-* vBlobTracker.h
+* BlobTracker.h
 * by stefanix
 * Thanks to touchlib for the best fit algorithm!
 *
@@ -29,9 +29,9 @@ using cv::Point;
 using cv::RotatedRect;
 using cv::Point2f;
 
-struct vBlob
+struct Blob
 {
-    vBlob()
+    Blob()
     {
         area = 0;
         angle = 0;
@@ -39,7 +39,7 @@ struct vBlob
         isHole = false;
     }
 
-    vBlob(const vBlob &b) : box(b.box), center(b.center), pts(b.pts), rotBox(b.rotBox)
+    Blob(const Blob &b) : box(b.box), center(b.center), pts(b.pts), rotBox(b.rotBox)
     {
         area = b.area;
         angle = b.angle;
@@ -47,7 +47,7 @@ struct vBlob
         length = b.length;
     }
 
-    vBlob(Rect rc, Point ct, float _area = 0, float _angle = 0, bool hole = false)
+    Blob(Rect rc, Point ct, float _area = 0, float _angle = 0, bool hole = false)
     {
         box = rc;
         center = ct;
@@ -57,7 +57,7 @@ struct vBlob
         length = 0;
     }
 
-    vBlob &operator = (const vBlob &b)
+    Blob &operator = (const Blob &b)
     {
         pts = b.pts;
         box = b.box;
@@ -80,23 +80,15 @@ struct vBlob
     float length;
     bool isHole;
 
-    bool operator<(const vBlob &other) const
+    bool operator<(const Blob &other) const
     {
         //sorted by Y-coord first then X-coord
         return (center.y < other.center.y) ||
-               ((center.y == other.center.y) && (center.x < other.center.x));
+            ((center.y == other.center.y) && (center.x < other.center.x));
     }
 };
 
-enum E_status
-{
-    statusStill,
-    statusEnter,
-    statusLeave,
-    statusMove,
-};
-
-struct vTrackedBlob : public vBlob
+struct TrackedBlob : public Blob
 {
     enum
     {
@@ -104,7 +96,6 @@ struct vTrackedBlob : public vBlob
         BLOB_TO_DELETE = -2,
     };
 
-    E_status status;
     int id;
     Point2f velocity;
 
@@ -113,18 +104,16 @@ struct vTrackedBlob : public vBlob
     bool markedForDeletion;
     int framesLeft;
 
-    vTrackedBlob() : vBlob()
+    TrackedBlob() : Blob()
     {
         id = BLOB_NEW_ID;
-        status = statusStill;
         markedForDeletion = false;
         framesLeft = 0;
     }
 
-    vTrackedBlob(const vBlob &b) : vBlob(b)
+    TrackedBlob(const Blob &b) : Blob(b)
     {
         id = BLOB_NEW_ID;
-        status = statusStill;
         markedForDeletion = false;
         framesLeft = 0;
     }
@@ -135,27 +124,29 @@ struct vTrackedBlob : public vBlob
     }
 };
 
+struct BlobFinder
+{
+    struct Option
+    {
+        Option();
+        int minArea;
+        int maxArea;
+        bool convexHull;
+        bool(*sort_func)(const Blob &a, const Blob &b);
+        bool handOnlyMode;
+        int handDistance;
+    };
+    static void execute(cv::Mat &src, std::vector<Blob> &blobs, const Option& option);
+};
 
-///////////////////////////////////////////////////////////////////////////////////////////
-
-// This cleans up the foreground segmentation mask derived from calls to cvBackCodeBookDiff
-//
-// mask         Is a grayscale (8 bit depth) "raw" mask image which will be cleaned up
-//
-// OPTIONAL PARAMETERS:
-// poly1_hull0  If set, approximate connected component by (DEFAULT) polygon, or else convex hull (false)
-// areaScale    Area = image (width*height)*areaScale.  If contour area < this, delete that contour (DEFAULT: 0.1)
-//
-void vFindBlobs(cv::Mat &src, std::vector<vBlob> &blobs, int minArea = 1, int maxArea = 3072000, bool convexHull = false, bool (*sort_func)(const vBlob &a, const vBlob &b)  = NULL);
-
-class vBlobTracker
+class BlobTracker
 {
 public:
-    vBlobTracker();
-    void trackBlobs(const std::vector<vBlob> &newBlobs);
+    BlobTracker();
+    void trackBlobs(const std::vector<Blob> &newBlobs);
 
-    std::vector<vTrackedBlob>   trackedBlobs; //tracked blobs
-    std::vector<vTrackedBlob>  deadBlobs;
+    std::vector<TrackedBlob>   trackedBlobs; //tracked blobs
+    std::vector<TrackedBlob>  deadBlobs;
 
 private:
     unsigned int                        IDCounter;    //counter of last blob
