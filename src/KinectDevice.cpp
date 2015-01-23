@@ -1,5 +1,4 @@
 #include "KinectDevice.h"
-#include "KCBv2Lib.h"
 #include "KinectCommonBridgeLib.h"
 #include "cinder/app/app.h"
 #include "cinder/Log.h"
@@ -80,6 +79,14 @@ struct DeviceV1 : public Device
     int sensor;
 };
 
+DeviceRef Device::createV1()
+{
+    return DeviceRef(new DeviceV1);
+}
+
+#if (_WIN32_WINNT >= 0x0602 /*_WIN32_WINNT_WIN8*/)
+#include "KCBv2Lib.h"
+
 struct DeviceV2 : public Device
 {
     ~DeviceV2()
@@ -152,14 +159,11 @@ struct DeviceV2 : public Device
     int sensor;
 };
 
-DeviceRef Device::createV1()
-{
-    return DeviceRef(new DeviceV1);
-}
-
 DeviceRef Device::createV2()
 {
     return DeviceRef(new DeviceV2);
 }
+
+#endif
 
 }

@@ -35,8 +35,21 @@ public:
     {
         readConfig();
         log::manager()->enableFileLogging();
-
-        mDevice = Kinect::Device::createV2();
+#if (_WIN32_WINNT >= 0x0602 /*_WIN32_WINNT_WIN8*/)
+        if (LoadLibrary(L"Kinect20.dll") != NULL)
+        {
+            mDevice = Kinect::Device::createV2();
+        }
+        else
+#endif
+        if (LoadLibrary(L"Kinect10.dll") != NULL)
+        {
+            mDevice = Kinect::Device::createV1();
+        }
+        else
+        {
+            quit();
+        }
         mDevice->signalDepthDirty.connect(std::bind(&KinServerApp::updateDepthRelated, this));
 
         mRoi.set(0, 0, mDevice->getWidth(), mDevice->getHeight());
@@ -47,10 +60,13 @@ public:
         mParams = params::InterfaceGl::create("params", vec2(300, getConfigUIHeight() + 100));
         setupConfigUI(mParams.get());
         std::vector<string> smoothNames = { "Off", "Light", "Middle", "High" };
-        ADD_ENUM_TO_INT(mParams, SMOOTH, smoothNames)
+        ADD_ENUM_TO_INT(mParams, TRACKING_SMOOTH, smoothNames)
             getWindow()->connectPostDraw(&params::InterfaceGl::draw, mParams.get());
 
         mFps = 0;
+        mFrameCounter = 0;
+        mSecondsForFps = getElapsedSeconds();
+
         mParams->addParam("FPS", &mFps, true);
         mParams->addButton("Set Bg", std::bind(&KinServerApp::updateBack, this));
 
@@ -107,7 +123,7 @@ public:
     // TODO: Async image processing
     void update() override
     {
-        if (ROI_ENABLED)
+        if (RECT_ROI_ENABLED)
         {
             mRoi.set(
                 ROI_X1 * mBackChannel.getWidth(),
@@ -120,12 +136,19 @@ public:
         {
             mRoi.set(0, 0, mBackChannel.getWidth(), mBackChannel.getHeight());
         }
-        mFps = getFrameRate();
     }
 
 private:
     void updateDepthRelated()
     {
+        mFrameCounter++;
+        if (getElapsedSeconds() - mSecondsForFps > 1)
+        {
+            mSecondsForFps = getElapsedSeconds();
+            mFps = mFrameCounter;
+            mFrameCounter = 0;
+        }
+
         updateTexture(mDepthTexture, mDevice->depthChannel);
 
         if (!mBackTexture)
@@ -154,7 +177,7 @@ private:
                 if (dep > 0 && bg - dep > MIN_THRESHOLD_MM && bg - dep < MAX_THRESHOLD_MM)
                 {
                     // TODO: optimize
-                    if (!MASK_ENABLED || (cx - x) * (cx - x) + (cy - y) * (cy - y) < radius_sq)
+                    if (!CIRCLE_MASK_ENABLED || (cx - x) * (cx - x) + (cy - y) * (cy - y) < radius_sq)
                     {
                         mDiffMat(y, x) = 255;
                     }
@@ -162,9 +185,10 @@ private:
             }
         }
 
-        if (SMOOTH > 0)
+        if (TRACKING_SMOOTH > 0)
         {
-            cv::Mat element = getStructuringElement(cv::MORPH_RECT, cv::Size(SMOOTH * 2 + 1, SMOOTH * 2 + 1), cv::Point(SMOOTH, SMOOTH));
+            cv::Mat element = getStructuringElement(cv::MORPH_RECT, cv::Size(TRACKING_SMOOTH * 2 + 1, TRACKING_SMOOTH * 2 + 1), 
+                cv::Point(TRACKING_SMOOTH, TRACKING_SMOOTH));
             cv::morphologyEx(mDiffMat, mDiffMat, cv::MORPH_OPEN, element);
         }
 
@@ -172,8 +196,8 @@ private:
         std::vector<Blob> blobs;
         BlobFinder::Option option;
         option.minArea = MIN_AREA;
-        option.handOnlyMode = HAND_ONLY_MODE;
-        option.handDistance = HAND_DISTANCE;
+        option.handOnlyMode = FINGER_MODE_ENABLED;
+        option.handDistance = FINGER_SIZE;
         BlobFinder::execute(mDiffMat, blobs, option);
         mBlobTracker.trackBlobs(blobs);
         sendTuioMessage(mOscSender, mBlobTracker);
@@ -203,14 +227,14 @@ private:
         gl::translate(mLayout.canvases[2].getUpperLeft());
         gl::scale(scale);
 
-        if (MASK_ENABLED)
+        if (CIRCLE_MASK_ENABLED)
         {
             float cx = CENTER_X * mBackChannel.getWidth();
             float cy = CENTER_Y * mBackChannel.getHeight();
             float radius = RADIUS * mBackChannel.getHeight();
             gl::drawStrokedCircle(vec2(cx, cy), radius);
         }
-        if (ROI_ENABLED)
+        if (RECT_ROI_ENABLED)
         {
             gl::drawStrokedRect(mRoi);
         }
@@ -285,6 +309,9 @@ private:
     }
 
     float mFps;
+    float mSecondsForFps;
+    int mFrameCounter;
+
     struct Layout
     {
         float width;
