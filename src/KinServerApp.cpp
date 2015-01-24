@@ -52,9 +52,11 @@ public:
         }
         mDevice->signalDepthDirty.connect(std::bind(&KinServerApp::updateDepthRelated, this));
 
-        mRoi.set(0, 0, mDevice->getWidth(), mDevice->getHeight());
-        mDiffMat = cv::Mat1b(mDevice->getHeight(), mDevice->getWidth());
-        mDiffChannel = Channel(mDevice->getWidth(), mDevice->getHeight(), mDiffMat.step, 1,
+        mDepthW = mDevice->getWidth();
+        mDepthH = mDevice->getHeight();
+        mRoi.set(0, 0, mDepthW, mDepthH);
+        mDiffMat = cv::Mat1b(mDepthH, mDepthW);
+        mDiffChannel = Channel(mDepthW, mDepthH, mDiffMat.step, 1,
             mDiffMat.ptr());
 
         mParams = params::InterfaceGl::create("params", vec2(300, getConfigUIHeight() + 100));
@@ -126,15 +128,15 @@ public:
         if (RECT_ROI_ENABLED)
         {
             mRoi.set(
-                ROI_X1 * mBackChannel.getWidth(),
-                ROI_Y1 * mBackChannel.getHeight(),
-                ROI_X2 * mBackChannel.getWidth(),
-                ROI_Y2 * mBackChannel.getHeight()
+                ROI_X1 * mDepthW,
+                ROI_Y1 * mDepthH,
+                ROI_X2 * mDepthW,
+                ROI_Y2 * mDepthH
                 );
         }
         else
         {
-            mRoi.set(0, 0, mBackChannel.getWidth(), mBackChannel.getHeight());
+            mRoi.set(0, 0, mDepthW, mDepthH);
         }
     }
 
@@ -162,16 +164,18 @@ private:
         //float y0 = corners[CORNER_DEPTH_LT].y - depthOrigin.y;
         //float y1 = corners[CORNER_DEPTH_RB].y - depthOrigin.y;
 
-        int cx = CENTER_X * mBackChannel.getWidth();
-        int cy = CENTER_Y * mBackChannel.getHeight();
-        int radius = RADIUS * mBackChannel.getHeight();
+        int cx = CENTER_X * mDepthW;
+        int cy = CENTER_Y * mDepthH;
+        int radius = RADIUS * mDepthH;
         int radius_sq = radius * radius;
 
-        for (int y = mRoi.y1; y < mRoi.y2; y++)
+        for (int yy = mRoi.y1; yy < mRoi.y2; yy++)
         {
             // TODO: cache row pointer
-            for (int x = mRoi.x1; x < mRoi.x2; x++)
+            int y = yy;
+            for (int xx = mRoi.x1; xx < mRoi.x2; xx++)
             {
+                int x = LEFT_RIGHT_FLIPPED ? (mDepthW - xx) : xx;
                 uint16_t bg = *mBackChannel.getData(x, y);
                 uint16_t dep = *mDevice->depthChannel.getData(x, y);
                 if (dep > 0 && bg - dep > MIN_THRESHOLD_MM && bg - dep < MAX_THRESHOLD_MM)
@@ -179,7 +183,7 @@ private:
                     // TODO: optimize
                     if (!CIRCLE_MASK_ENABLED || (cx - x) * (cx - x) + (cy - y) * (cy - y) < radius_sq)
                     {
-                        mDiffMat(y, x) = 255;
+                        mDiffMat(yy, xx) = 255;
                     }
                 }
             }
@@ -221,17 +225,17 @@ private:
         const size_t sPaletteCount = _countof(sPalette);
 
         vec2 scale;
-        scale.x = (mLayout.halfW - mLayout.spc * 2) / mDepthTexture->getWidth();
-        scale.y = (mLayout.halfH - mLayout.spc * 2) / mDepthTexture->getHeight();
+        scale.x = (mLayout.halfW - mLayout.spc * 2) / mDepthW;
+        scale.y = (mLayout.halfH - mLayout.spc * 2) / mDepthH;
         gl::pushModelMatrix();
         gl::translate(mLayout.canvases[2].getUpperLeft());
         gl::scale(scale);
 
         if (CIRCLE_MASK_ENABLED)
         {
-            float cx = CENTER_X * mBackChannel.getWidth();
-            float cy = CENTER_Y * mBackChannel.getHeight();
-            float radius = RADIUS * mBackChannel.getHeight();
+            float cx = CENTER_X * mDepthW;
+            float cy = CENTER_Y * mDepthH;
+            float radius = RADIUS * mDepthH;
             gl::drawStrokedCircle(vec2(cx, cy), radius);
         }
         if (RECT_ROI_ENABLED)
@@ -326,6 +330,7 @@ private:
     Kinect::DeviceRef mDevice;
     params::InterfaceGlRef mParams;
     osc::Sender mOscSender;
+    int mDepthW, mDepthH;
 
     gl::TextureRef mDepthTexture;
 
