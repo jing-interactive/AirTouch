@@ -92,7 +92,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\..\opencv\build\include;..\include;..\..\Cinder\include;..\..\Cinder\boost;..\..\Cinder\blocks\Cinder-KCB2\src;..\..\Cinder\blocks\Cinder-KCB2\sdk\inc;..\..\Cinder\blocks\Cinder-KCB\src;..\..\Cinder\blocks\Cinder-KCB\sdk\inc;..\..\Cinder\blocks\OSC\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\opencv\build\include;..\include;..\..\Cinder\include;..\..\Cinder\boost;..\..\Cinder\blocks\Cinder-KinectSDK\v2\src;..\..\Cinder\blocks\Cinder-KinectSDK\v2\sdk\inc;..\..\Cinder\blocks\Cinder-KinectSDK\v1\src;..\..\Cinder\blocks\Cinder-KinectSDK\v1\sdk\inc;..\..\Cinder\blocks\OSC\src</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;NOMINMAX;_WIN32_WINNT=0x0502;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -107,7 +107,7 @@
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>cinder-$(PlatformToolset)_d.lib;%(AdditionalDependencies);</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\Cinder\blocks\Cinder-KCB\sdk\lib\$(PlatformTarget)\;..\..\Cinder\blocks\Cinder-KCB2\sdk\lib\$(PlatformTarget)\;..\..\opencv\build\$(PlatformTarget)\vc12\lib;"..\..\Cinder\lib\msw\$(PlatformTarget)"</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\Cinder\blocks\Cinder-KinectSDK\v1\sdk\lib\$(PlatformTarget)\;..\..\Cinder\blocks\Cinder-KinectSDK\v2\sdk\lib\$(PlatformTarget)\;..\..\opencv\build\$(PlatformTarget)\vc12\lib;"..\..\Cinder\lib\msw\$(PlatformTarget)"</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
@@ -124,7 +124,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\..\opencv\build\include;..\include;..\..\Cinder\include;..\..\Cinder\boost;..\..\Cinder\blocks\Cinder-KCB2\src;..\..\Cinder\blocks\Cinder-KCB2\sdk\inc;..\..\Cinder\blocks\Cinder-KCB\src;..\..\Cinder\blocks\Cinder-KCB\sdk\inc;..\..\Cinder\blocks\OSC\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\opencv\build\include;..\include;..\..\Cinder\include;..\..\Cinder\boost;..\..\Cinder\blocks\Cinder-KinectSDK\v2\src;..\..\Cinder\blocks\Cinder-KinectSDK\v2\sdk\inc;..\..\Cinder\blocks\Cinder-KinectSDK\v1\src;..\..\Cinder\blocks\Cinder-KinectSDK\v1\sdk\inc;..\..\Cinder\blocks\OSC\src</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>KINECT_V2;WIN32;_DEBUG;_WINDOWS;NOMINMAX;_WIN32_WINNT=0x0502;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -140,7 +140,7 @@
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>cinder-$(PlatformToolset)_d.lib;%(AdditionalDependencies);</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\Cinder\blocks\Cinder-KCB\sdk\lib\$(PlatformTarget)\;..\..\Cinder\blocks\Cinder-KCB2\sdk\lib\$(PlatformTarget)\;..\..\opencv\build\$(PlatformTarget)\vc12\lib;"..\..\Cinder\lib\msw\$(PlatformTarget)"</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\Cinder\blocks\Cinder-KinectSDK\v1\sdk\lib\$(PlatformTarget)\;..\..\Cinder\blocks\Cinder-KinectSDK\v2\sdk\lib\$(PlatformTarget)\;..\..\opencv\build\$(PlatformTarget)\vc12\lib;"..\..\Cinder\lib\msw\$(PlatformTarget)"</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
@@ -157,7 +157,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>..\..\opencv\build\include\;..\include;"..\..\Cinder\include";"..\..\Cinder\boost";..\..\Cinder\blocks\Cinder-KCB2\src;..\..\Cinder\blocks\Cinder-KCB2\sdk\inc;..\..\Cinder\blocks\Cinder-KCB\src;..\..\Cinder\blocks\Cinder-KCB\sdk\inc;..\..\Cinder\blocks\OSC\src;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\opencv\build\include\;..\include;"..\..\Cinder\include";"..\..\Cinder\boost";..\..\Cinder\blocks\Cinder-KinectSDK\v2\src;..\..\Cinder\blocks\Cinder-KinectSDK\v2\sdk\inc;..\..\Cinder\blocks\Cinder-KinectSDK\v1\src;..\..\Cinder\blocks\Cinder-KinectSDK\v1\sdk\inc;..\..\Cinder\blocks\OSC\src;</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;NOMINMAX;_WIN32_WINNT=0x0502;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <PrecompiledHeader />
@@ -173,7 +173,7 @@
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>cinder-$(PlatformToolset).lib;%(AdditionalDependencies);</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\Cinder\blocks\Cinder-KCB\sdk\lib\$(PlatformTarget)\;..\..\Cinder\blocks\Cinder-KCB2\sdk\lib\$(PlatformTarget)\;..\..\opencv\build\$(PlatformTarget)\vc12\lib;"..\..\Cinder\lib\msw\$(PlatformTarget)"</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\Cinder\blocks\Cinder-KinectSDK\v1\sdk\lib\$(PlatformTarget)\;..\..\Cinder\blocks\Cinder-KinectSDK\v2\sdk\lib\$(PlatformTarget)\;..\..\opencv\build\$(PlatformTarget)\vc12\lib;"..\..\Cinder\lib\msw\$(PlatformTarget)"</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <GenerateMapFile>true</GenerateMapFile>
       <SubSystem>Windows</SubSystem>
@@ -191,7 +191,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>..\..\opencv\build\include\;..\include;"..\..\Cinder\include";"..\..\Cinder\boost";..\..\Cinder\blocks\Cinder-KCB2\src;..\..\Cinder\blocks\Cinder-KCB2\sdk\inc;..\..\Cinder\blocks\Cinder-KCB\src;..\..\Cinder\blocks\Cinder-KCB\sdk\inc;..\..\Cinder\blocks\OSC\src;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\opencv\build\include\;..\include;"..\..\Cinder\include";"..\..\Cinder\boost";..\..\Cinder\blocks\Cinder-KinectSDK\v2\src;..\..\Cinder\blocks\Cinder-KinectSDK\v2\sdk\inc;..\..\Cinder\blocks\Cinder-KinectSDK\v1\src;..\..\Cinder\blocks\Cinder-KinectSDK\v1\sdk\inc;..\..\Cinder\blocks\OSC\src;</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>KINECT_V2;WIN32;NDEBUG;_WINDOWS;NOMINMAX;_WIN32_WINNT=0x0502;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <PrecompiledHeader>
@@ -208,7 +208,7 @@
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>cinder-$(PlatformToolset).lib;%(AdditionalDependencies);</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\Cinder\blocks\Cinder-KCB\sdk\lib\$(PlatformTarget)\;..\..\Cinder\blocks\Cinder-KCB2\sdk\lib\$(PlatformTarget)\;..\..\opencv\build\$(PlatformTarget)\vc12\lib;"..\..\Cinder\lib\msw\$(PlatformTarget)"</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\Cinder\blocks\Cinder-KinectSDK\v1\sdk\lib\$(PlatformTarget)\;..\..\Cinder\blocks\Cinder-KinectSDK\v2\sdk\lib\$(PlatformTarget)\;..\..\opencv\build\$(PlatformTarget)\vc12\lib;"..\..\Cinder\lib\msw\$(PlatformTarget)"</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <GenerateMapFile>true</GenerateMapFile>
       <SubSystem>Windows</SubSystem>
@@ -230,98 +230,98 @@
     <ResourceCompile Include="Resources.rc" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\AutoLock.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\AutoLock.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\ComSmartPtr.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\ComSmartPtr.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\CoordinateMapper.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\CoordinateMapper.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\CriticalSection.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\CriticalSection.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\DataStream.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\DataStream.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\DataStreamAudio.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\DataStreamAudio.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\DataStreamColor.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\DataStreamColor.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\DataStreamDepth.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\DataStreamDepth.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\DataStreamSkeleton.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\DataStreamSkeleton.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\FaceTracker.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\FaceTracker.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\KinectAudioStream.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\KinectAudioStream.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\KinectCommonBridgeLib.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\KinectCommonBridgeLib.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\KinectSensor.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\KinectSensor.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\MediaBuffer.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\MediaBuffer.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\SensorManager.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\SensorManager.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\stdafx.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\stdafx.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\targetver.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\targetver.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="..\..\Cinder\include\cinder\CinderOpenCV.h" />
     <ClInclude Include="..\include\Resources.h" />
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB2\src\AutoLock.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v2\src\AutoLock.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB2\src\KCBSensor.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v2\src\KCBSensor.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB2\src\KCBv2Lib.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v2\src\KCBv2Lib.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">false</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB2\src\KinectList.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v2\src\KinectList.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB2\src\stdafx.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v2\src\stdafx.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
@@ -349,77 +349,77 @@
     <ClInclude Include="..\src\OpenCV\BlobTracker.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\CoordinateMapper.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\CoordinateMapper.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\DataStream.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\DataStream.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\DataStreamAudio.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\DataStreamAudio.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\DataStreamColor.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\DataStreamColor.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\DataStreamDepth.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\DataStreamDepth.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\DataStreamSkeleton.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\DataStreamSkeleton.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\FaceTracker.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\FaceTracker.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\KinectAudioStream.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\KinectAudioStream.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\KinectCommonBridgeLib.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\KinectCommonBridgeLib.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\KinectSensor.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\KinectSensor.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\MediaBuffer.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\MediaBuffer.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\SensorManager.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\SensorManager.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\stdafx.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\stdafx.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\src\KinectDevice.cpp" />
     <ClCompile Include="..\src\KinServerApp.cpp" />
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB2\src\KCBFrames.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v2\src\KCBFrames.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB2\src\KCBSensor.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v2\src\KCBSensor.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB2\src\KCBv2Lib.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v2\src\KCBv2Lib.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">false</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB2\src\KinectList.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v2\src\KinectList.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>

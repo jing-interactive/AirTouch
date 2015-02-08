@@ -16,9 +16,6 @@
     <Filter Include="Blocks">
       <UniqueIdentifier>{7BF91F5E-B459-4C4F-AAC6-DBB635B0C795}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Blocks\Cinder-KCB2">
-      <UniqueIdentifier>{992F4729-86DE-4471-8C21-4334D0EAFE87}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Blocks\OSC">
       <UniqueIdentifier>{EA77E63B-E67C-4FB8-AE98-0E374EFFD3D7}</UniqueIdentifier>
     </Filter>
@@ -31,8 +28,11 @@
     <Filter Include="Blocks\OSC\osc">
       <UniqueIdentifier>{A396E2FA-0DBA-4103-A83F-4983CE403630}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Blocks\Cinder-KCB">
+    <Filter Include="Blocks\v1">
       <UniqueIdentifier>{4ee9009e-47be-4294-a72b-95a03e8d8c1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blocks\v2">
+      <UniqueIdentifier>{992F4729-86DE-4471-8C21-4334D0EAFE87}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -120,56 +120,56 @@
     <ClCompile Include="..\..\Cinder\blocks\OSC\src\OscSender.cpp">
       <Filter>Blocks\OSC</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB2\src\KCBFrames.cpp">
-      <Filter>Blocks\Cinder-KCB2</Filter>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v2\src\KCBFrames.cpp">
+      <Filter>Blocks\v2</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB2\src\KCBSensor.cpp">
-      <Filter>Blocks\Cinder-KCB2</Filter>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v2\src\KCBSensor.cpp">
+      <Filter>Blocks\v2</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB2\src\KCBv2Lib.cpp">
-      <Filter>Blocks\Cinder-KCB2</Filter>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v2\src\KCBv2Lib.cpp">
+      <Filter>Blocks\v2</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB2\src\KinectList.cpp">
-      <Filter>Blocks\Cinder-KCB2</Filter>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v2\src\KinectList.cpp">
+      <Filter>Blocks\v2</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\CoordinateMapper.cpp">
-      <Filter>Blocks\Cinder-KCB</Filter>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\CoordinateMapper.cpp">
+      <Filter>Blocks\v1</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\DataStream.cpp">
-      <Filter>Blocks\Cinder-KCB</Filter>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\DataStream.cpp">
+      <Filter>Blocks\v1</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\DataStreamAudio.cpp">
-      <Filter>Blocks\Cinder-KCB</Filter>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\DataStreamAudio.cpp">
+      <Filter>Blocks\v1</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\DataStreamColor.cpp">
-      <Filter>Blocks\Cinder-KCB</Filter>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\DataStreamColor.cpp">
+      <Filter>Blocks\v1</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\DataStreamDepth.cpp">
-      <Filter>Blocks\Cinder-KCB</Filter>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\DataStreamDepth.cpp">
+      <Filter>Blocks\v1</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\DataStreamSkeleton.cpp">
-      <Filter>Blocks\Cinder-KCB</Filter>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\DataStreamSkeleton.cpp">
+      <Filter>Blocks\v1</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\FaceTracker.cpp">
-      <Filter>Blocks\Cinder-KCB</Filter>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\FaceTracker.cpp">
+      <Filter>Blocks\v1</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\KinectAudioStream.cpp">
-      <Filter>Blocks\Cinder-KCB</Filter>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\KinectAudioStream.cpp">
+      <Filter>Blocks\v1</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\KinectCommonBridgeLib.cpp">
-      <Filter>Blocks\Cinder-KCB</Filter>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\KinectCommonBridgeLib.cpp">
+      <Filter>Blocks\v1</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\KinectSensor.cpp">
-      <Filter>Blocks\Cinder-KCB</Filter>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\KinectSensor.cpp">
+      <Filter>Blocks\v1</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\MediaBuffer.cpp">
-      <Filter>Blocks\Cinder-KCB</Filter>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\MediaBuffer.cpp">
+      <Filter>Blocks\v1</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\SensorManager.cpp">
-      <Filter>Blocks\Cinder-KCB</Filter>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\SensorManager.cpp">
+      <Filter>Blocks\v1</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\stdafx.cpp">
-      <Filter>Blocks\Cinder-KCB</Filter>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\stdafx.cpp">
+      <Filter>Blocks\v1</Filter>
     </ClCompile>
     <ClCompile Include="..\src\KinectDevice.cpp">
       <Filter>Source Files</Filter>
@@ -203,71 +203,71 @@
     <ClInclude Include="..\..\Cinder\blocks\OSC\src\OscSender.h">
       <Filter>Blocks\OSC</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB2\src\stdafx.h">
-      <Filter>Blocks\Cinder-KCB2</Filter>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v2\src\stdafx.h">
+      <Filter>Blocks\v2</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB2\src\KCBSensor.h">
-      <Filter>Blocks\Cinder-KCB2</Filter>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v2\src\KCBSensor.h">
+      <Filter>Blocks\v2</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB2\src\KCBv2Lib.h">
-      <Filter>Blocks\Cinder-KCB2</Filter>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v2\src\KCBv2Lib.h">
+      <Filter>Blocks\v2</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB2\src\KinectList.h">
-      <Filter>Blocks\Cinder-KCB2</Filter>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v2\src\KinectList.h">
+      <Filter>Blocks\v2</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB2\src\AutoLock.h">
-      <Filter>Blocks\Cinder-KCB2</Filter>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v2\src\AutoLock.h">
+      <Filter>Blocks\v2</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\AutoLock.h">
-      <Filter>Blocks\Cinder-KCB</Filter>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\AutoLock.h">
+      <Filter>Blocks\v1</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\ComSmartPtr.h">
-      <Filter>Blocks\Cinder-KCB</Filter>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\ComSmartPtr.h">
+      <Filter>Blocks\v1</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\CoordinateMapper.h">
-      <Filter>Blocks\Cinder-KCB</Filter>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\CoordinateMapper.h">
+      <Filter>Blocks\v1</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\CriticalSection.h">
-      <Filter>Blocks\Cinder-KCB</Filter>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\CriticalSection.h">
+      <Filter>Blocks\v1</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\DataStream.h">
-      <Filter>Blocks\Cinder-KCB</Filter>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\DataStream.h">
+      <Filter>Blocks\v1</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\DataStreamAudio.h">
-      <Filter>Blocks\Cinder-KCB</Filter>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\DataStreamAudio.h">
+      <Filter>Blocks\v1</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\DataStreamColor.h">
-      <Filter>Blocks\Cinder-KCB</Filter>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\DataStreamColor.h">
+      <Filter>Blocks\v1</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\DataStreamDepth.h">
-      <Filter>Blocks\Cinder-KCB</Filter>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\DataStreamDepth.h">
+      <Filter>Blocks\v1</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\DataStreamSkeleton.h">
-      <Filter>Blocks\Cinder-KCB</Filter>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\DataStreamSkeleton.h">
+      <Filter>Blocks\v1</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\FaceTracker.h">
-      <Filter>Blocks\Cinder-KCB</Filter>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\FaceTracker.h">
+      <Filter>Blocks\v1</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\KinectAudioStream.h">
-      <Filter>Blocks\Cinder-KCB</Filter>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\KinectAudioStream.h">
+      <Filter>Blocks\v1</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\KinectCommonBridgeLib.h">
-      <Filter>Blocks\Cinder-KCB</Filter>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\KinectCommonBridgeLib.h">
+      <Filter>Blocks\v1</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\KinectSensor.h">
-      <Filter>Blocks\Cinder-KCB</Filter>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\KinectSensor.h">
+      <Filter>Blocks\v1</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\MediaBuffer.h">
-      <Filter>Blocks\Cinder-KCB</Filter>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\MediaBuffer.h">
+      <Filter>Blocks\v1</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\SensorManager.h">
-      <Filter>Blocks\Cinder-KCB</Filter>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\SensorManager.h">
+      <Filter>Blocks\v1</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\stdafx.h">
-      <Filter>Blocks\Cinder-KCB</Filter>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\stdafx.h">
+      <Filter>Blocks\v1</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\targetver.h">
-      <Filter>Blocks\Cinder-KCB</Filter>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\targetver.h">
+      <Filter>Blocks\v1</Filter>
     </ClInclude>
     <ClInclude Include="..\src\KinectDevice.h">
       <Filter>Source Files</Filter>
