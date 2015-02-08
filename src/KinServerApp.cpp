@@ -35,21 +35,11 @@ public:
     {
         readConfig();
         log::manager()->enableFileLogging();
-#if (_WIN32_WINNT >= 0x0602 /*_WIN32_WINNT_WIN8*/)
-        if (LoadLibrary(L"Kinect20.dll") != NULL)
-        {
-            mDevice = Kinect::Device::createV2();
-        }
-        else
-#endif
-        if (LoadLibrary(L"Kinect10.dll") != NULL)
-        {
-            mDevice = Kinect::Device::createV1();
-        }
-        else
-        {
-            quit();
-        }
+#ifdef KINECT_V2
+        mDevice = Kinect::Device::createV2();
+#else
+        mDevice = Kinect::Device::createV1();
+#endif // KINECT_V2
         mDevice->signalDepthDirty.connect(std::bind(&KinServerApp::updateDepthRelated, this));
 
         mDepthW = mDevice->getWidth();
@@ -191,7 +181,7 @@ private:
 
         if (TRACKING_SMOOTH > 0)
         {
-            cv::Mat element = getStructuringElement(cv::MORPH_RECT, cv::Size(TRACKING_SMOOTH * 2 + 1, TRACKING_SMOOTH * 2 + 1), 
+            cv::Mat element = getStructuringElement(cv::MORPH_RECT, cv::Size(TRACKING_SMOOTH * 2 + 1, TRACKING_SMOOTH * 2 + 1),
                 cv::Point(TRACKING_SMOOTH, TRACKING_SMOOTH));
             cv::morphologyEx(mDiffMat, mDiffMat, cv::MORPH_OPEN, element);
         }

@@ -1,8 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug-V2|Win32">
+      <Configuration>Debug-V2</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release-V2|Win32">
+      <Configuration>Release-V2</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
     <ProjectConfiguration Include="Release|Win32">
@@ -23,7 +31,20 @@
     <CharacterSet>Unicode</CharacterSet>
     <WholeProgramOptimization>true</WholeProgramOptimization>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v120</PlatformToolset>
@@ -34,21 +55,39 @@
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)..\bin\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">$(SolutionDir)..\bin\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">$(Configuration)\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</LinkIncremental>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)..\bin\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">$(SolutionDir)..\bin\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">$(Configuration)\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <TargetName>$(ProjectName)-d</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">
+    <TargetName>$(ProjectName)2-d</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">
+    <TargetName>$(ProjectName)2</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -73,6 +112,40 @@
       <SubSystem>Windows</SubSystem>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
       <DataExecutionPrevention />
+      <TargetMachine>MachineX86</TargetMachine>
+      <IgnoreSpecificDefaultLibraries>LIBCMT;LIBCPMT</IgnoreSpecificDefaultLibraries>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\..\opencv\build\include;..\include;..\..\Cinder\include;..\..\Cinder\boost;..\..\Cinder\blocks\Cinder-KCB2\src;..\..\Cinder\blocks\Cinder-KCB2\sdk\inc;..\..\Cinder\blocks\Cinder-KCB\src;..\..\Cinder\blocks\Cinder-KCB\sdk\inc;..\..\Cinder\blocks\OSC\src</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>KINECT_V2;WIN32;_DEBUG;_WINDOWS;NOMINMAX;_WIN32_WINNT=0x0502;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>"..\..\Cinder\include";..\include</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>cinder-$(PlatformToolset)_d.lib;%(AdditionalDependencies);</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\Cinder\blocks\Cinder-KCB\sdk\lib\$(PlatformTarget)\;..\..\Cinder\blocks\Cinder-KCB2\sdk\lib\$(PlatformTarget)\;..\..\opencv\build\$(PlatformTarget)\vc12\lib;"..\..\Cinder\lib\msw\$(PlatformTarget)"</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
       <TargetMachine>MachineX86</TargetMachine>
       <IgnoreSpecificDefaultLibraries>LIBCMT;LIBCPMT</IgnoreSpecificDefaultLibraries>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
@@ -116,37 +189,143 @@
       </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\opencv\build\include\;..\include;"..\..\Cinder\include";"..\..\Cinder\boost";..\..\Cinder\blocks\Cinder-KCB2\src;..\..\Cinder\blocks\Cinder-KCB2\sdk\inc;..\..\Cinder\blocks\Cinder-KCB\src;..\..\Cinder\blocks\Cinder-KCB\sdk\inc;..\..\Cinder\blocks\OSC\src;</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>KINECT_V2;WIN32;NDEBUG;_WINDOWS;NOMINMAX;_WIN32_WINNT=0x0502;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>"..\..\Cinder\include";..\include</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>cinder-$(PlatformToolset).lib;%(AdditionalDependencies);</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\Cinder\blocks\Cinder-KCB\sdk\lib\$(PlatformTarget)\;..\..\Cinder\blocks\Cinder-KCB2\sdk\lib\$(PlatformTarget)\;..\..\opencv\build\$(PlatformTarget)\vc12\lib;"..\..\Cinder\lib\msw\$(PlatformTarget)"</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <GenerateMapFile>true</GenerateMapFile>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>
+      </EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <TargetMachine>MachineX86</TargetMachine>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
   <ItemGroup>
     <ResourceCompile Include="Resources.rc" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\AutoLock.h" />
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\ComSmartPtr.h" />
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\CoordinateMapper.h" />
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\CriticalSection.h" />
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\DataStream.h" />
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\DataStreamAudio.h" />
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\DataStreamColor.h" />
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\DataStreamDepth.h" />
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\DataStreamSkeleton.h" />
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\FaceTracker.h" />
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\KinectAudioStream.h" />
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\KinectCommonBridgeLib.h" />
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\KinectSensor.h" />
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\MediaBuffer.h" />
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\SensorManager.h" />
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\stdafx.h" />
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\targetver.h" />
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\AutoLock.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\ComSmartPtr.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\CoordinateMapper.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\CriticalSection.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\DataStream.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\DataStreamAudio.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\DataStreamColor.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\DataStreamDepth.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\DataStreamSkeleton.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\FaceTracker.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\KinectAudioStream.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\KinectCommonBridgeLib.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\KinectSensor.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\MediaBuffer.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\SensorManager.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\stdafx.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB\src\targetver.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="..\..\Cinder\include\cinder\CinderOpenCV.h" />
     <ClInclude Include="..\include\Resources.h" />
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB2\src\AutoLock.h" />
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB2\src\KCBSensor.h" />
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB2\src\KCBv2Lib.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB2\src\AutoLock.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB2\src\KinectList.h" />
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB2\src\stdafx.h" />
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB2\src\KCBSensor.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB2\src\KCBv2Lib.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">false</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB2\src\KinectList.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KCB2\src\stdafx.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="..\..\Cinder\blocks\OSC\src\OscArg.h" />
     <ClInclude Include="..\..\Cinder\blocks\OSC\src\OscBundle.h" />
     <ClInclude Include="..\..\Cinder\blocks\OSC\src\OscListener.h" />
@@ -170,28 +349,81 @@
     <ClInclude Include="..\src\OpenCV\BlobTracker.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\CoordinateMapper.cpp" />
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\DataStream.cpp" />
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\DataStreamAudio.cpp" />
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\DataStreamColor.cpp" />
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\DataStreamDepth.cpp" />
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\DataStreamSkeleton.cpp" />
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\FaceTracker.cpp" />
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\KinectAudioStream.cpp" />
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\KinectCommonBridgeLib.cpp" />
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\KinectSensor.cpp" />
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\MediaBuffer.cpp" />
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\SensorManager.cpp" />
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\stdafx.cpp" />
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\CoordinateMapper.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\DataStream.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\DataStreamAudio.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\DataStreamColor.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\DataStreamDepth.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\DataStreamSkeleton.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\FaceTracker.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\KinectAudioStream.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\KinectCommonBridgeLib.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\KinectSensor.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\MediaBuffer.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\SensorManager.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB\src\stdafx.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="..\src\KinectDevice.cpp" />
     <ClCompile Include="..\src\KinServerApp.cpp" />
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB2\src\KCBFrames.cpp" />
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB2\src\KCBSensor.cpp" />
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB2\src\KCBv2Lib.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB2\src\KCBFrames.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB2\src\KinectList.cpp" />
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB2\src\KCBSensor.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB2\src\KCBv2Lib.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">false</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KCB2\src\KinectList.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="..\..\Cinder\blocks\OSC\src\OscBundle.cpp" />
     <ClCompile Include="..\..\Cinder\blocks\OSC\src\OscListener.cpp" />
     <ClCompile Include="..\..\Cinder\blocks\OSC\src\OscMessage.cpp" />

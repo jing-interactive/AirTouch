@@ -8,9 +8,10 @@ typedef std::shared_ptr<struct Device> DeviceRef;
 
 struct Device
 {
-    static DeviceRef createV1();
-#if (_WIN32_WINNT >= 0x0602 /*_WIN32_WINNT_WIN8*/)
+#ifdef KINECT_V2
     static DeviceRef createV2();
+#else
+    static DeviceRef createV1();
 #endif
 
     virtual int getWidth() const = 0;
