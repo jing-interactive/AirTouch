@@ -65,6 +65,8 @@ public:
         mOscSender.setup(ADDRESS, TUIO_PORT);
 
         getWindow()->setSize(1024, 768);
+
+		mLogo = gl::Texture::create(loadImage(loadAsset("logo.png")));
     }
 
     void resize() override
@@ -86,6 +88,15 @@ public:
                     );
             }
         }
+		if (mLogo)
+		{
+			mLayout.logoRect = Rectf(
+				mLayout.halfW + mLayout.spc,
+				mLayout.spc,
+				mLayout.width - mLayout.spc,
+				mLayout.spc + (mLayout.halfW - mLayout.spc * 2) / mLogo->getAspectRatio()
+				);
+		}
 
         mParams->setPosition(mLayout.canvases[1].getUpperLeft());
     }
@@ -94,11 +105,18 @@ public:
     {
         gl::clear(ColorA::gray(0.5f));
 
+		if (mLogo)
+		{
+			gl::enableAlphaBlending();
+			gl::draw(mLogo, mLayout.logoRect);
+			gl::disableAlphaBlending();
+		}
+
         if (mDepthTexture)
         {
-            gl::draw(mDepthTexture, mDepthTexture->getBounds(), mLayout.canvases[0]);
-            gl::draw(mBackTexture, mBackTexture->getBounds(), mLayout.canvases[3]);
-            gl::draw(mDiffTexture, mDiffTexture->getBounds(), mLayout.canvases[2]);
+            gl::draw(mDepthTexture, mLayout.canvases[0]);
+            gl::draw(mBackTexture, mLayout.canvases[3]);
+            gl::draw(mDiffTexture, mLayout.canvases[2]);
             visualizeBlobs(mBlobTracker);
         }
     }
@@ -315,6 +333,7 @@ private:
         float spc;
 
         Rectf canvases[4];
+		Rectf logoRect;
     } mLayout;
 
     Kinect::DeviceRef mDevice;
@@ -333,6 +352,8 @@ private:
     cv::Mat1b mDiffMat;
     gl::TextureRef mDiffTexture;
     Rectf mRoi;
+
+	gl::TextureRef mLogo;
 };
 
 CINDER_APP_NATIVE(KinServerApp, RendererGl)
