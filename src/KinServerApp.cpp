@@ -1,6 +1,7 @@
 #include "cinder/app/RendererGl.h"
 #include "cinder/app/AppNative.h"
 #include "cinder/gl/Texture.h"
+#include "cinder/gl/GlslProg.h"
 #include "cinder/params/Params.h"
 #include "cinder/Log.h"
 #include "cinder/PolyLine.h"
@@ -31,6 +32,10 @@ void updateTexture(gl::TextureRef &tex, const T &src)
 class KinServerApp : public AppBasic
 {
 public:
+    enum
+    {
+        FAKE_BLOB_ID = 9999
+    };
     void setup() override
     {
         readConfig();
@@ -66,7 +71,12 @@ public:
 
         getWindow()->setSize(1024, 768);
 
-		mLogo = gl::Texture::create(loadImage(loadAsset("logo.png")));
+        mLogo = gl::Texture::create(loadImage(loadAsset("logo.png")));
+
+        mShader = gl::GlslProg::create(loadAsset("depthMap.vs"), loadAsset("depthMap.fs"));
+        mShader->uniform("image", 0);
+
+        mToAddFakeId = false;
     }
 
     void resize() override
@@ -76,6 +86,7 @@ public:
         mLayout.halfW = mLayout.width / 2;
         mLayout.halfH = mLayout.height / 2;
         mLayout.spc = mLayout.width * 0.01;
+
         for (int x = 0; x < 2; x++)
         {
             for (int y = 0; y < 2; y++)
@@ -88,15 +99,15 @@ public:
                     );
             }
         }
-		if (mLogo)
-		{
-			mLayout.logoRect = Rectf(
-				mLayout.halfW + mLayout.spc,
-				mLayout.spc,
-				mLayout.width - mLayout.spc,
-				mLayout.spc + (mLayout.halfW - mLayout.spc * 2) / mLogo->getAspectRatio()
-				);
-		}
+        if (mLogo)
+        {
+            mLayout.logoRect = Rectf(
+                mLayout.halfW + mLayout.spc,
+                mLayout.spc,
+                mLayout.width - mLayout.spc,
+                mLayout.spc + (mLayout.halfW - mLayout.spc * 2) / mLogo->getAspectRatio()
+                );
+        }
 
         mParams->setPosition(mLayout.canvases[1].getUpperLeft());
     }
@@ -105,19 +116,34 @@ public:
     {
         gl::clear(ColorA::gray(0.5f));
 
-		if (mLogo)
-		{
-			gl::enableAlphaBlending();
-			gl::draw(mLogo, mLayout.logoRect);
-			gl::disableAlphaBlending();
-		}
+        if (mLogo)
+        {
+            gl::enableAlphaBlending();
+            gl::draw(mLogo, mLayout.logoRect);
+            gl::disableAlphaBlending();
+        }
 
         if (mDepthTexture)
         {
+            //gl::ScopedGlslProg prog(mShader);
             gl::draw(mDepthTexture, mLayout.canvases[0]);
             gl::draw(mBackTexture, mLayout.canvases[3]);
             gl::draw(mDiffTexture, mLayout.canvases[2]);
-            visualizeBlobs(mBlobTracker);
+        }
+        visualizeBlobs(mBlobTracker);
+    }
+
+    void mouseUp(MouseEvent event)
+    {
+        float x = event.getX();
+        float y = event.getY();
+        const Rectf& rect = mLayout.canvases[2];
+        x = (x - rect.x1) / rect.getWidth();
+        y = (y - rect.y1) / rect.getHeight();
+        if (x > 0 && x < 1 && y > 0 && y < 1)
+        {
+            mFakeBlobPos = vec2(x * mDepthW, y * mDepthH);
+            mToAddFakeId = true;
         }
     }
 
@@ -308,6 +334,23 @@ private:
             alive.addIntArg(blob.id);               // add blob to list of ALL active IDs
         }
 
+        if (mToAddFakeId)
+        {
+            osc::Message set;
+            set.setAddress("/tuio/2Dcur");
+            set.addStringArg("set");
+            set.addIntArg(FAKE_BLOB_ID);             // id
+            set.addFloatArg((mFakeBlobPos.x - mRoi.x1) / mRoi.getWidth());
+            set.addFloatArg((mFakeBlobPos.y - mRoi.y1) / mRoi.getHeight());
+            set.addFloatArg(0);
+            set.addFloatArg(0);
+            set.addFloatArg(0);     // m
+            bundle.addMessage(set);                         // add message to bundle
+
+            alive.addIntArg(FAKE_BLOB_ID);               // add blob to list of ALL active IDs
+            mToAddFakeId = false;
+        }
+
         bundle.addMessage(alive);    //add message to bundle
         bundle.addMessage(fseq);     //add message to bundle
 
@@ -333,7 +376,7 @@ private:
         float spc;
 
         Rectf canvases[4];
-		Rectf logoRect;
+        Rectf logoRect;
     } mLayout;
 
     Kinect::DeviceRef mDevice;
@@ -353,7 +396,12 @@ private:
     gl::TextureRef mDiffTexture;
     Rectf mRoi;
 
-	gl::TextureRef mLogo;
+    gl::TextureRef mLogo;
+
+    gl::GlslProgRef	mShader;
+
+    bool mToAddFakeId;
+    vec2 mFakeBlobPos;
 };
 
 CINDER_APP_NATIVE(KinServerApp, RendererGl)

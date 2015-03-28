@@ -276,7 +276,8 @@ void BlobTracker::trackBlobs(const vector<Blob>& newBlobs)
         if (newTrackedBlobs[i].id == TrackedBlob::BLOB_NEW_ID)
         {
             //add new track
-            if (IDCounter > UINT_MAX)
+#define MAX_BLOB_ID 1000
+            if (IDCounter > MAX_BLOB_ID)
                 IDCounter = 0;
             newTrackedBlobs[i].id = IDCounter++;
             trackedBlobs.push_back(newTrackedBlobs[i]);
