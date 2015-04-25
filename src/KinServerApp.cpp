@@ -9,9 +9,9 @@
 #include "OscSender.h"
 #include "cinder/CinderOpenCV.h"
 #include "OpenCV/BlobTracker.h"
-#include "KinectDevice.h"
+#include "Cinder-KinectSDK/KinectDevice.h"
 
-#include "MiniConfig.h"
+#include "VNM/MiniConfig.h"
 
 using namespace ci;
 using namespace ci::app;

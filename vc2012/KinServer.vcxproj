@@ -124,7 +124,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\..\opencv\build\include;..\include;..\..\Cinder\include;..\..\Cinder\boost;..\..\Cinder\blocks\Cinder-KinectSDK\v2\src;..\..\Cinder\blocks\Cinder-KinectSDK\v2\sdk\inc;..\..\Cinder\blocks\Cinder-KinectSDK\v1\src;..\..\Cinder\blocks\Cinder-KinectSDK\v1\sdk\inc;..\..\Cinder\blocks\OSC\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\Cinder\blocks;..\..\opencv\build\include;..\include;..\..\Cinder\include;..\..\Cinder\boost;..\..\Cinder\blocks\Cinder-KinectSDK\v2\src;..\..\Cinder\blocks\Cinder-KinectSDK\v2\sdk\inc;..\..\Cinder\blocks\Cinder-KinectSDK\v1\src;..\..\Cinder\blocks\Cinder-KinectSDK\v1\sdk\inc;..\..\Cinder\blocks\OSC\src</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>KINECT_V2;WIN32;_DEBUG;_WINDOWS;NOMINMAX;_WIN32_WINNT=0x0502;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -230,6 +230,7 @@
     <ResourceCompile Include="Resources.rc" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\KinectDevice.h" />
     <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\AutoLock.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
@@ -298,6 +299,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\VNM\MiniConfig.h" />
     <ClInclude Include="..\..\Cinder\include\cinder\CinderOpenCV.h" />
     <ClInclude Include="..\include\Resources.h" />
     <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v2\src\AutoLock.h">
@@ -344,11 +346,10 @@
     <ClInclude Include="..\..\Cinder\blocks\OSC\src\osc\OscPrintReceivedElements.h" />
     <ClInclude Include="..\..\Cinder\blocks\OSC\src\osc\OscReceivedElements.h" />
     <ClInclude Include="..\..\Cinder\blocks\OSC\src\osc\OscTypes.h" />
-    <ClInclude Include="..\src\KinectDevice.h" />
-    <ClInclude Include="..\src\MiniConfig.h" />
     <ClInclude Include="..\src\OpenCV\BlobTracker.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\KinectDevice.cpp" />
     <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\CoordinateMapper.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
@@ -401,7 +402,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\src\KinectDevice.cpp" />
+    <ClCompile Include="..\..\Cinder\blocks\VNM\MiniConfig.cpp" />
     <ClCompile Include="..\src\KinServerApp.cpp" />
     <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v2\src\KCBFrames.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">false</ExcludedFromBuild>
@@ -435,7 +436,6 @@
     <ClCompile Include="..\..\Cinder\blocks\OSC\src\osc\OscTypes.cpp" />
     <ClCompile Include="..\..\Cinder\blocks\OSC\src\ip\win32\NetworkingUtils.cpp" />
     <ClCompile Include="..\..\Cinder\blocks\OSC\src\ip\win32\UdpSocket.cpp" />
-    <ClCompile Include="..\src\MiniConfig.cpp" />
     <ClCompile Include="..\src\OpenCV\BlobTracker.cpp" />
   </ItemGroup>
   <ItemGroup>

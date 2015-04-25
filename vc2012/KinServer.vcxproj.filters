@@ -102,9 +102,6 @@
     <ClCompile Include="..\..\Cinder\blocks\OSC\src\ip\win32\UdpSocket.cpp">
       <Filter>Blocks\OSC\ip\win32</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\MiniConfig.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\OpenCV\BlobTracker.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -171,16 +168,16 @@
     <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\stdafx.cpp">
       <Filter>Blocks\v1</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\KinectDevice.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\KinectDevice.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\VNM\MiniConfig.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Resources.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\MiniConfig.h">
-      <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\OpenCV\BlobTracker.h">
       <Filter>Header Files</Filter>
@@ -269,11 +266,14 @@
     <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\targetver.h">
       <Filter>Blocks\v1</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\KinectDevice.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\include\Resources.h">
       <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\KinectDevice.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\VNM\MiniConfig.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
