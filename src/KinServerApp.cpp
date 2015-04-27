@@ -65,7 +65,7 @@ public:
         mSecondsForFps = getElapsedSeconds();
 
         mParams->addParam("FPS", &mFps, true);
-        mParams->addButton("Set Bg", std::bind(&KinServerApp::updateBack, this));
+        mParams->addButton("Set Bg", [this]{mIsBackDirty = true; });
 
         mOscSender.setup(ADDRESS, TUIO_PORT);
 
@@ -77,6 +77,7 @@ public:
         mShader->uniform("image", 0);
 
         mToAddFakeId = false;
+        mIsBackDirty = true;
     }
 
     void resize() override
@@ -85,7 +86,7 @@ public:
         mLayout.height = getWindowHeight();
         mLayout.halfW = mLayout.width / 2;
         mLayout.halfH = mLayout.height / 2;
-        mLayout.spc = mLayout.width * 0.01;
+        mLayout.spc = mLayout.width * 0.01f;
 
         for (int x = 0; x < 2; x++)
         {
@@ -187,9 +188,11 @@ private:
 
         updateTexture(mDepthTexture, mDevice->depthChannel);
 
-        if (!mBackTexture)
+        if (mIsBackDirty)
         {
-            updateBack();
+            mIsBackDirty = false;
+            mBackChannel = mDevice->depthChannel.clone();
+            updateTexture(mBackTexture, mBackChannel);
         }
 
         mDiffMat.setTo(cv::Scalar::all(0));
@@ -359,8 +362,7 @@ private:
 
     void updateBack()
     {
-        mBackChannel = mDevice->depthChannel.clone();
-        updateTexture(mBackTexture, mBackChannel);
+        mIsBackDirty = true;
     }
 
     float mFps;
@@ -389,6 +391,7 @@ private:
     // vision
     Channel16u mBackChannel;
     gl::TextureRef mBackTexture;
+    bool mIsBackDirty;
     BlobTracker mBlobTracker;
 
     Channel mDiffChannel;
