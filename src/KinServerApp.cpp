@@ -69,8 +69,15 @@ public:
 
         mLogo = gl::Texture::create(loadImage(loadAsset("logo.png")));
 
-        mShader = gl::GlslProg::create(loadAsset("depthMap.vs"), loadAsset("depthMap.fs"));
-        mShader->uniform("image", 0);
+        try
+        {
+            mShader = gl::GlslProg::create(loadAsset("depthMap.vs"), loadAsset("depthMap.fs"));
+            mShader->uniform("image", 0);
+        }
+        catch (std::exception& e)
+        {
+            console() << e.what() << std::endl;
+        }
     }
 
     void resize() override
