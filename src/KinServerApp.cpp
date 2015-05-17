@@ -32,10 +32,6 @@ void updateTexture(gl::TextureRef &tex, const T &src)
 class KinServerApp : public AppBasic
 {
 public:
-    enum
-    {
-        FAKE_BLOB_ID = 9999
-    };
     void setup() override
     {
         readConfig();
@@ -49,16 +45,15 @@ public:
 
         mDepthW = mDevice->getWidth();
         mDepthH = mDevice->getHeight();
-        mRoi.set(0, 0, mDepthW, mDepthH);
         mDiffMat = cv::Mat1b(mDepthH, mDepthW);
         mDiffChannel = Channel(mDepthW, mDepthH, mDiffMat.step, 1,
             mDiffMat.ptr());
 
-        mParams = params::InterfaceGl::create("params", vec2(300, getConfigUIHeight() + 100));
+        mParams = params::InterfaceGl::create("params", vec2(400, getConfigUIHeight() + 100));
         setupConfigUI(mParams.get());
         std::vector<string> smoothNames = { "Off", "Light", "Middle", "High" };
-        ADD_ENUM_TO_INT(mParams, TRACKING_SMOOTH, smoothNames)
-            getWindow()->connectPostDraw(&params::InterfaceGl::draw, mParams.get());
+        ADD_ENUM_TO_INT(mParams, TRACKING_SMOOTH, smoothNames);
+        getWindow()->connectPostDraw(&params::InterfaceGl::draw, mParams.get());
 
         mFps = 0;
         mFrameCounter = 0;
@@ -66,6 +61,7 @@ public:
 
         mParams->addParam("FPS", &mFps, true);
         mParams->addButton("Set Bg", std::bind(&KinServerApp::updateBack, this));
+        mParams->addButton("Reset In/Out", std::bind(&KinServerApp::resetInOut, this));
 
         mOscSender.setup(ADDRESS, TUIO_PORT);
 
@@ -75,8 +71,6 @@ public:
 
         mShader = gl::GlslProg::create(loadAsset("depthMap.vs"), loadAsset("depthMap.fs"));
         mShader->uniform("image", 0);
-
-        mToAddFakeId = false;
     }
 
     void resize() override
@@ -85,7 +79,7 @@ public:
         mLayout.height = getWindowHeight();
         mLayout.halfW = mLayout.width / 2;
         mLayout.halfH = mLayout.height / 2;
-        mLayout.spc = mLayout.width * 0.01;
+        mLayout.spc = mLayout.width * 0.04;
 
         for (int x = 0; x < 2; x++)
         {
@@ -133,20 +127,6 @@ public:
         visualizeBlobs(mBlobTracker);
     }
 
-    void mouseUp(MouseEvent event)
-    {
-        float x = event.getX();
-        float y = event.getY();
-        const Rectf& rect = mLayout.canvases[2];
-        x = (x - rect.x1) / rect.getWidth();
-        y = (y - rect.y1) / rect.getHeight();
-        if (x > 0 && x < 1 && y > 0 && y < 1)
-        {
-            mFakeBlobPos = vec2(x * mDepthW, y * mDepthH);
-            mToAddFakeId = true;
-        }
-    }
-
     void keyUp(KeyEvent event) override
     {
         int code = event.getCode();
@@ -156,22 +136,20 @@ public:
         }
     }
 
-    // TODO: Async image processing
     void update() override
     {
-        if (RECT_ROI_ENABLED)
-        {
-            mRoi.set(
-                ROI_X1 * mDepthW,
-                ROI_Y1 * mDepthH,
-                ROI_X2 * mDepthW,
-                ROI_Y2 * mDepthH
-                );
-        }
-        else
-        {
-            mRoi.set(0, 0, mDepthW, mDepthH);
-        }
+        mInputRoi.set(
+            INPUT_X1 * mDepthW,
+            INPUT_Y1 * mDepthH,
+            INPUT_X2 * mDepthW,
+            INPUT_Y2 * mDepthH
+            );
+        mOutputMap.set(
+            OUTPUT_X1 * mDepthW,
+            OUTPUT_Y1 * mDepthH,
+            OUTPUT_X2 * mDepthW,
+            OUTPUT_Y2 * mDepthH
+            );
     }
 
 private:
@@ -203,11 +181,11 @@ private:
         int radius = RADIUS * mDepthH;
         int radius_sq = radius * radius;
 
-        for (int yy = mRoi.y1; yy < mRoi.y2; yy++)
+        for (int yy = mInputRoi.y1; yy < mInputRoi.y2; yy++)
         {
             // TODO: cache row pointer
             int y = yy;
-            for (int xx = mRoi.x1; xx < mRoi.x2; xx++)
+            for (int xx = mInputRoi.x1; xx < mInputRoi.x2; xx++)
             {
                 int x = LEFT_RIGHT_FLIPPED ? (mDepthW - xx) : xx;
                 uint16_t bg = *mBackChannel.getData(x, y);
@@ -272,9 +250,13 @@ private:
             float radius = RADIUS * mDepthH;
             gl::drawStrokedCircle(vec2(cx, cy), radius);
         }
-        if (RECT_ROI_ENABLED)
         {
-            gl::drawStrokedRect(mRoi);
+            gl::ScopedColor scope(ColorAf(1, 0, 0, 0.5f));
+            gl::drawStrokedRect(mInputRoi);
+        }
+        {
+            gl::ScopedColor scope(ColorAf(0, 1, 0, 0.5f));
+            gl::drawStrokedRect(mOutputMap);
         }
 
         char idName[10];
@@ -318,43 +300,34 @@ private:
             //Point2f center(blob.center.x + depthOrigin.x, blob.center.y + depthOrigin.y);
             vec2 center(blob.center.x, blob.center.y);
 
-            if (!mRoi.contains(center)) continue;
+            if (!mInputRoi.contains(center)) continue;
 
             osc::Message set;
             set.setAddress("/tuio/2Dcur");
             set.addStringArg("set");
             set.addIntArg(blob.id);             // id
-            set.addFloatArg((center.x - mRoi.x1) / mRoi.getWidth());
-            set.addFloatArg((center.y - mRoi.y1) / mRoi.getHeight());
-            set.addFloatArg(blob.velocity.x / mRoi.getWidth());
-            set.addFloatArg(blob.velocity.y / mRoi.getHeight());
+            float mappedX = lmap(center.x / mDepthW, INPUT_X1, INPUT_X2, OUTPUT_X1, OUTPUT_X2);
+            float mappedY = lmap(center.y / mDepthH, INPUT_Y1, INPUT_Y2, OUTPUT_Y1, OUTPUT_Y2);
+            set.addFloatArg(mappedX);
+            set.addFloatArg(mappedY);
+            set.addFloatArg(blob.velocity.x / mOutputMap.getWidth());
+            set.addFloatArg(blob.velocity.y / mOutputMap.getHeight());
             set.addFloatArg(0);     // m
             bundle.addMessage(set);                         // add message to bundle
 
             alive.addIntArg(blob.id);               // add blob to list of ALL active IDs
         }
 
-        if (mToAddFakeId)
-        {
-            osc::Message set;
-            set.setAddress("/tuio/2Dcur");
-            set.addStringArg("set");
-            set.addIntArg(FAKE_BLOB_ID);             // id
-            set.addFloatArg((mFakeBlobPos.x - mRoi.x1) / mRoi.getWidth());
-            set.addFloatArg((mFakeBlobPos.y - mRoi.y1) / mRoi.getHeight());
-            set.addFloatArg(0);
-            set.addFloatArg(0);
-            set.addFloatArg(0);     // m
-            bundle.addMessage(set);                         // add message to bundle
-
-            alive.addIntArg(FAKE_BLOB_ID);               // add blob to list of ALL active IDs
-            mToAddFakeId = false;
-        }
-
         bundle.addMessage(alive);    //add message to bundle
         bundle.addMessage(fseq);     //add message to bundle
 
         sender.sendBundle(bundle); //send bundle
+    }
+
+    void resetInOut()
+    {
+        INPUT_X1 = INPUT_Y1 = OUTPUT_X1 = OUTPUT_Y1 = 0;
+        INPUT_X2 = INPUT_Y2 = OUTPUT_X2 = OUTPUT_Y2 = 1;
     }
 
     void updateBack()
@@ -394,14 +367,13 @@ private:
     Channel mDiffChannel;
     cv::Mat1b mDiffMat;
     gl::TextureRef mDiffTexture;
-    Rectf mRoi;
+
+    Rectf mInputRoi;
+    Rectf mOutputMap;
 
     gl::TextureRef mLogo;
 
     gl::GlslProgRef	mShader;
-
-    bool mToAddFakeId;
-    vec2 mFakeBlobPos;
 };
 
 CINDER_APP_NATIVE(KinServerApp, RendererGl)

@@ -92,7 +92,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\..\opencv\build\include;..\include;..\..\Cinder\include;..\..\Cinder\boost;..\..\Cinder\blocks\Cinder-KinectSDK\v2\src;..\..\Cinder\blocks\Cinder-KinectSDK\v2\sdk\inc;..\..\Cinder\blocks\Cinder-KinectSDK\v1\src;..\..\Cinder\blocks\Cinder-KinectSDK\v1\sdk\inc;..\..\Cinder\blocks\OSC\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\Cinder\blocks;..\..\opencv\build\include;..\include;..\..\Cinder\include;..\..\Cinder\boost;..\..\Cinder\blocks\Cinder-KinectSDK\v2\src;..\..\Cinder\blocks\Cinder-KinectSDK\v2\sdk\inc;..\..\Cinder\blocks\Cinder-KinectSDK\v1\src;..\..\Cinder\blocks\Cinder-KinectSDK\v1\sdk\inc;..\..\Cinder\blocks\OSC\src</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;NOMINMAX;_WIN32_WINNT=0x0502;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -157,7 +157,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>..\..\opencv\build\include\;..\include;"..\..\Cinder\include";"..\..\Cinder\boost";..\..\Cinder\blocks\Cinder-KinectSDK\v2\src;..\..\Cinder\blocks\Cinder-KinectSDK\v2\sdk\inc;..\..\Cinder\blocks\Cinder-KinectSDK\v1\src;..\..\Cinder\blocks\Cinder-KinectSDK\v1\sdk\inc;..\..\Cinder\blocks\OSC\src;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\Cinder\blocks;..\..\opencv\build\include;..\include;..\..\Cinder\include;..\..\Cinder\boost;..\..\Cinder\blocks\Cinder-KinectSDK\v2\src;..\..\Cinder\blocks\Cinder-KinectSDK\v2\sdk\inc;..\..\Cinder\blocks\Cinder-KinectSDK\v1\src;..\..\Cinder\blocks\Cinder-KinectSDK\v1\sdk\inc;..\..\Cinder\blocks\OSC\src</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;NOMINMAX;_WIN32_WINNT=0x0502;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <PrecompiledHeader />
@@ -191,7 +191,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>..\..\opencv\build\include\;..\include;"..\..\Cinder\include";"..\..\Cinder\boost";..\..\Cinder\blocks\Cinder-KinectSDK\v2\src;..\..\Cinder\blocks\Cinder-KinectSDK\v2\sdk\inc;..\..\Cinder\blocks\Cinder-KinectSDK\v1\src;..\..\Cinder\blocks\Cinder-KinectSDK\v1\sdk\inc;..\..\Cinder\blocks\OSC\src;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\Cinder\blocks;..\..\opencv\build\include;..\include;..\..\Cinder\include;..\..\Cinder\boost;..\..\Cinder\blocks\Cinder-KinectSDK\v2\src;..\..\Cinder\blocks\Cinder-KinectSDK\v2\sdk\inc;..\..\Cinder\blocks\Cinder-KinectSDK\v1\src;..\..\Cinder\blocks\Cinder-KinectSDK\v1\sdk\inc;..\..\Cinder\blocks\OSC\src</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>KINECT_V2;WIN32;NDEBUG;_WINDOWS;NOMINMAX;_WIN32_WINNT=0x0502;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <PrecompiledHeader>
