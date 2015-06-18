@@ -253,6 +253,7 @@ private:
         if (CIRCLE_MASK_ENABLED)
         {
             float cx = CENTER_X * mDepthW;
+            if (LEFT_RIGHT_FLIPPED) cx = mDepthW - cx;
             float cy = CENTER_Y * mDepthH;
             float radius = RADIUS * mDepthH;
             gl::drawStrokedCircle(vec2(cx, cy), radius);
