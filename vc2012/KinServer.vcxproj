@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug-V2|Win32">
       <Configuration>Debug-V2</Configuration>
@@ -22,32 +22,33 @@
     <ProjectGuid>{DAE77EF5-BA4B-480A-BE11-297DDDBF46ED}</ProjectGuid>
     <RootNamespace>KinServer</RootNamespace>
     <Keyword>Win32Proj</Keyword>
+    <TargetPlatformVersion>8.1</TargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
     <WholeProgramOptimization>true</WholeProgramOptimization>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
     <WholeProgramOptimization>true</WholeProgramOptimization>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
@@ -92,7 +93,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\..\Cinder\blocks;..\..\opencv\build\include;..\include;..\..\Cinder\include;..\..\Cinder\boost;..\..\Cinder\blocks\Cinder-KinectSDK\v2\src;..\..\Cinder\blocks\Cinder-KinectSDK\v2\sdk\inc;..\..\Cinder\blocks\Cinder-KinectSDK\v1\src;..\..\Cinder\blocks\Cinder-KinectSDK\v1\sdk\inc;..\..\Cinder\blocks\OSC\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\Cinder\blocks;..\..\opencv\build\install\include;..\include;..\..\Cinder\include;..\..\Cinder\boost;..\..\Cinder\blocks\Cinder-KinectSDK\v2\src;..\..\Cinder\blocks\Cinder-KinectSDK\v2\sdk\inc;..\..\Cinder\blocks\Cinder-KinectSDK\v1\src;..\..\Cinder\blocks\Cinder-KinectSDK\v1\sdk\inc;..\..\Cinder\blocks\OSC\src</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;NOMINMAX;_WIN32_WINNT=0x0502;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -107,7 +108,7 @@
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>cinder-$(PlatformToolset)_d.lib;%(AdditionalDependencies);</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\Cinder\blocks\Cinder-KinectSDK\v1\sdk\lib\$(PlatformTarget)\;..\..\Cinder\blocks\Cinder-KinectSDK\v2\sdk\lib\$(PlatformTarget)\;..\..\opencv\build\$(PlatformTarget)\vc12\lib;"..\..\Cinder\lib\msw\$(PlatformTarget)"</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\Cinder\blocks\Cinder-KinectSDK\v1\sdk\lib\$(PlatformTarget)\;..\..\Cinder\blocks\Cinder-KinectSDK\v2\sdk\lib\$(PlatformTarget)\;..\..\opencv\build\install\$(PlatformTarget)\$(PlatformToolset)\lib;"..\..\Cinder\lib\msw\$(PlatformTarget)"</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
@@ -124,7 +125,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\..\Cinder\blocks;..\..\opencv\build\include;..\include;..\..\Cinder\include;..\..\Cinder\boost;..\..\Cinder\blocks\Cinder-KinectSDK\v2\src;..\..\Cinder\blocks\Cinder-KinectSDK\v2\sdk\inc;..\..\Cinder\blocks\Cinder-KinectSDK\v1\src;..\..\Cinder\blocks\Cinder-KinectSDK\v1\sdk\inc;..\..\Cinder\blocks\OSC\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\Cinder\blocks;..\..\opencv\build\install\include;..\include;..\..\Cinder\include;..\..\Cinder\boost;..\..\Cinder\blocks\Cinder-KinectSDK\v2\src;..\..\Cinder\blocks\Cinder-KinectSDK\v2\sdk\inc;..\..\Cinder\blocks\Cinder-KinectSDK\v1\src;..\..\Cinder\blocks\Cinder-KinectSDK\v1\sdk\inc;..\..\Cinder\blocks\OSC\src</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>KINECT_V2;WIN32;_DEBUG;_WINDOWS;NOMINMAX;_WIN32_WINNT=0x0502;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -140,7 +141,7 @@
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>cinder-$(PlatformToolset)_d.lib;%(AdditionalDependencies);</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\Cinder\blocks\Cinder-KinectSDK\v1\sdk\lib\$(PlatformTarget)\;..\..\Cinder\blocks\Cinder-KinectSDK\v2\sdk\lib\$(PlatformTarget)\;..\..\opencv\build\$(PlatformTarget)\vc12\lib;"..\..\Cinder\lib\msw\$(PlatformTarget)"</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\Cinder\blocks\Cinder-KinectSDK\v1\sdk\lib\$(PlatformTarget)\;..\..\Cinder\blocks\Cinder-KinectSDK\v2\sdk\lib\$(PlatformTarget)\;..\..\opencv\build\install\$(PlatformTarget)\$(PlatformToolset)\lib;"..\..\Cinder\lib\msw\$(PlatformTarget)"</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
@@ -157,7 +158,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>..\..\Cinder\blocks;..\..\opencv\build\include;..\include;..\..\Cinder\include;..\..\Cinder\boost;..\..\Cinder\blocks\Cinder-KinectSDK\v2\src;..\..\Cinder\blocks\Cinder-KinectSDK\v2\sdk\inc;..\..\Cinder\blocks\Cinder-KinectSDK\v1\src;..\..\Cinder\blocks\Cinder-KinectSDK\v1\sdk\inc;..\..\Cinder\blocks\OSC\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\Cinder\blocks;..\..\opencv\build\install\include;..\include;..\..\Cinder\include;..\..\Cinder\boost;..\..\Cinder\blocks\Cinder-KinectSDK\v2\src;..\..\Cinder\blocks\Cinder-KinectSDK\v2\sdk\inc;..\..\Cinder\blocks\Cinder-KinectSDK\v1\src;..\..\Cinder\blocks\Cinder-KinectSDK\v1\sdk\inc;..\..\Cinder\blocks\OSC\src</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;NOMINMAX;_WIN32_WINNT=0x0502;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <PrecompiledHeader />
@@ -173,7 +174,7 @@
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>cinder-$(PlatformToolset).lib;%(AdditionalDependencies);</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\Cinder\blocks\Cinder-KinectSDK\v1\sdk\lib\$(PlatformTarget)\;..\..\Cinder\blocks\Cinder-KinectSDK\v2\sdk\lib\$(PlatformTarget)\;..\..\opencv\build\$(PlatformTarget)\vc12\lib;"..\..\Cinder\lib\msw\$(PlatformTarget)"</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\Cinder\blocks\Cinder-KinectSDK\v1\sdk\lib\$(PlatformTarget)\;..\..\Cinder\blocks\Cinder-KinectSDK\v2\sdk\lib\$(PlatformTarget)\;..\..\opencv\build\install\$(PlatformTarget)\$(PlatformToolset)\lib;"..\..\Cinder\lib\msw\$(PlatformTarget)"</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <GenerateMapFile>true</GenerateMapFile>
       <SubSystem>Windows</SubSystem>
@@ -191,7 +192,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>..\..\Cinder\blocks;..\..\opencv\build\include;..\include;..\..\Cinder\include;..\..\Cinder\boost;..\..\Cinder\blocks\Cinder-KinectSDK\v2\src;..\..\Cinder\blocks\Cinder-KinectSDK\v2\sdk\inc;..\..\Cinder\blocks\Cinder-KinectSDK\v1\src;..\..\Cinder\blocks\Cinder-KinectSDK\v1\sdk\inc;..\..\Cinder\blocks\OSC\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\Cinder\blocks;..\..\opencv\build\install\include;..\include;..\..\Cinder\include;..\..\Cinder\boost;..\..\Cinder\blocks\Cinder-KinectSDK\v2\src;..\..\Cinder\blocks\Cinder-KinectSDK\v2\sdk\inc;..\..\Cinder\blocks\Cinder-KinectSDK\v1\src;..\..\Cinder\blocks\Cinder-KinectSDK\v1\sdk\inc;..\..\Cinder\blocks\OSC\src</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>KINECT_V2;WIN32;NDEBUG;_WINDOWS;NOMINMAX;_WIN32_WINNT=0x0502;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <PrecompiledHeader>
@@ -208,7 +209,7 @@
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>cinder-$(PlatformToolset).lib;%(AdditionalDependencies);</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\Cinder\blocks\Cinder-KinectSDK\v1\sdk\lib\$(PlatformTarget)\;..\..\Cinder\blocks\Cinder-KinectSDK\v2\sdk\lib\$(PlatformTarget)\;..\..\opencv\build\$(PlatformTarget)\vc12\lib;"..\..\Cinder\lib\msw\$(PlatformTarget)"</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\Cinder\blocks\Cinder-KinectSDK\v1\sdk\lib\$(PlatformTarget)\;..\..\Cinder\blocks\Cinder-KinectSDK\v2\sdk\lib\$(PlatformTarget)\;..\..\opencv\build\install\$(PlatformTarget)\$(PlatformToolset)\lib;"..\..\Cinder\lib\msw\$(PlatformTarget)"</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <GenerateMapFile>true</GenerateMapFile>
       <SubSystem>Windows</SubSystem>

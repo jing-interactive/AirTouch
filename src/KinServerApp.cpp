@@ -1,5 +1,5 @@
 #include "cinder/app/RendererGl.h"
-#include "cinder/app/AppNative.h"
+#include "cinder/app/App.h"
 #include "cinder/gl/Texture.h"
 #include "cinder/gl/GlslProg.h"
 #include "cinder/params/Params.h"
@@ -29,7 +29,7 @@ void updateTexture(gl::TextureRef &tex, const T &src)
     }
 }
 
-class KinServerApp : public AppBasic
+class KinServerApp : public App
 {
 public:
     enum
@@ -71,7 +71,14 @@ public:
 
         getWindow()->setSize(1024, 768);
 
-        mLogo = gl::Texture::create(loadImage(loadAsset("logo.png")));
+        try
+        {
+            mLogo = gl::Texture::create(loadImage(loadAsset("logo.png")));
+        }
+        catch (...)
+        {
+
+        }
 
         mShader = gl::GlslProg::create(loadAsset("depthMap.vs"), loadAsset("depthMap.fs"));
         mShader->uniform("image", 0);
