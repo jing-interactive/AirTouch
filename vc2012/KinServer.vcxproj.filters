@@ -102,9 +102,6 @@
     <ClCompile Include="..\..\Cinder\blocks\OSC\src\ip\win32\UdpSocket.cpp">
       <Filter>Blocks\OSC\ip\win32</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\OpenCV\BlobTracker.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Cinder\blocks\OSC\src\OscBundle.cpp">
       <Filter>Blocks\OSC</Filter>
     </ClCompile>
@@ -174,16 +171,13 @@
     <ClCompile Include="..\..\Cinder\blocks\VNM\MiniConfig.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\OpenCV\BlobTracker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Resources.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\OpenCV\BlobTracker.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Cinder\include\cinder\CinderOpenCV.h">
-      <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Cinder\blocks\OSC\src\OscArg.h">
       <Filter>Blocks\OSC</Filter>
@@ -274,6 +268,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Cinder\blocks\VNM\MiniConfig.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\OpenCV\CinderOpenCV.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

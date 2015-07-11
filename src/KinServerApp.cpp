@@ -1,13 +1,12 @@
 #include "cinder/app/RendererGl.h"
 #include "cinder/app/App.h"
-#include "cinder/gl/Texture.h"
-#include "cinder/gl/GlslProg.h"
+#include "cinder/gl/gl.h"
 #include "cinder/params/Params.h"
 #include "cinder/Log.h"
 #include "cinder/PolyLine.h"
 
 #include "OscSender.h"
-#include "cinder/CinderOpenCV.h"
+#include "OpenCV/CinderOpenCV.h"
 #include "OpenCV/BlobTracker.h"
 #include "Cinder-KinectSDK/KinectDevice.h"
 
@@ -34,13 +33,15 @@ class KinServerApp : public App
 public:
     void setup() override
     {
+        const auto& args = getCommandLineArgs();
         readConfig();
         log::manager()->enableFileLogging();
+
+        Kinect::DeviceType type = Kinect::V1;
 #ifdef KINECT_V2
-        mDevice = Kinect::Device::createV2();
-#else
-        mDevice = Kinect::Device::createV1();
-#endif // KINECT_V2
+        type = Kinect::V2;
+#endif
+        mDevice = Kinect::Device::create(type);
         mDevice->signalDepthDirty.connect(std::bind(&KinServerApp::updateDepthRelated, this));
 
         mDepthW = mDevice->getWidth();
@@ -53,7 +54,7 @@ public:
         setupConfigUI(mParams.get());
         std::vector<string> smoothNames = { "Off", "Light", "Middle", "High" };
         ADD_ENUM_TO_INT(mParams, TRACKING_SMOOTH, smoothNames);
-        getWindow()->connectPostDraw(&params::InterfaceGl::draw, mParams.get());
+        getWindow()->getSignalPostDraw().connect(std::bind(&params::InterfaceGl::draw, mParams.get()));
 
         mFps = 0;
         mFrameCounter = 0;
@@ -71,9 +72,9 @@ public:
         {
             mLogo = gl::Texture::create(loadImage(loadAsset("logo.png")));
         }
-        catch (...)
+        catch (std::exception& e)
         {
-
+            console() << e.what() << std::endl;
         }
 
         try
@@ -139,6 +140,8 @@ public:
             gl::draw(mDiffTexture, mLayout.canvases[2]);
         }
         visualizeBlobs(mBlobTracker);
+
+        mParams->draw();
     }
 
     void keyUp(KeyEvent event) override
@@ -391,4 +394,4 @@ private:
     gl::GlslProgRef	mShader;
 };
 
-CINDER_APP_NATIVE(KinServerApp, RendererGl)
+CINDER_APP(KinServerApp, RendererGl)
