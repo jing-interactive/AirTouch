@@ -56,9 +56,9 @@ public:
             });
         }
 
-        Kinect::DeviceType type = Kinect::V1;
+        Kinect::DeviceType type = Kinect::Kinect1;
 #ifdef KINECT_V2
-        type = Kinect::V2;
+        type = Kinect::Kinect2;
 #endif
         mDevice = Kinect::Device::create(type);
         if (!mDevice->isValid())
