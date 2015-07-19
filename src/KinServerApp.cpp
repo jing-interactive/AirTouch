@@ -50,7 +50,10 @@ public:
 
             mParams->addParam("FPS", &mFps, true);
             mParams->addButton("Set Bg", std::bind(&KinServerApp::updateBack, this));
-            mParams->addButton("Reset In/Out", std::bind(&KinServerApp::resetInOut, this));
+            mParams->addButton("Reset In/Out", [] {
+                INPUT_X1 = INPUT_Y1 = OUTPUT_X1 = OUTPUT_Y1 = 0;
+                INPUT_X2 = INPUT_Y2 = OUTPUT_X2 = OUTPUT_Y2 = 1;
+            });
         }
 
         Kinect::DeviceType type = Kinect::V1;
@@ -347,12 +350,6 @@ private:
         bundle.addMessage(fseq);     //add message to bundle
 
         sender.sendBundle(bundle); //send bundle
-    }
-
-    void resetInOut()
-    {
-        INPUT_X1 = INPUT_Y1 = OUTPUT_X1 = OUTPUT_Y1 = 0;
-        INPUT_X2 = INPUT_Y2 = OUTPUT_X2 = OUTPUT_Y2 = 1;
     }
 
     void updateBack()
