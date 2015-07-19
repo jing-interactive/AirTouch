@@ -42,7 +42,6 @@ public:
             setupConfigUI(mParams.get());
             std::vector<string> smoothNames = { "Off", "Light", "Middle", "High" };
             ADD_ENUM_TO_INT(mParams, TRACKING_SMOOTH, smoothNames);
-            getWindow()->getSignalPostDraw().connect(std::bind(&params::InterfaceGl::draw, mParams.get()));
 
             mFps = 0;
             mFrameCounter = 0;
@@ -150,8 +149,6 @@ public:
             gl::draw(mDiffTexture, mLayout.canvases[2]);
         }
         visualizeBlobs(mBlobTracker);
-
-        mParams->draw();
     }
 
     void keyUp(KeyEvent event) override
