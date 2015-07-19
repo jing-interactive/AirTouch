@@ -37,11 +37,32 @@ public:
         readConfig();
         log::manager()->enableFileLogging();
 
+        {
+            mParams = params::InterfaceGl::create("params", vec2(400, getConfigUIHeight() + 100));
+            setupConfigUI(mParams.get());
+            std::vector<string> smoothNames = { "Off", "Light", "Middle", "High" };
+            ADD_ENUM_TO_INT(mParams, TRACKING_SMOOTH, smoothNames);
+            getWindow()->getSignalPostDraw().connect(std::bind(&params::InterfaceGl::draw, mParams.get()));
+
+            mFps = 0;
+            mFrameCounter = 0;
+            mSecondsForFps = getElapsedSeconds();
+
+            mParams->addParam("FPS", &mFps, true);
+            mParams->addButton("Set Bg", std::bind(&KinServerApp::updateBack, this));
+            mParams->addButton("Reset In/Out", std::bind(&KinServerApp::resetInOut, this));
+        }
+
         Kinect::DeviceType type = Kinect::V1;
 #ifdef KINECT_V2
         type = Kinect::V2;
 #endif
         mDevice = Kinect::Device::create(type);
+        if (!mDevice->isValid())
+        {
+            quit();
+            return;
+        }
         mDevice->signalDepthDirty.connect(std::bind(&KinServerApp::updateDepthRelated, this));
 
         mDepthW = mDevice->getWidth();
@@ -49,20 +70,6 @@ public:
         mDiffMat = cv::Mat1b(mDepthH, mDepthW);
         mDiffChannel = Channel(mDepthW, mDepthH, mDiffMat.step, 1,
             mDiffMat.ptr());
-
-        mParams = params::InterfaceGl::create("params", vec2(400, getConfigUIHeight() + 100));
-        setupConfigUI(mParams.get());
-        std::vector<string> smoothNames = { "Off", "Light", "Middle", "High" };
-        ADD_ENUM_TO_INT(mParams, TRACKING_SMOOTH, smoothNames);
-        getWindow()->getSignalPostDraw().connect(std::bind(&params::InterfaceGl::draw, mParams.get()));
-
-        mFps = 0;
-        mFrameCounter = 0;
-        mSecondsForFps = getElapsedSeconds();
-
-        mParams->addParam("FPS", &mFps, true);
-        mParams->addButton("Set Bg", std::bind(&KinServerApp::updateBack, this));
-        mParams->addButton("Reset In/Out", std::bind(&KinServerApp::resetInOut, this));
 
         mOscSender.setup(ADDRESS, TUIO_PORT);
 
