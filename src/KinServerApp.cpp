@@ -320,6 +320,9 @@ private:
             fseq.addIntArg(getElapsedFrames());
         }
 
+        SERVER_COUNT = math<int>::max(1, SERVER_COUNT);
+        SERVER_ID = math<int>::clamp(SERVER_ID, 0, SERVER_COUNT - 1);
+        float newRegion = 1 / (float)SERVER_COUNT;
         for (const auto &blob : blobTracker.trackedBlobs)
         {
             //Point2f center(blob.center.x + depthOrigin.x, blob.center.y + depthOrigin.y);
@@ -332,6 +335,7 @@ private:
             set.addStringArg("set");
             set.addIntArg(blob.id);             // id
             float mappedX = lmap(center.x / mDepthW, INPUT_X1, INPUT_X2, OUTPUT_X1, OUTPUT_X2);
+            mappedX = (SERVER_ID + mappedX) * newRegion;
             float mappedY = lmap(center.y / mDepthH, INPUT_Y1, INPUT_Y2, OUTPUT_Y1, OUTPUT_Y2);
             set.addFloatArg(mappedX);
             set.addFloatArg(mappedY);
