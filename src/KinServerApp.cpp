@@ -303,6 +303,12 @@ private:
         gl::popModelMatrix();
     }
 
+    int remapTuioId(int srcId)
+    {
+#define kMagicNumber 100
+        return (srcId % kMagicNumber) + kMagicNumber * SERVER_ID;
+    }
+
     void sendTuioMessage(osc::Sender &sender, const BlobTracker &blobTracker)
     {
         osc::Bundle bundle;
@@ -330,10 +336,11 @@ private:
 
             if (!mInputRoi.contains(center)) continue;
 
+            int blobId = remapTuioId(blob.id);
             osc::Message set;
             set.setAddress("/tuio/2Dcur");
             set.addStringArg("set");
-            set.addIntArg(blob.id);             // id
+            set.addIntArg(blobId);             // id
             float mappedX = lmap(center.x / mDepthW, INPUT_X1, INPUT_X2, OUTPUT_X1, OUTPUT_X2);
             mappedX = (SERVER_ID + mappedX) * newRegion;
             float mappedY = lmap(center.y / mDepthH, INPUT_Y1, INPUT_Y2, OUTPUT_Y1, OUTPUT_Y2);
@@ -344,7 +351,7 @@ private:
             set.addFloatArg(0);     // m
             bundle.addMessage(set);                         // add message to bundle
 
-            alive.addIntArg(blob.id);               // add blob to list of ALL active IDs
+            alive.addIntArg(blobId);               // add blob to list of ALL active IDs
         }
 
         bundle.addMessage(alive);    //add message to bundle
