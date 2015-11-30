@@ -273,7 +273,7 @@ private:
             if (LEFT_RIGHT_FLIPPED) cx = mDepthW - cx;
             float cy = CENTER_Y * mDepthH;
             float radius = RADIUS * mDepthH;
-            gl::drawStrokedCircle(vec2(cx, cy), radius);
+            gl::drawStrokedCircle(vec2(cx, cy), radius, 40);
         }
         {
             gl::ScopedColor scope(ColorAf(1, 0, 0, 0.5f));
