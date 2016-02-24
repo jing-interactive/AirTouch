@@ -338,8 +338,9 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-VNM\src\MiniConfig.h" />
     <ClInclude Include="..\..\Cinder\blocks\OpenCV\CinderOpenCV.h" />
-    <ClInclude Include="..\..\Cinder\blocks\VNM\MiniConfig.h" />
+    <ClInclude Include="..\..\Cinder\blocks\OSC\src\Osc.h" />
     <ClInclude Include="..\include\Resources.h" />
     <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v2\src\AutoLock.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">false</ExcludedFromBuild>
@@ -371,24 +372,6 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">false</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\OSC\src\OscArg.h" />
-    <ClInclude Include="..\..\Cinder\blocks\OSC\src\OscBundle.h" />
-    <ClInclude Include="..\..\Cinder\blocks\OSC\src\OscListener.h" />
-    <ClInclude Include="..\..\Cinder\blocks\OSC\src\OscMessage.h" />
-    <ClInclude Include="..\..\Cinder\blocks\OSC\src\OscSender.h" />
-    <ClInclude Include="..\..\Cinder\blocks\OSC\src\ip\IpEndpointName.h" />
-    <ClInclude Include="..\..\Cinder\blocks\OSC\src\ip\NetworkingUtils.h" />
-    <ClInclude Include="..\..\Cinder\blocks\OSC\src\ip\PacketListener.h" />
-    <ClInclude Include="..\..\Cinder\blocks\OSC\src\ip\TimerListener.h" />
-    <ClInclude Include="..\..\Cinder\blocks\OSC\src\ip\UdpSocket.h" />
-    <ClInclude Include="..\..\Cinder\blocks\OSC\src\osc\MessageMappingOscPacketListener.h" />
-    <ClInclude Include="..\..\Cinder\blocks\OSC\src\osc\OscException.h" />
-    <ClInclude Include="..\..\Cinder\blocks\OSC\src\osc\OscHostEndianness.h" />
-    <ClInclude Include="..\..\Cinder\blocks\OSC\src\osc\OscOutboundPacketStream.h" />
-    <ClInclude Include="..\..\Cinder\blocks\OSC\src\osc\OscPacketListener.h" />
-    <ClInclude Include="..\..\Cinder\blocks\OSC\src\osc\OscPrintReceivedElements.h" />
-    <ClInclude Include="..\..\Cinder\blocks\OSC\src\osc\OscReceivedElements.h" />
-    <ClInclude Include="..\..\Cinder\blocks\OSC\src\osc\OscTypes.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\KinectDevice.cpp" />
@@ -470,8 +453,9 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-VNM\src\MiniConfig.cpp" />
     <ClCompile Include="..\..\Cinder\blocks\OpenCV\BlobTracker.cpp" />
-    <ClCompile Include="..\..\Cinder\blocks\VNM\MiniConfig.cpp" />
+    <ClCompile Include="..\..\Cinder\blocks\OSC\src\Osc.cpp" />
     <ClCompile Include="..\src\KinServerApp.cpp" />
     <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v2\src\KCBFrames.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">false</ExcludedFromBuild>
@@ -497,17 +481,6 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug-V2|Win32'">false</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\OSC\src\OscBundle.cpp" />
-    <ClCompile Include="..\..\Cinder\blocks\OSC\src\OscListener.cpp" />
-    <ClCompile Include="..\..\Cinder\blocks\OSC\src\OscMessage.cpp" />
-    <ClCompile Include="..\..\Cinder\blocks\OSC\src\OscSender.cpp" />
-    <ClCompile Include="..\..\Cinder\blocks\OSC\src\ip\IpEndpointName.cpp" />
-    <ClCompile Include="..\..\Cinder\blocks\OSC\src\osc\OscOutboundPacketStream.cpp" />
-    <ClCompile Include="..\..\Cinder\blocks\OSC\src\osc\OscPrintReceivedElements.cpp" />
-    <ClCompile Include="..\..\Cinder\blocks\OSC\src\osc\OscReceivedElements.cpp" />
-    <ClCompile Include="..\..\Cinder\blocks\OSC\src\osc\OscTypes.cpp" />
-    <ClCompile Include="..\..\Cinder\blocks\OSC\src\ip\win32\NetworkingUtils.cpp" />
-    <ClCompile Include="..\..\Cinder\blocks\OSC\src\ip\win32\UdpSocket.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\include\item.def" />

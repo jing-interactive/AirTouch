@@ -5,12 +5,12 @@
 #include "cinder/Log.h"
 #include "cinder/PolyLine.h"
 
-#include "OscSender.h"
+#include "Osc.h"
 #include "OpenCV/CinderOpenCV.h"
 #include "OpenCV/BlobTracker.h"
 #include "Cinder-KinectSDK/KinectDevice.h"
 
-#include "VNM/MiniConfig.h"
+#include "Cinder-VNM/src/MiniConfig.h"
 
 using namespace ci;
 using namespace ci::app;
@@ -35,7 +35,7 @@ public:
     {
         const auto& args = getCommandLineArgs();
         readConfig();
-        log::manager()->enableFileLogging();
+        log::makeLogger<log::LoggerFile>();
 
         {
             mParams = params::InterfaceGl::create("params", vec2(400, getConfigUIHeight() + 100));
@@ -73,7 +73,8 @@ public:
         mDiffChannel = Channel(mDepthW, mDepthH, mDiffMat.step, 1,
             mDiffMat.ptr());
 
-        mOscSender.setup(ADDRESS, TUIO_PORT);
+        mOscSender = std::shared_ptr<osc::SenderUdp>(new osc::SenderUdp(10000, ADDRESS, TUIO_PORT));
+        mOscSender->bind();
 
         getWindow()->setSize(1024, 768);
 
@@ -240,7 +241,7 @@ private:
         option.handDistance = FINGER_SIZE;
         BlobFinder::execute(mDiffMat, blobs, option);
         mBlobTracker.trackBlobs(blobs);
-        sendTuioMessage(mOscSender, mBlobTracker);
+        sendTuioMessage(*mOscSender, mBlobTracker);
     }
 
     void visualizeBlobs(const BlobTracker &blobTracker)
@@ -309,21 +310,21 @@ private:
         return (srcId % kMagicNumber) + kMagicNumber * SERVER_ID;
     }
 
-    void sendTuioMessage(osc::Sender &sender, const BlobTracker &blobTracker)
+    void sendTuioMessage(osc::SenderUdp &sender, const BlobTracker &blobTracker)
     {
         osc::Bundle bundle;
 
         osc::Message alive;
         {
             alive.setAddress("/tuio/2Dcur");
-            alive.addStringArg("alive");
+            alive.append("alive");
         }
 
         osc::Message fseq;
         {
             fseq.setAddress("/tuio/2Dcur");
-            fseq.addStringArg("fseq");
-            fseq.addIntArg(getElapsedFrames());
+            fseq.append("fseq");
+            fseq.append((int32_t)getElapsedFrames());
         }
 
         SERVER_COUNT = math<int>::max(1, SERVER_COUNT);
@@ -339,25 +340,25 @@ private:
             int blobId = remapTuioId(blob.id);
             osc::Message set;
             set.setAddress("/tuio/2Dcur");
-            set.addStringArg("set");
-            set.addIntArg(blobId);             // id
+            set.append("set");
+            set.append(blobId);             // id
             float mappedX = lmap(center.x / mDepthW, INPUT_X1, INPUT_X2, OUTPUT_X1, OUTPUT_X2);
             mappedX = (SERVER_ID + mappedX) * newRegion;
             float mappedY = lmap(center.y / mDepthH, INPUT_Y1, INPUT_Y2, OUTPUT_Y1, OUTPUT_Y2);
-            set.addFloatArg(mappedX);
-            set.addFloatArg(mappedY);
-            set.addFloatArg(blob.velocity.x / mOutputMap.getWidth());
-            set.addFloatArg(blob.velocity.y / mOutputMap.getHeight());
-            set.addFloatArg(0);     // m
-            bundle.addMessage(set);                         // add message to bundle
+            set.append(mappedX);
+            set.append(mappedY);
+            set.append(blob.velocity.x / mOutputMap.getWidth());
+            set.append(blob.velocity.y / mOutputMap.getHeight());
+            set.append(0);     // m
+            bundle.append(set);                         // add message to bundle
 
-            alive.addIntArg(blobId);               // add blob to list of ALL active IDs
+            alive.append(blobId);               // add blob to list of ALL active IDs
         }
 
-        bundle.addMessage(alive);    //add message to bundle
-        bundle.addMessage(fseq);     //add message to bundle
+        bundle.append(alive);    //add message to bundle
+        bundle.append(fseq);     //add message to bundle
 
-        sender.sendBundle(bundle); //send bundle
+        sender.send(bundle); //send bundle
     }
 
     void updateBack()
@@ -384,7 +385,7 @@ private:
 
     Kinect::DeviceRef mDevice;
     params::InterfaceGlRef mParams;
-    osc::Sender mOscSender;
+    std::shared_ptr<osc::SenderUdp> mOscSender;
     int mDepthW, mDepthH;
 
     gl::TextureRef mDepthTexture;

@@ -19,20 +19,14 @@
     <Filter Include="Blocks\OSC">
       <UniqueIdentifier>{EA77E63B-E67C-4FB8-AE98-0E374EFFD3D7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Blocks\OSC\ip">
-      <UniqueIdentifier>{67DDA57C-E289-4954-A2ED-BA7D560B6E29}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Blocks\OSC\ip\win32">
-      <UniqueIdentifier>{AB25A8F1-3C0C-449C-92A3-7E7BA33D0F7A}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Blocks\OSC\osc">
-      <UniqueIdentifier>{A396E2FA-0DBA-4103-A83F-4983CE403630}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Blocks\v1">
       <UniqueIdentifier>{4ee9009e-47be-4294-a72b-95a03e8d8c1d}</UniqueIdentifier>
     </Filter>
     <Filter Include="Blocks\v2">
       <UniqueIdentifier>{992F4729-86DE-4471-8C21-4334D0EAFE87}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blocks\VNM">
+      <UniqueIdentifier>{c2556b12-30fc-4505-b3a9-9c09e412ff3d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -41,78 +35,6 @@
     </ClCompile>
     <ClCompile Include="..\src\KinServerApp.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\OSC\src\ip\IpEndpointName.cpp">
-      <Filter>Blocks\OSC\ip</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\OSC\src\osc\OscOutboundPacketStream.cpp">
-      <Filter>Blocks\OSC\osc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\OSC\src\osc\OscPrintReceivedElements.cpp">
-      <Filter>Blocks\OSC\osc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\OSC\src\osc\OscReceivedElements.cpp">
-      <Filter>Blocks\OSC\osc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\OSC\src\osc\OscTypes.cpp">
-      <Filter>Blocks\OSC\osc</Filter>
-    </ClCompile>
-    <ClInclude Include="..\..\Cinder\blocks\OSC\src\ip\IpEndpointName.h">
-      <Filter>Blocks\OSC\ip</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\OSC\src\ip\NetworkingUtils.h">
-      <Filter>Blocks\OSC\ip</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\OSC\src\ip\PacketListener.h">
-      <Filter>Blocks\OSC\ip</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\OSC\src\ip\TimerListener.h">
-      <Filter>Blocks\OSC\ip</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\OSC\src\ip\UdpSocket.h">
-      <Filter>Blocks\OSC\ip</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\OSC\src\osc\MessageMappingOscPacketListener.h">
-      <Filter>Blocks\OSC\osc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\OSC\src\osc\OscException.h">
-      <Filter>Blocks\OSC\osc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\OSC\src\osc\OscHostEndianness.h">
-      <Filter>Blocks\OSC\osc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\OSC\src\osc\OscOutboundPacketStream.h">
-      <Filter>Blocks\OSC\osc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\OSC\src\osc\OscPacketListener.h">
-      <Filter>Blocks\OSC\osc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\OSC\src\osc\OscPrintReceivedElements.h">
-      <Filter>Blocks\OSC\osc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\OSC\src\osc\OscReceivedElements.h">
-      <Filter>Blocks\OSC\osc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\OSC\src\osc\OscTypes.h">
-      <Filter>Blocks\OSC\osc</Filter>
-    </ClInclude>
-    <ClCompile Include="..\..\Cinder\blocks\OSC\src\ip\win32\NetworkingUtils.cpp">
-      <Filter>Blocks\OSC\ip\win32</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\OSC\src\ip\win32\UdpSocket.cpp">
-      <Filter>Blocks\OSC\ip\win32</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\OSC\src\OscBundle.cpp">
-      <Filter>Blocks\OSC</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\OSC\src\OscListener.cpp">
-      <Filter>Blocks\OSC</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\OSC\src\OscMessage.cpp">
-      <Filter>Blocks\OSC</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\OSC\src\OscSender.cpp">
-      <Filter>Blocks\OSC</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v2\src\KCBFrames.cpp">
       <Filter>Blocks\v2</Filter>
@@ -168,31 +90,19 @@
     <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\KinectDevice.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\VNM\MiniConfig.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Cinder\blocks\OpenCV\BlobTracker.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\OSC\src\Osc.cpp">
+      <Filter>Blocks\OSC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-VNM\src\MiniConfig.cpp">
+      <Filter>Blocks\VNM</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Resources.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\OSC\src\OscArg.h">
-      <Filter>Blocks\OSC</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\OSC\src\OscBundle.h">
-      <Filter>Blocks\OSC</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\OSC\src\OscListener.h">
-      <Filter>Blocks\OSC</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\OSC\src\OscMessage.h">
-      <Filter>Blocks\OSC</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\OSC\src\OscSender.h">
-      <Filter>Blocks\OSC</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v2\src\stdafx.h">
       <Filter>Blocks\v2</Filter>
@@ -266,11 +176,14 @@
     <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\KinectDevice.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\VNM\MiniConfig.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Cinder\blocks\OpenCV\CinderOpenCV.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\OSC\src\Osc.h">
+      <Filter>Blocks\OSC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-VNM\src\MiniConfig.h">
+      <Filter>Blocks\VNM</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
