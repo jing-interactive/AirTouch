@@ -11,22 +11,10 @@
 #include "Cinder-KinectSDK/KinectDevice.h"
 
 #include "Cinder-VNM/src/MiniConfig.h"
+#include "Cinder-VNM/src/TextureHelper.h"
 
 using namespace ci;
 using namespace ci::app;
-
-template <typename T>
-void updateTexture(gl::TextureRef &tex, const T &src)
-{
-    if (!tex)
-    {
-        tex = gl::Texture2d::create(src);
-    }
-    else
-    {
-        tex->update(src);
-    }
-}
 
 class KinServerApp : public App
 {
