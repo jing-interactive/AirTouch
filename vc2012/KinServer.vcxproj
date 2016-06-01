@@ -454,8 +454,8 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\Cinder\blocks\Cinder-VNM\src\MiniConfig.cpp" />
-    <ClCompile Include="..\..\Cinder\blocks\OpenCV\BlobTracker.cpp" />
     <ClCompile Include="..\..\Cinder\blocks\OSC\src\Osc.cpp" />
+    <ClCompile Include="..\src\BlobTracker.cpp" />
     <ClCompile Include="..\src\KinServerApp.cpp" />
     <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v2\src\KCBFrames.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release-V2|Win32'">false</ExcludedFromBuild>
