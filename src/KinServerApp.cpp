@@ -6,8 +6,8 @@
 #include "cinder/PolyLine.h"
 
 #include "Osc.h"
-#include "OpenCV/CinderOpenCV.h"
-#include "OpenCV/BlobTracker.h"
+#include "Cinder-OpenCV3/include/CinderOpenCV.h"
+#include "BlobTracker.h"
 #include "Cinder-KinectSDK/KinectDevice.h"
 
 #include "Cinder-VNM/src/MiniConfig.h"
@@ -61,7 +61,7 @@ public:
         mDiffChannel = Channel(mDepthW, mDepthH, mDiffMat.step, 1,
             mDiffMat.ptr());
 
-        mOscSender = std::shared_ptr<osc::SenderUdp>(new osc::SenderUdp(10000, ADDRESS, TUIO_PORT));
+        mOscSender = std::make_shared<osc::SenderUdp>(10000, ADDRESS, TUIO_PORT);
         mOscSender->bind();
 
         getWindow()->setSize(1024, 768);

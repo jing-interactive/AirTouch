@@ -1,5 +1,5 @@
 GROUP_DEF(Remote)
-ITEM_DEF(string, ADDRESS, "localhost")
+ITEM_DEF(string, ADDRESS, "127.0.0.1")
 ITEM_DEF(int, TUIO_PORT, 3333)
 ITEM_DEF(int, SERVER_ID, 0)
 ITEM_DEF(int, SERVER_COUNT, 1)
