@@ -55,8 +55,8 @@ public:
         }
         mDevice->signalDepthDirty.connect(std::bind(&KinServerApp::updateDepthRelated, this));
 
-        mDepthW = mDevice->getWidth();
-        mDepthH = mDevice->getHeight();
+        mDepthW = mDevice->getDepthSize().x;
+        mDepthH = mDevice->getDepthSize().y;
         mDiffMat = cv::Mat1b(mDepthH, mDepthW);
         mDiffChannel = Channel(mDepthW, mDepthH, mDiffMat.step, 1,
             mDiffMat.ptr());
