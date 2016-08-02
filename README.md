@@ -1,11 +1,11 @@
-KinServer
+DepthMultiTouch
 =========
 
-KinServer for V1 and V2 devices.
+Multi touch system for Kinect V1 / V2 devices and Intel RealSense devices.
 
 To build this project, you need:
 
 * [Cinder](https://github.com/cinder/Cinder)
 * [Cinder-OpenCV3](https://github.com/cinder/Cinder-OpenCV3)
-* [Cinder-KinectSDK](https://github.com/vnm-interactive/Cinder-KinectSDK)
+* [Cinder-DepthSensor](https://github.com/vnm-interactive/Cinder-DepthSensor)
 * [Cinder-VNM](https://github.com/vnm-interactive/Cinder-VNM)  
