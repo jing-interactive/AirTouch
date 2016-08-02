@@ -179,11 +179,11 @@
     <ClInclude Include="..\..\Cinder\blocks\OSC\src\Osc.h">
       <Filter>Blocks\OSC</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-VNM\src\MiniConfig.h">
-      <Filter>Blocks\VNM</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\KinectDevice.h">
       <Filter>Blocks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-VNM\include\MiniConfig.h">
+      <Filter>Blocks\VNM</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -10,8 +10,8 @@
 #include "BlobTracker.h"
 #include "Cinder-KinectSDK/KinectDevice.h"
 
-#include "Cinder-VNM/src/MiniConfig.h"
-#include "Cinder-VNM/src/TextureHelper.h"
+#include "Cinder-VNM/include/MiniConfig.h"
+#include "Cinder-VNM/include/TextureHelper.h"
 
 using namespace ci;
 using namespace ci::app;
@@ -26,8 +26,7 @@ public:
         log::makeLogger<log::LoggerFile>();
 
         {
-            mParams = params::InterfaceGl::create("params", vec2(400, getConfigUIHeight() + 100));
-            setupConfigUI(mParams.get());
+            mParams = createConfigUI({ 400, 800 });
             std::vector<string> smoothNames = { "Off", "Light", "Middle", "High" };
             ADD_ENUM_TO_INT(mParams, TRACKING_SMOOTH, smoothNames);
 

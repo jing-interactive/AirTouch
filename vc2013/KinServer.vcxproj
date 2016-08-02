@@ -338,7 +338,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-VNM\src\MiniConfig.h" />
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-VNM\include\MiniConfig.h" />
     <ClInclude Include="..\..\Cinder\blocks\OpenCV\CinderOpenCV.h" />
     <ClInclude Include="..\..\Cinder\blocks\OSC\src\Osc.h" />
     <ClInclude Include="..\include\Resources.h" />
