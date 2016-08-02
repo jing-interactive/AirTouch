@@ -28,6 +28,15 @@
     <Filter Include="Blocks\VNM">
       <UniqueIdentifier>{c2556b12-30fc-4505-b3a9-9c09e412ff3d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Blocks\librealsense">
+      <UniqueIdentifier>{859e9e66-a72d-4435-8f0a-e5de49c7c8b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blocks\librealsense\include">
+      <UniqueIdentifier>{19b59a72-2eee-43e5-8de3-9f49af6e8f09}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blocks\librealsense\src">
+      <UniqueIdentifier>{2cf6edbf-d7b0-4896-abc6-4814c627c583}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\KinServerApp.cpp">
@@ -96,7 +105,70 @@
     <ClCompile Include="..\src\BlobTracker.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\KinectDevice.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\device.cpp">
+      <Filter>Blocks\librealsense\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\f200.cpp">
+      <Filter>Blocks\librealsense\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\f200-private.cpp">
+      <Filter>Blocks\librealsense\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\image.cpp">
+      <Filter>Blocks\librealsense\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\log.cpp">
+      <Filter>Blocks\librealsense\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\r200.cpp">
+      <Filter>Blocks\librealsense\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\r200-private.cpp">
+      <Filter>Blocks\librealsense\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\rs.cpp">
+      <Filter>Blocks\librealsense\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\stream.cpp">
+      <Filter>Blocks\librealsense\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\sync.cpp">
+      <Filter>Blocks\librealsense\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\types.cpp">
+      <Filter>Blocks\librealsense\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\uvc.cpp">
+      <Filter>Blocks\librealsense\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\uvc-libuvc.cpp">
+      <Filter>Blocks\librealsense\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\uvc-v4l2.cpp">
+      <Filter>Blocks\librealsense\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\uvc-wmf.cpp">
+      <Filter>Blocks\librealsense\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\verify.c">
+      <Filter>Blocks\librealsense\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\context.cpp">
+      <Filter>Blocks\librealsense\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\DepthSensor.cpp">
+      <Filter>Blocks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\DeviceSimulator.cpp">
+      <Filter>Blocks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\DeviceRealSense.cpp">
+      <Filter>Blocks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\DeviceKinect2.cpp">
+      <Filter>Blocks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\DeviceKinect1.cpp">
       <Filter>Blocks</Filter>
     </ClCompile>
   </ItemGroup>
@@ -179,11 +251,53 @@
     <ClInclude Include="..\..\Cinder\blocks\OSC\src\Osc.h">
       <Filter>Blocks\OSC</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\KinectDevice.h">
-      <Filter>Blocks</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Cinder\blocks\Cinder-VNM\include\MiniConfig.h">
       <Filter>Blocks\VNM</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\device.h">
+      <Filter>Blocks\librealsense\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\f200.h">
+      <Filter>Blocks\librealsense\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\f200-private.h">
+      <Filter>Blocks\librealsense\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\image.h">
+      <Filter>Blocks\librealsense\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\r200.h">
+      <Filter>Blocks\librealsense\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\r200-private.h">
+      <Filter>Blocks\librealsense\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\stream.h">
+      <Filter>Blocks\librealsense\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\sync.h">
+      <Filter>Blocks\librealsense\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\types.h">
+      <Filter>Blocks\librealsense\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\uvc.h">
+      <Filter>Blocks\librealsense\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\context.h">
+      <Filter>Blocks\librealsense\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\include\librealsense\rs.hpp">
+      <Filter>Blocks\librealsense\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\include\librealsense\rsutil.h">
+      <Filter>Blocks\librealsense\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\include\librealsense\rs.h">
+      <Filter>Blocks\librealsense\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\DepthSensor.h">
+      <Filter>Blocks</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

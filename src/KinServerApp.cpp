@@ -8,7 +8,7 @@
 #include "Osc.h"
 #include "Cinder-OpenCV3/include/CinderOpenCV.h"
 #include "BlobTracker.h"
-#include "Cinder-KinectSDK/KinectDevice.h"
+#include "Cinder-KinectSDK/DepthSensor.h"
 
 #include "Cinder-VNM/include/MiniConfig.h"
 #include "Cinder-VNM/include/TextureHelper.h"
@@ -42,10 +42,7 @@ public:
             });
         }
 
-        Kinect::DeviceType type = Kinect::Kinect1;
-#ifdef KINECT_V2
-        type = Kinect::Kinect2;
-#endif
+        Kinect::DeviceType type = Kinect::DeviceType(SENSOR_TYPE);
         mDevice = Kinect::Device::create(type);
         if (!mDevice->isValid())
         {
