@@ -8,7 +8,7 @@
 #include "Osc.h"
 #include "Cinder-OpenCV3/include/CinderOpenCV.h"
 #include "BlobTracker.h"
-#include "Cinder-KinectSDK/DepthSensor.h"
+#include "Cinder-DepthSensor/DepthSensor.h"
 
 #include "Cinder-VNM/include/MiniConfig.h"
 #include "Cinder-VNM/include/TextureHelper.h"

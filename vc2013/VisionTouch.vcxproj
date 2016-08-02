@@ -12,9 +12,10 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{DAE77EF5-BA4B-480A-BE11-297DDDBF46ED}</ProjectGuid>
-    <RootNamespace>KinServer</RootNamespace>
+    <RootNamespace>VisionTouch</RootNamespace>
     <Keyword>Win32Proj</Keyword>
     <TargetPlatformVersion>8.1</TargetPlatformVersion>
+    <ProjectName>VisionTouch</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -54,7 +55,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\..\Cinder\blocks;..\..\cinder\blocks\Cinder-OpenCV3\include;..\include;..\..\Cinder\include;;..\..\Cinder\blocks\Cinder-KinectSDK\v2\src;..\..\Cinder\blocks\Cinder-KinectSDK\v2\sdk\inc;..\..\Cinder\blocks\Cinder-KinectSDK\v1\src;..\..\Cinder\blocks\Cinder-KinectSDK\v1\sdk\inc;..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\include;..\..\Cinder\blocks\OSC\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\Cinder\blocks;..\..\cinder\blocks\Cinder-OpenCV3\include;..\include;..\..\Cinder\include;;..\..\Cinder\blocks\Cinder-DepthSensor\v2\src;..\..\Cinder\blocks\Cinder-DepthSensor\v2\sdk\inc;..\..\Cinder\blocks\Cinder-DepthSensor\v1\src;..\..\Cinder\blocks\Cinder-DepthSensor\v1\sdk\inc;..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\include;..\..\Cinder\blocks\OSC\src</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>RS_USE_WMF_BACKEND;WIN32;NDEBUG;_WINDOWS;NOMINMAX;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -69,7 +70,7 @@
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>cinder-$(PlatformToolset)_d.lib;%(AdditionalDependencies);</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\Cinder\blocks\Cinder-KinectSDK\v1\sdk\lib\$(PlatformTarget)\;..\..\Cinder\blocks\Cinder-KinectSDK\v2\sdk\lib\$(PlatformTarget)\;..\..\Cinder\blocks\Cinder-OpenCV3\lib\vc2013\$(PlatformTarget);..\..\Cinder\lib\msw\$(PlatformTarget)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\Cinder\blocks\Cinder-DepthSensor\v1\sdk\lib\$(PlatformTarget)\;..\..\Cinder\blocks\Cinder-DepthSensor\v2\sdk\lib\$(PlatformTarget)\;..\..\Cinder\blocks\Cinder-OpenCV3\lib\vc2013\$(PlatformTarget);..\..\Cinder\lib\msw\$(PlatformTarget)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
@@ -86,7 +87,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>..\..\Cinder\blocks;..\..\cinder\blocks\Cinder-OpenCV3\include;..\include;..\..\Cinder\include;;..\..\Cinder\blocks\Cinder-KinectSDK\v2\src;..\..\Cinder\blocks\Cinder-KinectSDK\v2\sdk\inc;..\..\Cinder\blocks\Cinder-KinectSDK\v1\src;..\..\Cinder\blocks\Cinder-KinectSDK\v1\sdk\inc;..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\include;..\..\Cinder\blocks\OSC\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\Cinder\blocks;..\..\cinder\blocks\Cinder-OpenCV3\include;..\include;..\..\Cinder\include;;..\..\Cinder\blocks\Cinder-DepthSensor\v2\src;..\..\Cinder\blocks\Cinder-DepthSensor\v2\sdk\inc;..\..\Cinder\blocks\Cinder-DepthSensor\v1\src;..\..\Cinder\blocks\Cinder-DepthSensor\v1\sdk\inc;..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\include;..\..\Cinder\blocks\OSC\src</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>RS_USE_WMF_BACKEND;WIN32;NDEBUG;_WINDOWS;NOMINMAX;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <PrecompiledHeader />
@@ -102,7 +103,7 @@
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>cinder-$(PlatformToolset).lib;%(AdditionalDependencies);</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\Cinder\blocks\Cinder-KinectSDK\v1\sdk\lib\$(PlatformTarget)\;..\..\Cinder\blocks\Cinder-KinectSDK\v2\sdk\lib\$(PlatformTarget)\;..\..\Cinder\blocks\Cinder-OpenCV3\lib\vc2013\$(PlatformTarget);..\..\Cinder\lib\msw\$(PlatformTarget)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\Cinder\blocks\Cinder-DepthSensor\v1\sdk\lib\$(PlatformTarget)\;..\..\Cinder\blocks\Cinder-DepthSensor\v2\sdk\lib\$(PlatformTarget)\;..\..\Cinder\blocks\Cinder-OpenCV3\lib\vc2013\$(PlatformTarget);..\..\Cinder\lib\msw\$(PlatformTarget)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <GenerateMapFile>true</GenerateMapFile>
       <SubSystem>Windows</SubSystem>
@@ -123,86 +124,86 @@
     <ResourceCompile Include="Resources.rc" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\DepthSensor.h" />
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\include\librealsense\rs.h" />
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\include\librealsense\rs.hpp" />
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\include\librealsense\rsutil.h" />
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\context.h" />
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\device.h" />
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\f200-private.h" />
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\f200.h" />
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\image.h" />
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\r200-private.h" />
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\r200.h" />
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\stream.h" />
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\sync.h" />
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\types.h" />
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\uvc.h" />
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\AutoLock.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\DepthSensor.h" />
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\include\librealsense\rs.h" />
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\include\librealsense\rs.hpp" />
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\include\librealsense\rsutil.h" />
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\src\context.h" />
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\src\device.h" />
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\src\f200-private.h" />
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\src\f200.h" />
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\src\image.h" />
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\src\r200-private.h" />
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\src\r200.h" />
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\src\stream.h" />
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\src\sync.h" />
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\src\types.h" />
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\src\uvc.h" />
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\AutoLock.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\ComSmartPtr.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\ComSmartPtr.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\CoordinateMapper.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\CoordinateMapper.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\CriticalSection.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\CriticalSection.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\DataStream.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\DataStream.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\DataStreamAudio.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\DataStreamAudio.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\DataStreamColor.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\DataStreamColor.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\DataStreamDepth.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\DataStreamDepth.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\DataStreamSkeleton.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\DataStreamSkeleton.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\FaceTracker.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\FaceTracker.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\KinectAudioStream.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\KinectAudioStream.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\KinectCommonBridgeLib.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\KinectCommonBridgeLib.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\KinectSensor.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\KinectSensor.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\MediaBuffer.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\MediaBuffer.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\SensorManager.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\SensorManager.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\stdafx.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\stdafx.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\targetver.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\targetver.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
     </ClInclude>
@@ -210,99 +211,99 @@
     <ClInclude Include="..\..\Cinder\blocks\OpenCV\CinderOpenCV.h" />
     <ClInclude Include="..\..\Cinder\blocks\OSC\src\Osc.h" />
     <ClInclude Include="..\include\Resources.h" />
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v2\src\AutoLock.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\v2\src\AutoLock.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v2\src\KCBSensor.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\v2\src\KCBSensor.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v2\src\KCBv2Lib.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\v2\src\KCBv2Lib.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v2\src\KinectList.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\v2\src\KinectList.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v2\src\stdafx.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\v2\src\stdafx.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\DepthSensor.cpp" />
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\DeviceKinect1.cpp" />
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\DeviceKinect2.cpp" />
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\DeviceRealSense.cpp" />
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\DeviceSimulator.cpp" />
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\context.cpp" />
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\device.cpp" />
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\f200-private.cpp" />
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\f200.cpp" />
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\image.cpp" />
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\log.cpp" />
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\r200-private.cpp" />
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\r200.cpp" />
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\rs.cpp" />
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\stream.cpp" />
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\sync.cpp" />
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\types.cpp" />
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\uvc-libuvc.cpp" />
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\uvc-v4l2.cpp" />
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\uvc-wmf.cpp" />
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\uvc.cpp" />
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\verify.c" />
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\CoordinateMapper.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\DepthSensor.cpp" />
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\DeviceKinect1.cpp" />
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\DeviceKinect2.cpp" />
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\DeviceRealSense.cpp" />
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\DeviceSimulator.cpp" />
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\src\context.cpp" />
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\src\device.cpp" />
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\src\f200-private.cpp" />
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\src\f200.cpp" />
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\src\image.cpp" />
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\src\log.cpp" />
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\src\r200-private.cpp" />
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\src\r200.cpp" />
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\src\rs.cpp" />
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\src\stream.cpp" />
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\src\sync.cpp" />
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\src\types.cpp" />
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\src\uvc-libuvc.cpp" />
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\src\uvc-v4l2.cpp" />
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\src\uvc-wmf.cpp" />
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\src\uvc.cpp" />
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\src\verify.c" />
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\CoordinateMapper.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\DataStream.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\DataStream.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\DataStreamAudio.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\DataStreamAudio.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\DataStreamColor.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\DataStreamColor.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\DataStreamDepth.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\DataStreamDepth.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\DataStreamSkeleton.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\DataStreamSkeleton.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\FaceTracker.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\FaceTracker.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\KinectAudioStream.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\KinectAudioStream.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\KinectCommonBridgeLib.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\KinectCommonBridgeLib.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\KinectSensor.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\KinectSensor.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\MediaBuffer.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\MediaBuffer.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\SensorManager.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\SensorManager.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\stdafx.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\stdafx.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
     </ClCompile>
@@ -310,19 +311,19 @@
     <ClCompile Include="..\..\Cinder\blocks\OSC\src\Osc.cpp" />
     <ClCompile Include="..\src\BlobTracker.cpp" />
     <ClCompile Include="..\src\KinServerApp.cpp" />
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v2\src\KCBFrames.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\v2\src\KCBFrames.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v2\src\KCBSensor.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\v2\src\KCBSensor.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v2\src\KCBv2Lib.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\v2\src\KCBv2Lib.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v2\src\KinectList.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\v2\src\KinectList.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
     </ClCompile>

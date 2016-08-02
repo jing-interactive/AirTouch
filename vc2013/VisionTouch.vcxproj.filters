@@ -45,55 +45,55 @@
     <ClCompile Include="..\src\KinServerApp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v2\src\KCBFrames.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\v2\src\KCBFrames.cpp">
       <Filter>Blocks\v2</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v2\src\KCBSensor.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\v2\src\KCBSensor.cpp">
       <Filter>Blocks\v2</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v2\src\KCBv2Lib.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\v2\src\KCBv2Lib.cpp">
       <Filter>Blocks\v2</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v2\src\KinectList.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\v2\src\KinectList.cpp">
       <Filter>Blocks\v2</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\CoordinateMapper.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\CoordinateMapper.cpp">
       <Filter>Blocks\v1</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\DataStream.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\DataStream.cpp">
       <Filter>Blocks\v1</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\DataStreamAudio.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\DataStreamAudio.cpp">
       <Filter>Blocks\v1</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\DataStreamColor.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\DataStreamColor.cpp">
       <Filter>Blocks\v1</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\DataStreamDepth.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\DataStreamDepth.cpp">
       <Filter>Blocks\v1</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\DataStreamSkeleton.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\DataStreamSkeleton.cpp">
       <Filter>Blocks\v1</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\FaceTracker.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\FaceTracker.cpp">
       <Filter>Blocks\v1</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\KinectAudioStream.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\KinectAudioStream.cpp">
       <Filter>Blocks\v1</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\KinectCommonBridgeLib.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\KinectCommonBridgeLib.cpp">
       <Filter>Blocks\v1</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\KinectSensor.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\KinectSensor.cpp">
       <Filter>Blocks\v1</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\MediaBuffer.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\MediaBuffer.cpp">
       <Filter>Blocks\v1</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\SensorManager.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\SensorManager.cpp">
       <Filter>Blocks\v1</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\stdafx.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\stdafx.cpp">
       <Filter>Blocks\v1</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Cinder\blocks\OSC\src\Osc.cpp">
@@ -105,70 +105,70 @@
     <ClCompile Include="..\src\BlobTracker.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\device.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\src\device.cpp">
       <Filter>Blocks\librealsense\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\f200.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\src\f200.cpp">
       <Filter>Blocks\librealsense\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\f200-private.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\src\f200-private.cpp">
       <Filter>Blocks\librealsense\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\image.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\src\image.cpp">
       <Filter>Blocks\librealsense\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\log.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\src\log.cpp">
       <Filter>Blocks\librealsense\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\r200.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\src\r200.cpp">
       <Filter>Blocks\librealsense\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\r200-private.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\src\r200-private.cpp">
       <Filter>Blocks\librealsense\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\rs.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\src\rs.cpp">
       <Filter>Blocks\librealsense\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\stream.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\src\stream.cpp">
       <Filter>Blocks\librealsense\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\sync.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\src\sync.cpp">
       <Filter>Blocks\librealsense\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\types.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\src\types.cpp">
       <Filter>Blocks\librealsense\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\uvc.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\src\uvc.cpp">
       <Filter>Blocks\librealsense\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\uvc-libuvc.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\src\uvc-libuvc.cpp">
       <Filter>Blocks\librealsense\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\uvc-v4l2.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\src\uvc-v4l2.cpp">
       <Filter>Blocks\librealsense\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\uvc-wmf.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\src\uvc-wmf.cpp">
       <Filter>Blocks\librealsense\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\verify.c">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\src\verify.c">
       <Filter>Blocks\librealsense\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\context.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\src\context.cpp">
       <Filter>Blocks\librealsense\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\DepthSensor.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\DepthSensor.cpp">
       <Filter>Blocks</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\DeviceSimulator.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\DeviceSimulator.cpp">
       <Filter>Blocks</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\DeviceRealSense.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\DeviceRealSense.cpp">
       <Filter>Blocks</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\DeviceKinect2.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\DeviceKinect2.cpp">
       <Filter>Blocks</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\Cinder-KinectSDK\DeviceKinect1.cpp">
+    <ClCompile Include="..\..\Cinder\blocks\Cinder-DepthSensor\DeviceKinect1.cpp">
       <Filter>Blocks</Filter>
     </ClCompile>
   </ItemGroup>
@@ -176,70 +176,70 @@
     <ClInclude Include="..\include\Resources.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v2\src\stdafx.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\v2\src\stdafx.h">
       <Filter>Blocks\v2</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v2\src\KCBSensor.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\v2\src\KCBSensor.h">
       <Filter>Blocks\v2</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v2\src\KCBv2Lib.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\v2\src\KCBv2Lib.h">
       <Filter>Blocks\v2</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v2\src\KinectList.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\v2\src\KinectList.h">
       <Filter>Blocks\v2</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v2\src\AutoLock.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\v2\src\AutoLock.h">
       <Filter>Blocks\v2</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\AutoLock.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\AutoLock.h">
       <Filter>Blocks\v1</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\ComSmartPtr.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\ComSmartPtr.h">
       <Filter>Blocks\v1</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\CoordinateMapper.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\CoordinateMapper.h">
       <Filter>Blocks\v1</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\CriticalSection.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\CriticalSection.h">
       <Filter>Blocks\v1</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\DataStream.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\DataStream.h">
       <Filter>Blocks\v1</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\DataStreamAudio.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\DataStreamAudio.h">
       <Filter>Blocks\v1</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\DataStreamColor.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\DataStreamColor.h">
       <Filter>Blocks\v1</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\DataStreamDepth.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\DataStreamDepth.h">
       <Filter>Blocks\v1</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\DataStreamSkeleton.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\DataStreamSkeleton.h">
       <Filter>Blocks\v1</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\FaceTracker.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\FaceTracker.h">
       <Filter>Blocks\v1</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\KinectAudioStream.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\KinectAudioStream.h">
       <Filter>Blocks\v1</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\KinectCommonBridgeLib.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\KinectCommonBridgeLib.h">
       <Filter>Blocks\v1</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\KinectSensor.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\KinectSensor.h">
       <Filter>Blocks\v1</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\MediaBuffer.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\MediaBuffer.h">
       <Filter>Blocks\v1</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\SensorManager.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\SensorManager.h">
       <Filter>Blocks\v1</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\stdafx.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\stdafx.h">
       <Filter>Blocks\v1</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\v1\src\targetver.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\v1\src\targetver.h">
       <Filter>Blocks\v1</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Resources.h">
@@ -254,49 +254,49 @@
     <ClInclude Include="..\..\Cinder\blocks\Cinder-VNM\include\MiniConfig.h">
       <Filter>Blocks\VNM</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\device.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\src\device.h">
       <Filter>Blocks\librealsense\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\f200.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\src\f200.h">
       <Filter>Blocks\librealsense\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\f200-private.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\src\f200-private.h">
       <Filter>Blocks\librealsense\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\image.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\src\image.h">
       <Filter>Blocks\librealsense\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\r200.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\src\r200.h">
       <Filter>Blocks\librealsense\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\r200-private.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\src\r200-private.h">
       <Filter>Blocks\librealsense\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\stream.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\src\stream.h">
       <Filter>Blocks\librealsense\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\sync.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\src\sync.h">
       <Filter>Blocks\librealsense\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\types.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\src\types.h">
       <Filter>Blocks\librealsense\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\uvc.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\src\uvc.h">
       <Filter>Blocks\librealsense\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\src\context.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\src\context.h">
       <Filter>Blocks\librealsense\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\include\librealsense\rs.hpp">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\include\librealsense\rs.hpp">
       <Filter>Blocks\librealsense\include</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\include\librealsense\rsutil.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\include\librealsense\rsutil.h">
       <Filter>Blocks\librealsense\include</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\librealsense\include\librealsense\rs.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\librealsense\include\librealsense\rs.h">
       <Filter>Blocks\librealsense\include</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\Cinder-KinectSDK\DepthSensor.h">
+    <ClInclude Include="..\..\Cinder\blocks\Cinder-DepthSensor\DepthSensor.h">
       <Filter>Blocks</Filter>
     </ClInclude>
   </ItemGroup>
