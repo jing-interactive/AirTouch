@@ -78,7 +78,7 @@
       <TargetMachine>MachineX86</TargetMachine>
       <IgnoreSpecificDefaultLibraries>LIBCMT;LIBCPMT</IgnoreSpecificDefaultLibraries>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
-      <DelayLoadDLLs>kinect10.dll;kinect20.dll</DelayLoadDLLs>
+      <DelayLoadDLLs>kinect10.dll;kinect20.dll;Kinect20.Face.dll</DelayLoadDLLs>
     </Link>
     <PostBuildEvent>
       <Command>
@@ -113,7 +113,7 @@
       <DataExecutionPrevention />
       <TargetMachine>MachineX86</TargetMachine>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
-      <DelayLoadDLLs>kinect10.dll;kinect20.dll</DelayLoadDLLs>
+      <DelayLoadDLLs>kinect10.dll;kinect20.dll;Kinect20.Face.dll</DelayLoadDLLs>
     </Link>
     <PostBuildEvent>
       <Command>
