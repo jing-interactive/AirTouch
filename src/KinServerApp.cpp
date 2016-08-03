@@ -26,7 +26,7 @@ public:
         log::makeLogger<log::LoggerFile>();
 
         {
-            mParams = createConfigUI({ 400, 800 });
+            mParams = createConfigUI({ 400, 600 });
             std::vector<string> smoothNames = { "Off", "Light", "Middle", "High" };
             ADD_ENUM_TO_INT(mParams, TRACKING_SMOOTH, smoothNames);
 
