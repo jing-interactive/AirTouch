@@ -228,6 +228,9 @@
   <ItemGroup>
     <None Include="..\include\item.def" />
   </ItemGroup>
+  <ItemGroup>
+    <Xml Include="..\assets\MiniConfig.xml" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />
 </Project>

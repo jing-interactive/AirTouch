@@ -190,6 +190,10 @@ private:
         int radius = RADIUS * mDepthH;
         int radius_sq = radius * radius;
 
+        float depthToMmScale = mDevice->getDepthToMmScale();
+        float minThresholdInDepthUnit = MIN_THRESHOLD_MM / depthToMmScale;
+        float maxThresholdInDepthUnit = MAX_THRESHOLD_MM / depthToMmScale;
+
         for (int yy = mInputRoi.y1; yy < mInputRoi.y2; yy++)
         {
             // TODO: cache row pointer
@@ -199,7 +203,7 @@ private:
                 int x = LEFT_RIGHT_FLIPPED ? (mDepthW - xx) : xx;
                 uint16_t bg = *mBackChannel.getData(x, y);
                 uint16_t dep = *mDevice->depthChannel.getData(x, y);
-                if (dep > 0 && bg - dep > MIN_THRESHOLD_MM && bg - dep < MAX_THRESHOLD_MM)
+                if (dep > 0 && bg - dep > minThresholdInDepthUnit && bg - dep < maxThresholdInDepthUnit)
                 {
                     // TODO: optimize
                     if (!CIRCLE_MASK_ENABLED || (cx - x) * (cx - x) + (cy - y) * (cy - y) < radius_sq)
