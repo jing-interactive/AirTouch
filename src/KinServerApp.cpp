@@ -30,10 +30,6 @@ public:
             std::vector<string> smoothNames = { "Off", "Light", "Middle", "High" };
             ADD_ENUM_TO_INT(mParams, TRACKING_SMOOTH, smoothNames);
 
-            mFps = 0;
-            mFrameCounter = 0;
-            mSecondsForFps = getElapsedSeconds();
-
             mParams->addParam("FPS", &mFps, true);
             mParams->addButton("Set Bg", std::bind(&KinServerApp::updateBack, this));
             mParams->addButton("Reset In/Out", [] {
@@ -43,13 +39,24 @@ public:
         }
 
         Kinect::DeviceType type = Kinect::DeviceType(SENSOR_TYPE);
-        mDevice = Kinect::Device::create(type);
+        Kinect::Device::Option option;
+        option.enableDepth = !INFRARED_MODE;
+        option.enableInfrared = INFRARED_MODE;
+        mDevice = Kinect::Device::create(type, option);
         if (!mDevice->isValid())
         {
             quit();
             return;
         }
-        mDevice->signalDepthDirty.connect(std::bind(&KinServerApp::updateDepthRelated, this));
+
+        if (INFRARED_MODE)
+        {
+            mDirtyConnection = mDevice->signalInfraredDirty.connect(std::bind(&KinServerApp::updateDepthRelated, this));
+        }
+        else
+        {
+            mDirtyConnection = mDevice->signalDepthDirty.connect(std::bind(&KinServerApp::updateDepthRelated, this));
+        }
 
         mDepthW = mDevice->getDepthSize().x;
         mDepthH = mDevice->getDepthSize().y;
@@ -147,6 +154,8 @@ public:
 
     void update() override
     {
+        mFps = getAverageFps();
+
         mInputRoi.set(
             INPUT_X1 * mDepthW,
             INPUT_Y1 * mDepthH,
@@ -162,17 +171,12 @@ public:
     }
 
 private:
+
     void updateDepthRelated()
     {
-        mFrameCounter++;
-        if (getElapsedSeconds() - mSecondsForFps > 1)
-        {
-            mSecondsForFps = getElapsedSeconds();
-            mFps = mFrameCounter;
-            mFrameCounter = 0;
-        }
+        mTargetChannel = INFRARED_MODE ? &mDevice->infraredChannel.u16 : &mDevice->depthChannel;
 
-        updateTexture(mDepthTexture, mDevice->depthChannel);
+        updateTexture(mDepthTexture, *mTargetChannel);
 
         if (!mBackTexture)
         {
@@ -180,17 +184,13 @@ private:
         }
 
         mDiffMat.setTo(cv::Scalar::all(0));
-        //float x0 = corners[CORNER_DEPTH_LT].x - depthOrigin.x;
-        //float x1 = corners[CORNER_DEPTH_RB].x - depthOrigin.x;
-        //float y0 = corners[CORNER_DEPTH_LT].y - depthOrigin.y;
-        //float y1 = corners[CORNER_DEPTH_RB].y - depthOrigin.y;
 
         int cx = CENTER_X * mDepthW;
         int cy = CENTER_Y * mDepthH;
         int radius = RADIUS * mDepthH;
         int radius_sq = radius * radius;
 
-        float depthToMmScale = mDevice->getDepthToMmScale();
+        float depthToMmScale = INFRARED_MODE ? 0.01 :  mDevice->getDepthToMmScale();
         float minThresholdInDepthUnit = MIN_THRESHOLD_MM / depthToMmScale;
         float maxThresholdInDepthUnit = MAX_THRESHOLD_MM / depthToMmScale;
 
@@ -201,9 +201,10 @@ private:
             for (int xx = mInputRoi.x1; xx < mInputRoi.x2; xx++)
             {
                 int x = LEFT_RIGHT_FLIPPED ? (mDepthW - xx) : xx;
-                uint16_t bg = *mBackChannel.getData(x, y);
-                uint16_t dep = *mDevice->depthChannel.getData(x, y);
-                if (dep > 0 && bg - dep > minThresholdInDepthUnit && bg - dep < maxThresholdInDepthUnit)
+                auto bg = *mBackChannel.getData(x, y);
+                auto dep = *mTargetChannel->getData(x, y);
+                auto diff = dep - bg;
+                if (dep > 0 && diff > minThresholdInDepthUnit && diff < maxThresholdInDepthUnit)
                 {
                     // TODO: optimize
                     if (!CIRCLE_MASK_ENABLED || (cx - x) * (cx - x) + (cy - y) * (cy - y) < radius_sq)
@@ -351,13 +352,11 @@ private:
 
     void updateBack()
     {
-        mBackChannel = mDevice->depthChannel.clone();
+        mBackChannel = mTargetChannel->clone();
         updateTexture(mBackTexture, mBackChannel);
     }
 
-    float mFps;
-    float mSecondsForFps;
-    int mFrameCounter;
+    float mFps = 0;
 
     struct Layout
     {
@@ -371,7 +370,9 @@ private:
         Rectf logoRect;
     } mLayout;
 
+    ci::Channel16u* mTargetChannel = nullptr;
     Kinect::DeviceRef mDevice;
+    signals::Connection mDirtyConnection;
     params::InterfaceGlRef mParams;
     std::shared_ptr<osc::SenderUdp> mOscSender;
     int mDepthW, mDepthH;
