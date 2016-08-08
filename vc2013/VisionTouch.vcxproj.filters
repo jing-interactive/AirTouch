@@ -348,6 +348,12 @@
     <None Include="..\include\item.def">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="..\assets\depthMap.fs">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\assets\depthMap.vs">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="..\assets\MiniConfig.xml">

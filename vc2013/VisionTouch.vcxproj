@@ -226,6 +226,8 @@
     <ClCompile Include="..\src\KinServerApp.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\assets\depthMap.fs" />
+    <None Include="..\assets\depthMap.vs" />
     <None Include="..\include\item.def" />
   </ItemGroup>
   <ItemGroup>
