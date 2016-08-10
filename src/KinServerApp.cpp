@@ -5,7 +5,7 @@
 #include "cinder/Log.h"
 #include "cinder/PolyLine.h"
 
-#include "Osc.h"
+#include "cinder/osc/Osc.h"
 #include "CinderOpenCV.h"
 #include "BlobTracker.h"
 

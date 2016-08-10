@@ -30,14 +30,14 @@
     <ClCompile Include="..\src\KinServerApp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Cinder\blocks\OSC\src\Osc.cpp">
-      <Filter>Blocks\OSC</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Cinder\blocks\Cinder-VNM\src\MiniConfig.cpp">
       <Filter>Blocks\VNM</Filter>
     </ClCompile>
     <ClCompile Include="..\src\BlobTracker.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Cinder\blocks\OSC\src\cinder\osc\Osc.cpp">
+      <Filter>Blocks\OSC</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -50,11 +50,11 @@
     <ClInclude Include="..\..\Cinder\blocks\OpenCV\CinderOpenCV.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Cinder\blocks\OSC\src\Osc.h">
-      <Filter>Blocks\OSC</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Cinder\blocks\Cinder-VNM\include\MiniConfig.h">
       <Filter>Blocks\VNM</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Cinder\blocks\OSC\src\cinder\osc\Osc.h">
+      <Filter>Blocks\OSC</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
