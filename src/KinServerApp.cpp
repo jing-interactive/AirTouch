@@ -38,11 +38,11 @@ public:
             });
         }
 
-        Kinect::DeviceType type = Kinect::DeviceType(SENSOR_TYPE);
-        Kinect::Device::Option option;
+        ds::DeviceType type = ds::DeviceType(SENSOR_TYPE);
+        ds::Option option;
         option.enableDepth = !INFRARED_MODE;
         option.enableInfrared = INFRARED_MODE;
-        mDevice = Kinect::Device::create(type, option);
+        mDevice = ds::Device::create(type, option);
         if (!mDevice->isValid())
         {
             quit();
@@ -371,7 +371,7 @@ private:
     } mLayout;
 
     ci::Channel16u* mTargetChannel = nullptr;
-    Kinect::DeviceRef mDevice;
+    ds::DeviceRef mDevice;
     signals::Connection mDirtyConnection;
     params::InterfaceGlRef mParams;
     std::shared_ptr<osc::SenderUdp> mOscSender;
