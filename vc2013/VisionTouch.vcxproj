@@ -110,7 +110,7 @@
       <TargetMachine>MachineX86</TargetMachine>
       <IgnoreSpecificDefaultLibraries>LIBCMT</IgnoreSpecificDefaultLibraries>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
-      <DelayLoadDLLs>kinect10.dll;kinect20.dll;Kinect20.Face.dll</DelayLoadDLLs>
+      <DelayLoadDLLs>kinect10.dll;kinect20.dll;Kinect20.Face.dll;openni2.dll</DelayLoadDLLs>
     </Link>
     <PostBuildEvent>
       <Command>
@@ -144,7 +144,7 @@
       </DataExecutionPrevention>
       <IgnoreSpecificDefaultLibraries>LIBCMT</IgnoreSpecificDefaultLibraries>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
-      <DelayLoadDLLs>kinect10.dll;kinect20.dll;Kinect20.Face.dll</DelayLoadDLLs>
+      <DelayLoadDLLs>kinect10.dll;kinect20.dll;Kinect20.Face.dll;openni2.dll</DelayLoadDLLs>
     </Link>
     <PostBuildEvent>
       <Command>
@@ -179,7 +179,7 @@
       <DataExecutionPrevention />
       <TargetMachine>MachineX86</TargetMachine>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
-      <DelayLoadDLLs>kinect10.dll;kinect20.dll;Kinect20.Face.dll</DelayLoadDLLs>
+      <DelayLoadDLLs>kinect10.dll;kinect20.dll;Kinect20.Face.dll;openni2.dll</DelayLoadDLLs>
     </Link>
     <PostBuildEvent>
       <Command>
@@ -216,7 +216,7 @@
       <DataExecutionPrevention>
       </DataExecutionPrevention>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
-      <DelayLoadDLLs>kinect10.dll;kinect20.dll;Kinect20.Face.dll</DelayLoadDLLs>
+      <DelayLoadDLLs>kinect10.dll;kinect20.dll;Kinect20.Face.dll;openni2.dll</DelayLoadDLLs>
     </Link>
     <PostBuildEvent>
       <Command>
