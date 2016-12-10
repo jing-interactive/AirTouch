@@ -1,7 +1,7 @@
 VisionTouch | 视触
 =========
 
-Multi touch system for Kinect V1 / V2 devices and Intel RealSense devices.
+Multi touch system for Kinect V1 & V2, Intel RealSense devices and OpenNI-compatible sensors.
 
 To build this project, you need:
 

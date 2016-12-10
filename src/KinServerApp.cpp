@@ -174,7 +174,7 @@ private:
 
     void updateDepthRelated()
     {
-        mTargetChannel = INFRARED_MODE ? &mDevice->infraredChannel.u16 : &mDevice->depthChannel;
+        mTargetChannel = INFRARED_MODE ? &mDevice->infraredChannel : &mDevice->depthChannel;
 
         updateTexture(mDepthTexture, *mTargetChannel);
 
