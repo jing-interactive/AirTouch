@@ -38,10 +38,10 @@ public:
             });
         }
 
-        ds::DeviceType type = ds::DeviceType(SENSOR_TYPE);
+        ds::DeviceType type = ds::DeviceType(_SENSOR_TYPE);
         ds::Option option;
-        option.enableDepth = !INFRARED_MODE;
-        option.enableInfrared = INFRARED_MODE;
+        option.enableDepth = !_INFRARED_MODE;
+        option.enableInfrared = _INFRARED_MODE;
         mDevice = ds::Device::create(type, option);
         if (!mDevice->isValid())
         {
@@ -49,7 +49,7 @@ public:
             return;
         }
 
-        if (INFRARED_MODE)
+        if (_INFRARED_MODE)
         {
             mDirtyConnection = mDevice->signalInfraredDirty.connect(std::bind(&KinServerApp::updateDepthRelated, this));
         }
@@ -64,7 +64,7 @@ public:
         mDiffChannel = Channel(mDepthW, mDepthH, mDiffMat.step, 1,
             mDiffMat.ptr());
 
-        mOscSender = std::make_shared<osc::SenderUdp>(10000, ADDRESS, TUIO_PORT);
+        mOscSender = std::make_shared<osc::SenderUdp>(10000, _ADDRESS, _TUIO_PORT);
         mOscSender->bind();
 
         getWindow()->setSize(1024, 768);
@@ -174,7 +174,7 @@ private:
 
     void updateDepthRelated()
     {
-        mTargetChannel = INFRARED_MODE ? &mDevice->infraredChannel : &mDevice->depthChannel;
+        mTargetChannel = _INFRARED_MODE ? &mDevice->infraredChannel : &mDevice->depthChannel;
 
         updateTexture(mDepthTexture, *mTargetChannel);
 
@@ -190,7 +190,7 @@ private:
         int radius = RADIUS * mDepthH;
         int radius_sq = radius * radius;
 
-        float depthToMmScale = INFRARED_MODE ? 0.01 :  mDevice->getDepthToMmScale();
+        float depthToMmScale = _INFRARED_MODE ? 0.01 : mDevice->getDepthToMmScale();
         float minThresholdInDepthUnit = MIN_THRESHOLD_MM / depthToMmScale;
         float maxThresholdInDepthUnit = MAX_THRESHOLD_MM / depthToMmScale;
 
