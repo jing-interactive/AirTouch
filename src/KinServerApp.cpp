@@ -1,6 +1,7 @@
 #include "cinder/app/RendererGl.h"
 #include "cinder/app/App.h"
 #include "cinder/gl/gl.h"
+#include "cinder/gl/scoped.h"
 #include "cinder/params/Params.h"
 #include "cinder/Log.h"
 #include "cinder/PolyLine.h"
@@ -135,10 +136,13 @@ public:
 
         if (mDepthTexture)
         {
-            //gl::ScopedGlslProg prog(mShader);
-            gl::draw(mDepthTexture, mLayout.canvases[0]);
-            gl::draw(mBackTexture, mLayout.canvases[3]);
-            gl::draw(mDiffTexture, mLayout.canvases[2]);
+            gl::ScopedGlslProg prog(mShader);
+            gl::ScopedTextureBind tex0(mDepthTexture);
+            gl::drawSolidRect(mLayout.canvases[0]);
+            gl::ScopedTextureBind tex1(mBackTexture);
+            gl::drawSolidRect(mLayout.canvases[3]);
+            gl::ScopedTextureBind tex2(mDiffTexture);
+            gl::drawSolidRect(mLayout.canvases[2]);
         }
         visualizeBlobs(mBlobTracker);
     }
