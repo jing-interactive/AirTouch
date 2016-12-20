@@ -88,7 +88,7 @@
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>..\..\Cinder\blocks;..\..\cinder\blocks\Cinder-OpenCV3\include;..\include;..\..\Cinder\include;..\..\Cinder\blocks\Cinder-DepthSensor\include;..\..\Cinder\blocks\OSC\src</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>RS_USE_WMF_BACKEND;WIN32;NDEBUG;_WINDOWS;NOMINMAX;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;NOMINMAX;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -101,8 +101,8 @@
       <AdditionalIncludeDirectories>"..\..\Cinder\include";..\include</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>Cinder-DepthSensor-d.lib;cinder-$(PlatformToolset)_d.lib;%(AdditionalDependencies);</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\Cinder\blocks\Cinder-DepthSensor\lib\msw\$(PlatformTarget);..\..\Cinder\blocks\Cinder-OpenCV3\lib\vc2013\$(PlatformTarget);..\..\Cinder\lib\msw\$(PlatformTarget)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Cinder-DepthSensor-d.lib;cinder.lib;%(AdditionalDependencies);</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\Cinder\blocks\Cinder-DepthSensor\lib\msw\$(PlatformTarget);..\..\Cinder\blocks\Cinder-OpenCV3\lib\vc2013\$(PlatformTarget);..\..\Cinder\lib\msw\$(PlatformTarget);..\..\Cinder\lib\msw\$(PlatformTarget)\$(Configuration)\$(PlatformToolset);</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
@@ -121,7 +121,7 @@
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>..\..\Cinder\blocks;..\..\cinder\blocks\Cinder-OpenCV3\include;..\include;..\..\Cinder\include;..\..\Cinder\blocks\Cinder-DepthSensor\include;..\..\Cinder\blocks\OSC\src</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>RS_USE_WMF_BACKEND;WIN32;NDEBUG;_WINDOWS;NOMINMAX;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;NOMINMAX;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -135,8 +135,8 @@
       <AdditionalIncludeDirectories>"..\..\Cinder\include";..\include</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>Cinder-DepthSensor-d.lib;cinder-$(PlatformToolset)_d.lib;%(AdditionalDependencies);</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\Cinder\blocks\Cinder-DepthSensor\lib\msw\$(PlatformTarget);..\..\Cinder\blocks\Cinder-OpenCV3\lib\vc2013\$(PlatformTarget);..\..\Cinder\lib\msw\$(PlatformTarget)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Cinder-DepthSensor-d.lib;cinder.lib;%(AdditionalDependencies);</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\Cinder\blocks\Cinder-DepthSensor\lib\msw\$(PlatformTarget);..\..\Cinder\blocks\Cinder-OpenCV3\lib\vc2013\$(PlatformTarget);..\..\Cinder\lib\msw\$(PlatformTarget);..\..\Cinder\lib\msw\$(PlatformTarget)\$(Configuration)\$(PlatformToolset);</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
@@ -154,7 +154,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <AdditionalIncludeDirectories>..\..\Cinder\blocks;..\..\cinder\blocks\Cinder-OpenCV3\include;..\include;..\..\Cinder\include;..\..\Cinder\blocks\Cinder-DepthSensor\include;..\..\Cinder\blocks\OSC\src</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>RS_USE_WMF_BACKEND;WIN32;NDEBUG;_WINDOWS;NOMINMAX;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;NOMINMAX;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <PrecompiledHeader />
       <WarningLevel>Level3</WarningLevel>
@@ -168,8 +168,8 @@
       <AdditionalIncludeDirectories>"..\..\Cinder\include";..\include</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>Cinder-DepthSensor.lib;cinder-$(PlatformToolset).lib;%(AdditionalDependencies);</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\Cinder\blocks\Cinder-DepthSensor\lib\msw\$(PlatformTarget);..\..\Cinder\blocks\Cinder-OpenCV3\lib\vc2013\$(PlatformTarget);..\..\Cinder\lib\msw\$(PlatformTarget)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Cinder-DepthSensor.lib;cinder.lib;%(AdditionalDependencies);</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\Cinder\blocks\Cinder-DepthSensor\lib\msw\$(PlatformTarget);..\..\Cinder\blocks\Cinder-OpenCV3\lib\vc2013\$(PlatformTarget);..\..\Cinder\lib\msw\$(PlatformTarget);..\..\Cinder\lib\msw\$(PlatformTarget)\$(Configuration)\$(PlatformToolset);</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <GenerateMapFile>true</GenerateMapFile>
       <SubSystem>Windows</SubSystem>
@@ -189,7 +189,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <AdditionalIncludeDirectories>..\..\Cinder\blocks;..\..\cinder\blocks\Cinder-OpenCV3\include;..\include;..\..\Cinder\include;..\..\Cinder\blocks\Cinder-DepthSensor\include;..\..\Cinder\blocks\OSC\src</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>RS_USE_WMF_BACKEND;WIN32;NDEBUG;_WINDOWS;NOMINMAX;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;NOMINMAX;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <PrecompiledHeader>
       </PrecompiledHeader>
@@ -204,8 +204,8 @@
       <AdditionalIncludeDirectories>"..\..\Cinder\include";..\include</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>Cinder-DepthSensor.lib;cinder-$(PlatformToolset).lib;%(AdditionalDependencies);</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\Cinder\blocks\Cinder-DepthSensor\lib\msw\$(PlatformTarget);..\..\Cinder\blocks\Cinder-OpenCV3\lib\vc2013\$(PlatformTarget);..\..\Cinder\lib\msw\$(PlatformTarget)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Cinder-DepthSensor.lib;cinder.lib;%(AdditionalDependencies);</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\Cinder\blocks\Cinder-DepthSensor\lib\msw\$(PlatformTarget);..\..\Cinder\blocks\Cinder-OpenCV3\lib\vc2013\$(PlatformTarget);..\..\Cinder\lib\msw\$(PlatformTarget);..\..\Cinder\lib\msw\$(PlatformTarget)\$(Configuration)\$(PlatformToolset);</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <GenerateMapFile>true</GenerateMapFile>
       <SubSystem>Windows</SubSystem>
