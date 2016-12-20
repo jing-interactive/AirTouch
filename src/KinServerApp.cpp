@@ -205,6 +205,8 @@ private:
         float depthToMmScale = _INFRARED_MODE ? 0.01 : mDevice->getDepthToMmScale();
         float minThresholdInDepthUnit = MIN_THRESHOLD_MM / depthToMmScale;
         float maxThresholdInDepthUnit = MAX_THRESHOLD_MM / depthToMmScale;
+        
+        uint16_t diff;
 
         for (int yy = mInputRoi.y1; yy < mInputRoi.y2; yy++)
         {
@@ -213,11 +215,13 @@ private:
             for (int xx = mInputRoi.x1; xx < mInputRoi.x2; xx++)
             {
                 int x = LEFT_RIGHT_FLIPPED ? (mDepthW - xx) : xx;
-                auto bg = *mBackChannel.getData(x, y);
                 auto dep = *mTargetChannel->getData(x, y);
-                auto diff = dep - bg;
-                if (dep > 0 && diff > minThresholdInDepthUnit && diff < maxThresholdInDepthUnit)
+                if (dep > 0)
                 {
+                    auto bg = *mBackChannel.getData(x, y);
+                    if (_INFRARED_MODE) diff = dep - bg;
+                    else diff = bg - dep;
+                    if (diff <= minThresholdInDepthUnit || diff >= maxThresholdInDepthUnit) continue;
                     // TODO: optimize
                     if (!CIRCLE_MASK_ENABLED || (cx - x) * (cx - x) + (cy - y) * (cy - y) < radius_sq)
                     {
