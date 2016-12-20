@@ -59,12 +59,6 @@ public:
             mDirtyConnection = mDevice->signalDepthDirty.connect(std::bind(&KinServerApp::updateDepthRelated, this));
         }
 
-        mDepthW = mDevice->getDepthSize().x;
-        mDepthH = mDevice->getDepthSize().y;
-        mDiffMat = cv::Mat1b(mDepthH, mDepthW);
-        mDiffChannel = Channel(mDepthW, mDepthH, mDiffMat.step, 1,
-            mDiffMat.ptr());
-
         mOscSender = std::make_shared<osc::SenderUdp>(10000, _ADDRESS, _TUIO_PORT);
         mOscSender->bind();
 
@@ -134,6 +128,8 @@ public:
             gl::disableAlphaBlending();
         }
 
+        if (mDepthW == 0) return;
+
         if (mDepthTexture)
         {
             gl::ScopedGlslProg prog(mShader);
@@ -158,6 +154,8 @@ public:
 
     void update() override
     {
+        if (mDepthW == 0) return;
+
         mFps = getAverageFps();
 
         mInputRoi.set(
@@ -178,6 +176,16 @@ private:
 
     void updateDepthRelated()
     {
+        if (mDepthW == 0)
+        {
+            mDepthW = mDevice->getDepthSize().x;
+            mDepthH = mDevice->getDepthSize().y;
+
+            mDiffMat = cv::Mat1b(mDepthH, mDepthW);
+            mDiffChannel = Channel(mDepthW, mDepthH, mDiffMat.step, 1,
+                mDiffMat.ptr());
+        }
+
         mTargetChannel = _INFRARED_MODE ? &mDevice->infraredChannel : &mDevice->depthChannel;
 
         updateTexture(mDepthTexture, *mTargetChannel);
@@ -379,7 +387,8 @@ private:
     signals::Connection mDirtyConnection;
     params::InterfaceGlRef mParams;
     std::shared_ptr<osc::SenderUdp> mOscSender;
-    int mDepthW, mDepthH;
+    int mDepthW = 0;
+    int mDepthH = 0;
 
     gl::TextureRef mDepthTexture;
 
