@@ -20,10 +20,10 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{DAE77EF5-BA4B-480A-BE11-297DDDBF46ED}</ProjectGuid>
-    <RootNamespace>VisionTouch</RootNamespace>
+    <RootNamespace>AirTouch</RootNamespace>
     <Keyword>Win32Proj</Keyword>
     <TargetPlatformVersion>8.1</TargetPlatformVersion>
-    <ProjectName>VisionTouch</ProjectName>
+    <ProjectName>AirTouch</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
