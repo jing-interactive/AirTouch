@@ -188,7 +188,7 @@ private:
 
         mTargetChannel = _INFRARED_MODE ? &mDevice->infraredChannel : &mDevice->depthChannel;
 
-        updateTexture(mDepthTexture, *mTargetChannel);
+        updateTexture(mDepthTexture, *mTargetChannel, getTextureFormatUINT16());
 
         if (!mBackTexture)
         {
@@ -369,7 +369,7 @@ private:
     void updateBack()
     {
         mBackChannel = mTargetChannel->clone();
-        updateTexture(mBackTexture, mBackChannel);
+        updateTexture(mBackTexture, mBackChannel, getTextureFormatUINT16());
     }
 
     float mFps = 0;

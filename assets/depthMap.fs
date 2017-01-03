@@ -1,6 +1,6 @@
 #version 150
 
-uniform sampler2D uTex0;
+uniform usampler2D uTex0;
 
 in vec2 TexCoord;
 
@@ -9,7 +9,7 @@ out vec4 oColor;
 void main(void)
 { 
 #if 1
-    float d = texture(uTex0, TexCoord).r * 65536;
+    float d = texture(uTex0, TexCoord).r;
     oColor = vec4(d / 4000);
 #else
     int d = int(texture(uTex0, TexCoord).r * 65536);
