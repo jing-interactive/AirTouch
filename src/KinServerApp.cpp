@@ -46,8 +46,9 @@ public:
         mDevice = ds::Device::create(type, option);
         if (!mDevice->isValid())
         {
-            quit();
-            return;
+            CI_LOG_E("Invalid sensor for " << ds::strFromType(type));
+            //quit();
+            //return;
         }
 
         if (_INFRARED_MODE)
