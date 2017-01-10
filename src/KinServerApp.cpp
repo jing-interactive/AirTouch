@@ -355,7 +355,7 @@ private:
             set.append(mappedY);
             set.append(blob.velocity.x / mOutputMap.getWidth());
             set.append(blob.velocity.y / mOutputMap.getHeight());
-            set.append(0);     // m
+            set.append(0.0f);     // m
             bundle.append(set);                         // add message to bundle
 
             alive.append(blobId);               // add blob to list of ALL active IDs
