@@ -14,6 +14,7 @@
 #include "Cinder-VNM/include/MiniConfig.h"
 #include "Cinder-VNM/include/TextureHelper.h"
 
+using namespace std;
 using namespace ci;
 using namespace ci::app;
 
@@ -25,6 +26,7 @@ public:
         const auto& args = getCommandLineArgs();
         readConfig();
         log::makeLogger<log::LoggerFile>();
+        console() << "EXE built on " << __DATE__ << endl;
 
         {
             mParams = createConfigUI({ 400, 600 });
@@ -414,4 +416,13 @@ private:
     gl::GlslProgRef	mShader;
 };
 
-CINDER_APP(KinServerApp, RendererGl)
+void preSettings(App::Settings *settings)
+{
+    //settings->setWindowSize(1200, 800);
+#if defined( CINDER_MSW_DESKTOP )
+    settings->setConsoleWindowEnabled();
+#endif
+    //    settings->setMultiTouchEnabled(false);
+}
+
+CINDER_APP(KinServerApp, RendererGl, preSettings)
