@@ -1,33 +1,33 @@
 /*
-* BlobTracker.h
-* by stefanix
-* Thanks to touchlib for the best fit algorithm!
-*
-* This class tracks blobs between frames.
-* Most importantly it assignes persistent id to new blobs, correlates
-* them between frames and removes them as blobs dissappear. It also
-* compensates for ghost frames in which blobs momentarily dissappear.
-*
-* Based on the trackning it fires events when blobs come into existence,
-* move around, and disappear. The object which receives the callbacks
-* can be specified with setListener().
-*
-*/
+ * BlobTracker.h
+ * by stefanix
+ * Thanks to touchlib for the best fit algorithm!
+ *
+ * This class tracks blobs between frames.
+ * Most importantly it assignes persistent id to new blobs, correlates
+ * them between frames and removes them as blobs dissappear. It also
+ * compensates for ghost frames in which blobs momentarily dissappear.
+ *
+ * Based on the trackning it fires events when blobs come into existence,
+ * move around, and disappear. The object which receives the callbacks
+ * can be specified with setListener().
+ *
+ */
 #pragma once
 
 #include <map>
 #include <vector>
 
 #include "opencv2/core/core.hpp"
-#include "opencv2/imgproc/imgproc.hpp"
 #include "opencv2/features2d/features2d.hpp"
+#include "opencv2/imgproc/imgproc.hpp"
 
 #include "point2d.h"
 
-using cv::Rect;
 using cv::Point;
-using cv::RotatedRect;
 using cv::Point2f;
+using cv::Rect;
+using cv::RotatedRect;
 
 struct Blob
 {
@@ -57,7 +57,7 @@ struct Blob
         length = 0;
     }
 
-    Blob &operator = (const Blob &b)
+    Blob &operator=(const Blob &b)
     {
         pts = b.pts;
         box = b.box;
@@ -82,9 +82,9 @@ struct Blob
 
     bool operator<(const Blob &other) const
     {
-        //sorted by Y-coord first then X-coord
+        // sorted by Y-coord first then X-coord
         return (center.y < other.center.y) ||
-            ((center.y == other.center.y) && (center.x < other.center.x));
+               ((center.y == other.center.y) && (center.x < other.center.x));
     }
 };
 
@@ -118,10 +118,7 @@ struct TrackedBlob : public Blob
         framesLeft = 0;
     }
 
-    bool isDead() const
-    {
-        return id == BLOB_TO_DELETE;
-    }
+    bool isDead() const { return id == BLOB_TO_DELETE; }
 };
 
 struct BlobFinder
@@ -132,22 +129,22 @@ struct BlobFinder
         int minArea;
         int maxArea;
         bool convexHull;
-        bool(*sort_func)(const Blob &a, const Blob &b);
+        bool (*sort_func)(const Blob &a, const Blob &b);
         bool handOnlyMode;
         int handDistance;
     };
-    static void execute(cv::Mat &src, std::vector<Blob> &blobs, const Option& option);
+    static void execute(cv::Mat &src, std::vector<Blob> &blobs, const Option &option);
 };
 
 class BlobTracker
 {
-public:
+  public:
     BlobTracker();
     void trackBlobs(const std::vector<Blob> &newBlobs);
 
-    std::vector<TrackedBlob>   trackedBlobs; //tracked blobs
-    std::vector<TrackedBlob>  deadBlobs;
+    std::vector<TrackedBlob> trackedBlobs; // tracked blobs
+    std::vector<TrackedBlob> deadBlobs;
 
-private:
-    unsigned int                        IDCounter;    //counter of last blob
+  private:
+    unsigned int IDCounter; // counter of last blob
 };
