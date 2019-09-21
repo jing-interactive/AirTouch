@@ -56,7 +56,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\..\Cinder\blocks;..\..\cinder\blocks\Cinder-OpenCV4\include;..\include;..\..\Cinder\include;..\..\Cinder\blocks\Cinder-DepthSensor\include;..\..\Cinder\blocks\OSC\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\Cinder\blocks;..\..\cinder\blocks\Cinder-OpenCV4\include;..\include;..\..\Cinder\include;..\..\Cinder\blocks\OpenDepthSensor\include;..\..\Cinder\blocks\OSC\src</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;NOMINMAX;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -71,8 +71,8 @@
       <AdditionalIncludeDirectories>"..\..\Cinder\include";..\include</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>Cinder-DepthSensor-d.lib;cinder.lib;%(AdditionalDependencies);</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\Cinder\blocks\Cinder-DepthSensor\lib\msw\$(PlatformTarget);..\..\Cinder\blocks\Cinder-OpenCV4\lib\msw;..\..\Cinder\lib\msw\$(PlatformTarget);..\..\Cinder\lib\msw\$(PlatformTarget)\$(Configuration)\$(PlatformToolset);</AdditionalLibraryDirectories>
+      <AdditionalDependencies>OpenDepthSensor-d.lib;cinder.lib;%(AdditionalDependencies);</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\Cinder\blocks\OpenDepthSensor\lib\msw\$(PlatformTarget);..\..\Cinder\blocks\Cinder-OpenCV4\lib\msw;..\..\Cinder\lib\msw\$(PlatformTarget);..\..\Cinder\lib\msw\$(PlatformTarget)\$(Configuration)\$(PlatformToolset);</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
@@ -89,7 +89,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>..\..\Cinder\blocks;..\..\cinder\blocks\Cinder-OpenCV4\include;..\include;..\..\Cinder\include;..\..\Cinder\blocks\Cinder-DepthSensor\include;..\..\Cinder\blocks\OSC\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\Cinder\blocks;..\..\cinder\blocks\Cinder-OpenCV4\include;..\include;..\..\Cinder\include;..\..\Cinder\blocks\OpenDepthSensor\include;..\..\Cinder\blocks\OSC\src</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;NOMINMAX;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <PrecompiledHeader>
@@ -105,8 +105,8 @@
       <AdditionalIncludeDirectories>"..\..\Cinder\include";..\include</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>Cinder-DepthSensor.lib;cinder.lib;%(AdditionalDependencies);</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\Cinder\blocks\Cinder-DepthSensor\lib\msw\$(PlatformTarget);..\..\Cinder\blocks\Cinder-OpenCV4\lib\msw;..\..\Cinder\lib\msw\$(PlatformTarget);..\..\Cinder\lib\msw\$(PlatformTarget)\$(Configuration)\$(PlatformToolset);</AdditionalLibraryDirectories>
+      <AdditionalDependencies>OpenDepthSensor.lib;cinder.lib;%(AdditionalDependencies);</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\Cinder\blocks\OpenDepthSensor\lib\msw\$(PlatformTarget);..\..\Cinder\blocks\Cinder-OpenCV4\lib\msw;..\..\Cinder\lib\msw\$(PlatformTarget);..\..\Cinder\lib\msw\$(PlatformTarget)\$(Configuration)\$(PlatformToolset);</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <GenerateMapFile>true</GenerateMapFile>
       <SubSystem>Windows</SubSystem>
