@@ -5,7 +5,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AirTouch", "AirTouch.vcxpro
 		{369AB55B-227E-76B1-8BDE-700477E16033} = {369AB55B-227E-76B1-8BDE-700477E16033}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Cinder-DepthSensor", "..\..\Cinder\blocks\Cinder-DepthSensor\vs2019\Cinder-DepthSensor.vcxproj", "{369AB55B-227E-76B1-8BDE-700477E16033}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenDepthSensor", "..\..\Cinder\blocks\OpenDepthSensor\vs2019\OpenDepthSensor.vcxproj", "{369AB55B-227E-76B1-8BDE-700477E16033}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
