@@ -81,7 +81,7 @@ class KinServerApp : public App
         try
         {
             mShader = gl::GlslProg::create(loadAsset("depthMap.vs"), loadAsset("depthMap.fs"));
-            mShader->uniform("image", 0);
+            mShader->uniform("uTex0", 0);
         }
         catch (std::exception& e)
         {
