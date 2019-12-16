@@ -29,15 +29,17 @@ class KinServerApp : public App
         console() << "EXE built on " << __DATE__ << endl;
 
         {
-            mParams = createConfigUI({400, 600});
+            mParams = createConfigUI({400, 800});
             std::vector<string> smoothNames = {"Off", "Light", "Middle", "High"};
             ADD_ENUM_TO_INT(mParams, TRACKING_SMOOTH, smoothNames);
 
             mParams->addParam("FPS", &mFps, true);
-            mParams->addButton("Set Bg", std::bind(&KinServerApp::updateBack, this));
+            mParams->addButton("Set Bg", [&] {mBackTexture.reset(); });
             mParams->addButton("Reset In/Out", [] {
-                INPUT_X1 = INPUT_Y1 = OUTPUT_X1 = OUTPUT_Y1 = 0;
-                INPUT_X2 = INPUT_Y2 = OUTPUT_X2 = OUTPUT_Y2 = 1;
+                INPUT_X1 = INPUT_Y1 = 0.05f;
+                OUTPUT_X1 = OUTPUT_Y1 = -0.05f;
+                INPUT_X2 = INPUT_Y2 = 0.95f;
+                OUTPUT_X2 = OUTPUT_Y2 = 1.05f;
             });
         }
 
@@ -67,8 +69,6 @@ class KinServerApp : public App
         mOscSender = std::make_shared<osc::SenderUdp>(10000, _ADDRESS, _TUIO_PORT);
         mOscSender->bind();
 
-        getWindow()->setSize(1024, 768);
-
         try
         {
             mLogo = gl::Texture::create(loadImage(loadAsset("logo.png")));
@@ -87,15 +87,20 @@ class KinServerApp : public App
         {
             console() << e.what() << std::endl;
         }
+
+        getSignalCleanup().connect([&] { writeConfig(); });
     }
 
     void resize() override
     {
+        _WINDOW_WIDTH = getWindowWidth();
+        _WINDOW_HEIGHT = getWindowHeight();
+
         mLayout.width = getWindowWidth();
         mLayout.height = getWindowHeight();
         mLayout.halfW = mLayout.width / 2;
         mLayout.halfH = mLayout.height / 2;
-        mLayout.spc = mLayout.width * 0.04;
+        mLayout.spc = mLayout.width * 0.02;
 
         for (int x = 0; x < 2; x++)
         {
@@ -188,8 +193,10 @@ class KinServerApp : public App
 
         int cx = CENTER_X * mDepthW;
         int cy = CENTER_Y * mDepthH;
-        int radius = RADIUS * mDepthH;
-        int radius_sq = radius * radius;
+        int radius_x = RADIUS_X * mDepthH;
+        int radius_y = RADIUS_Y * mDepthH;
+        int radius_x_sq = radius_x * radius_x;
+        int radius_y_sq = radius_y * radius_y;
 
         float depthToMmScale = _INFRARED_MODE ? 0.01 : mDevice->getDepthToMmScale();
         float minThresholdInDepthUnit = MIN_THRESHOLD_MM / depthToMmScale;
@@ -215,8 +222,8 @@ class KinServerApp : public App
                     if (diff <= minThresholdInDepthUnit || diff >= maxThresholdInDepthUnit)
                         continue;
                     // TODO: optimize
-                    if (!CIRCLE_MASK_ENABLED ||
-                        (cx - x) * (cx - x) + (cy - y) * (cy - y) < radius_sq)
+                    if (!ELLIPSE_MASK_ENABLED ||
+                        (cx - x) * (cx - x) / radius_x_sq + (cy - y) * (cy - y) / radius_y_sq < 1)
                     {
                         mDiffMat(yy, xx) = 255;
                     }
@@ -258,13 +265,14 @@ class KinServerApp : public App
         gl::translate(mLayout.canvases[2].getUpperLeft());
         gl::scale(scale);
 
-        if (CIRCLE_MASK_ENABLED)
+        if (ELLIPSE_MASK_ENABLED)
         {
             float cx = CENTER_X * mDepthW;
             if (LEFT_RIGHT_FLIPPED) cx = mDepthW - cx;
             float cy = CENTER_Y * mDepthH;
-            float radius = RADIUS * mDepthH;
-            gl::drawStrokedCircle(vec2(cx, cy), radius, 40);
+            float radius_x = RADIUS_X * mDepthH;
+            float radius_y = RADIUS_Y * mDepthH;
+            gl::drawStrokedEllipse(vec2(cx, cy), radius_x, radius_y, 40);
         }
         {
             gl::ScopedColor scope(ColorAf(1, 0, 0, 0.5f));
@@ -401,7 +409,7 @@ class KinServerApp : public App
 
 void preSettings(App::Settings* settings)
 {
-    // settings->setWindowSize(1200, 800);
+    settings->setWindowSize(_WINDOW_WIDTH, _WINDOW_HEIGHT);
 #if defined(CINDER_MSW_DESKTOP)
     settings->setConsoleWindowEnabled();
 #endif
