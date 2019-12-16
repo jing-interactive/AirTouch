@@ -81,7 +81,7 @@
       </DataExecutionPrevention>
       <IgnoreSpecificDefaultLibraries>LIBCMT</IgnoreSpecificDefaultLibraries>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
-      <DelayLoadDLLs>kinect10.dll;kinect20.dll;Kinect20.Face.dll;OpenNI2.dll;freenect2.dll;;freenect2d.dll;k4a.dll;depthengine_2_0.dll;ImiCamera.dll</DelayLoadDLLs>
+      <DelayLoadDLLs>kinect10.dll;kinect20.dll;Kinect20.Face.dll;OpenNI2.dll;freenect2.dll;;freenect2d.dll;k4a.dll;depthengine_2_0.dll;ImiCamera.dll;ImiNect.dll</DelayLoadDLLs>
     </Link>
     <PostBuildEvent>
       <Command>
@@ -119,7 +119,7 @@
       <DataExecutionPrevention>
       </DataExecutionPrevention>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
-      <DelayLoadDLLs>kinect10.dll;kinect20.dll;Kinect20.Face.dll;OpenNI2.dll;freenect2.dll;;freenect2d.dll;k4a.dll;depthengine_2_0.dll;ImiCamera.dll</DelayLoadDLLs>
+      <DelayLoadDLLs>kinect10.dll;kinect20.dll;Kinect20.Face.dll;OpenNI2.dll;freenect2.dll;;freenect2d.dll;k4a.dll;depthengine_2_0.dll;ImiCamera.dll;ImiNect.dll</DelayLoadDLLs>
     </Link>
     <PostBuildEvent>
       <Command>
