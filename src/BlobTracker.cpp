@@ -263,7 +263,7 @@ void BlobTracker::trackBlobs(const vector<Blob> &newBlobs)
         }
     }
     trackedBlobs.erase(
-        remove_if(trackedBlobs.begin(), trackedBlobs.end(), std::mem_fun_ref(&TrackedBlob::isDead)),
+        remove_if(trackedBlobs.begin(), trackedBlobs.end(), std::mem_fn(&TrackedBlob::isDead)),
         trackedBlobs.end());
     // entering blobs
     for (int i = 0; i < n_new; i++)
